@@ -1,6 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CarbonCutters",
+    "\\CarbonCutters\\CarbonCutters\\Views",
+    "\\CarbonCutters\\CarbonCutters\\Views\\Home",
+    "\\CarbonCutters\\CarbonCutters\\Views\\Shared",
+    "\\CarbonCutters\\CarbonCutters\\wwwroot",
+    "\\CarbonCutters\\CarbonCutters\\wwwroot\\css"
   ],
+  "SelectedNode": "\\CarbonCutters\\CarbonCutters.sln",
   "PreviewInSolutionExplorer": false
 }
