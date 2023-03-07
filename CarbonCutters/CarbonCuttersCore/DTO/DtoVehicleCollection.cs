@@ -4,15 +4,21 @@ namespace CarbonCuttersCore.DTO;
 
 public class DtoVehicleCollection
 {
-    public List<IVehicle> vehicles { get; private set; }
+    public List<DtoVehicle> vehicles { get; private set; }
 
-	public DtoVehicleCollection(List<IVehicle> vehicles)
+	public DtoVehicleCollection(List<DtoVehicle> vehicles)
 	{
 		this.vehicles = vehicles;
 	}
 
 	public DtoVehicleCollection(VehicleCollection vehicleCollection)
 	{
-		vehicles = vehicleCollection.vehicles;
+		vehicles = new();
+		foreach (Car vehicle in vehicleCollection.vehicles.OfType<Car>())
+			vehicles.Add(new DtoCar(vehicle));
+		foreach (NoEmission vehicle in vehicleCollection.vehicles.OfType<NoEmission>())
+			vehicles.Add(new DtoNoEmission(vehicle));
+		foreach (PublicTransport vehicle in vehicleCollection.vehicles.OfType<PublicTransport>())
+			vehicles.Add(new DtoPublicTransport(vehicle));
 	}
 }

@@ -21,8 +21,12 @@ public class VehicleCollection : IVehicleCollection
     public VehicleCollection(DtoVehicleCollection Dto)
     {
         vehicles = new();
-        foreach (IVehicle vehicle in Dto.vehicles)
-            vehicles.Add(vehicle);
+        foreach (DtoCar vehicle in Dto.vehicles.OfType<DtoCar>())
+            vehicles.Add(new Car(vehicle));
+        foreach (DtoNoEmission vehicle in Dto.vehicles.OfType<DtoNoEmission>())
+            vehicles.Add(new NoEmission(vehicle));
+        foreach (DtoPublicTransport vehicle in Dto.vehicles.OfType<DtoPublicTransport>())
+            vehicles.Add(new PublicTransport(vehicle));
     }
 
     public void add(IVehicle vehicle)
