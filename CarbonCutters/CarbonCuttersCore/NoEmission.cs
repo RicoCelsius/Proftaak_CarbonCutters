@@ -2,7 +2,7 @@
 
 namespace CarbonCuttersCore;
 
-internal class NoEmission : Vehicle
+public class NoEmission : Vehicle
 {
     public noEmission type { get; private set; }
 

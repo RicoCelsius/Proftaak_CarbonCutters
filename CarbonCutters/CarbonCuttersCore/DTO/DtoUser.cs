@@ -25,7 +25,7 @@ public class DtoUser
         picture = user.picture;
         adress = user.adress;
         score = new(user.score);
-        tripCollection = new(user.tripCollection);
-        vehicleCollection = new(user.vehicleCollection);
+        tripCollection = new DtoTripCollection(user.tripCollection);
+        vehicleCollection = new DtoVehicleCollection(user.vehicleCollection);
     }
 }

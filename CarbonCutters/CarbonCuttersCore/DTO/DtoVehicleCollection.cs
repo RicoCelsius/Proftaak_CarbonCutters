@@ -11,7 +11,7 @@ public class DtoVehicleCollection
 		this.vehicles = vehicles;
 	}
 
-	public DtoVehicleCollection(VehicleCollection vehicleCollection)
+	public DtoVehicleCollection(IVehicleCollection vehicleCollection)
 	{
 		vehicles = new();
 		foreach (Car vehicle in vehicleCollection.vehicles.OfType<Car>())

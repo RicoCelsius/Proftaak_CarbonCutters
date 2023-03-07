@@ -1,4 +1,6 @@
 ﻿
+using CarbonCuttersCore.Interface;
+
 namespace CarbonCuttersCore.DTO;
 
 public class DtoTripCollection
@@ -10,7 +12,7 @@ public class DtoTripCollection
 		TripList = tripList;
 	}
 
-	public DtoTripCollection(TripCollection tripCollection)
+	public DtoTripCollection(ITripCollection tripCollection)
 	{
 		TripList = new();
 		foreach (Trip trip in tripCollection.TripList)

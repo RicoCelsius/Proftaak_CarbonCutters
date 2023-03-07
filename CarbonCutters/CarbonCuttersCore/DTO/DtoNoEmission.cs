@@ -1,6 +1,6 @@
 ﻿namespace CarbonCuttersCore.DTO;
 
-internal class DtoNoEmission : DtoVehicle
+public class DtoNoEmission : DtoVehicle
 {
     public noEmission type { get; private set; }
 
