@@ -1,5 +1,4 @@
 ﻿using CarbonCuttersCore.DTO;
-using System.ComponentModel.DataAnnotations;
 
 namespace CarbonCuttersCore;
 

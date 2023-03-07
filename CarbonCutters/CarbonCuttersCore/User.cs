@@ -1,4 +1,6 @@
-﻿namespace CarbonCuttersCore;
+﻿using CarbonCuttersCore.DTO;
+
+namespace CarbonCuttersCore;
 
 public class User
 {
@@ -19,6 +21,23 @@ public class User
         this.vehicleCollection = vehicleCollection;
     }
 
+    public User(DtoUser Dto)
+    {
+        name = Dto.name;
+        picture = Dto.picture;
+        adress = Dto.adress;
+        score = new(Dto.score);
+        tripCollection = new(Dto.tripCollection);
+        vehicleCollection = new(Dto.vehicleCollection);
+    }
 
-
+    public void edit(string name, string picture, string adress, Score score, TripCollection tripCollection, VehicleCollection vehicleCollection)
+    {
+        this.name = name;
+        this.picture = picture;
+        this.adress = adress;
+        this.score = score;
+        this.tripCollection = tripCollection;
+        this.vehicleCollection = vehicleCollection;
+    }
 }
