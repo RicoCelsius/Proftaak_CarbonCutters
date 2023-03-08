@@ -41,7 +41,7 @@ public class TripCollection : ITripCollection
 
     public void remove(List<Trip> trips)
     {
-        foreach (Trip trip in trips)
-            TripList.Remove(trip);
+        while (trips.Count > 0)
+            TripList.Remove(trips[0]);
     }
 }
