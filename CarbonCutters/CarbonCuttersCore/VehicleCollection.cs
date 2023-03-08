@@ -36,7 +36,7 @@ public class VehicleCollection : IVehicleCollection
 
     public void add(List<IVehicle> vehicles)
     {
-        vehicles.AddRange(vehicles);
+        this.vehicles.AddRange(vehicles);
     }
 
     public void remove(IVehicle vehicle)
@@ -44,9 +44,9 @@ public class VehicleCollection : IVehicleCollection
         vehicles.Remove(vehicle);
     }
 
-    public void remove(List<IVehicle> vehicles)
+    public void remove(List<IVehicle> vehiclelist)
     {
-        foreach (IVehicle vehicle in vehicles)
-            vehicles.Remove(vehicle);
+        while (vehiclelist.Count > 0)
+            vehicles.Remove(vehiclelist[0]);
     }
 }
