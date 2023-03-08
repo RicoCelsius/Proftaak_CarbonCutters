@@ -12,18 +12,21 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CarbonCutters</a>
+                <img src="/Images/CarbonCuttersLogo.png" style="width:40px;height:40px;">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 NavbarItems navbarContainer">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="/RidePages/AddTrip">Add Trip</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Leaderboard">Leaderboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Trip" asp-action="Index">My Trips</a>
@@ -39,9 +42,33 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - CarbonCutters - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer Footer text-muted">
+        <div class="row">
+            <div class="column">
+                <br />
+                <img src="/Images/CarbonCuttersLogoWhite.png" style="width:40px;height:40px;" class="ms-5">
+            </div>
+        <div class="container column">
+            <br />
+            <h6 class="FooterTitle">Contact</h6>
+            <p class="FooterText">5612 MA Eindhoven</p>
+            <p class="FooterText">0900 - 123456</p>
+            <a class="FooterText" asp-area="" asp-action="mailto:info@carboncutters.nl">info@carboncutters.nl</a> 
+        </div>
+        <div class="container column">
+            <br />
+            <h6 class="FooterTitle">Social</h6>
+            <p class="FooterText">Instagram</p>
+            <p class="FooterText">Facebook</p>
+            <p class="FooterText">LinkedIn</p>
+        </div>
+        <div class="container column">
+            <br />
+            <h6 class="FooterTitle">Legal</h6>
+            <p class="FooterText">Privacy Policy</p>
+            <p class="FooterText">Legal</p>
+            <p class="FooterText">Algemene voorwaarden</p>
+        </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
