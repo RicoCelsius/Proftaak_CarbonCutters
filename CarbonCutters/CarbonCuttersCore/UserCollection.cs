@@ -23,7 +23,7 @@ public class UserCollection : IUserCollection
 
     public void remove(List<User> users)
     {
-        foreach (User user in users)
-            this.users.Remove(user);
+        while (users.Count > 0)
+            this.users.Remove(users[0]);
     }
 }
