@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 namespace CarbonCutters.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -12,7 +13,7 @@ namespace CarbonCutters.Controllers
         {
             _logger = logger;
         }
-
+    
         public IActionResult Index()
         {
             return View();
