@@ -1,0 +1,30 @@
+﻿.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.calander {
+    display: flex;
+    background-color: antiquewhite;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+}
+
+.day {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 100;
+    margin: 10px;
+    padding: 10px;
+    background-color: #006A4F;
+    border-radius: 20px;
+    color: white;
+}
+
+.dateText {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

@@ -5,11 +5,13 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonCuttersView", "CarbonCutters\CarbonCuttersView.csproj", "{1D0128C0-BEAC-4646-BB68-CDB90D98EABE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonCuttersCore", "CarbonCuttersCore\CarbonCuttersCore.csproj", "{8E115596-85E2-4C33-B1CE-ADD9F010A42B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonCuttersCore", "CarbonCuttersCore\CarbonCuttersCore.csproj", "{8E115596-85E2-4C33-B1CE-ADD9F010A42B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonCuttersDAL", "CarbonCuttersDAL\CarbonCuttersDAL.csproj", "{4E1AC22D-74F6-4168-B653-B13CA757F0DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonCuttersDAL", "CarbonCuttersDAL\CarbonCuttersDAL.csproj", "{4E1AC22D-74F6-4168-B653-B13CA757F0DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonCuttersUnitTests", "CarbonCuttersUnitTests\CarbonCuttersUnitTests.csproj", "{456513CA-E910-4B32-95B9-0CC598E26D7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonCuttersUnitTests", "CarbonCuttersUnitTests\CarbonCuttersUnitTests.csproj", "{456513CA-E910-4B32-95B9-0CC598E26D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonCuttersMockData", "CarbonCuttersMockData\CarbonCuttersMockData.csproj", "{0878110F-9AFF-4D68-B8E9-C8E700E7CCD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{456513CA-E910-4B32-95B9-0CC598E26D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{456513CA-E910-4B32-95B9-0CC598E26D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{456513CA-E910-4B32-95B9-0CC598E26D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0878110F-9AFF-4D68-B8E9-C8E700E7CCD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0878110F-9AFF-4D68-B8E9-C8E700E7CCD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0878110F-9AFF-4D68-B8E9-C8E700E7CCD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0878110F-9AFF-4D68-B8E9-C8E700E7CCD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

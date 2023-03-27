@@ -1,0 +1,65 @@
+﻿@using CarbonCuttersView.Models
+@model TripModel
+
+<link rel="stylesheet" href="~/css/tripCalander.css">
+
+<div class="container">
+    <div class="header">
+        <div class="addpage">
+             
+        </div>
+        <div class="arrows">
+            <
+        </div>
+        <div class="month">
+            september
+        </div>
+        <div class="arrows">
+            >
+        </div>
+        <div class="addpage">
+            +
+        </div>
+    </div>
+    <div class="calander">
+        @for(int i = 0; i < 7; i++){
+            <div class="day">
+                <div class="dateText">
+                    @switch (i)
+                {
+                    case 0:
+                        <div>m</div>
+                        <div>@i</div>
+                        break;
+                    case 1:
+                        <div>t</div>
+                        <div>@i</div>
+                        break;
+                    case 2:
+                        <div>w</div>
+                        <div>@i</div>
+                        break;
+                    case 3:
+                        <div>t</div>
+                        <div>@i</div>
+                        break;
+                    case 4:
+                        <div>f</div>
+                        <div>@i</div>
+                        break;
+                    case 5:
+                        <div>s</div>
+                        <div>@i</div>
+                        break;
+                    case 6:
+                        <div>s</div>
+                        <div>@i</div>
+                        break;
+                    default:
+                    break;
+                }
+                </div>
+            </div>
+        }
+    </div>
+</div>
