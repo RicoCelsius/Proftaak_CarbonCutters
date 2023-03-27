@@ -14,5 +14,105 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.NavbarItems {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    color: black;
+    text-decoration: none;
+}
+
+.navbarContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer {
+    margin-top: 150px;
+    background-color: #006A4F;
+}
+
+.Hero {
+    margin-top: 120px;
+}
+
+.column {
+    width: 25%;
+}
+
+.FooterTitle {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #D2D2D2;
+}
+
+.FooterText {
+    font-size: 20px;
+    font-weight: 200;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+    text-decoration: none;
+}
+
+.Header1 {
+    font-size: 40px;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    color: #302F2F;
+    text-decoration: none;
+}
+
+.Header2 {
+    font-size: 24px;
+    font-weight: 400;
+    font-family: 'Outfit', sans-serif;
+    color: #302F2F;
+    text-decoration: none;
+}
+
+.mainButton {
+    font-size: 24px;
+    font-weight: 300;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+    text-decoration: none;
+    background-color: #006A4F;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 15px 4px 15px;
+}
+
+.secondButton {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    color: #006A4F;
+    text-decoration: underline;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 15px 4px 15px;
+}
+
+.mainButton:hover {
+    font-size: 24px;
+    font-weight: 300;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+    text-decoration: none;
+    background-color: #01523D;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 15px 4px 15px;
 }
