@@ -1,65 +1,49 @@
-﻿@using CarbonCuttersView.Models
+﻿@using CarbonCuttersCore.Interface
+@using CarbonCuttersView.Models
+@using CarbonCuttersCore
 @model TripModel
 
 <link rel="stylesheet" href="~/css/tripCalander.css">
+<script type="text/javascript" src="/js/calander.js"></script>
+@functions{
+    void updateTrips(){
+        User user = Model.userCollection.users[0];
+        foreach (Trip trip in user.tripCollection.TripList){
+            foreach (TripSegment segment in trip.segments){
+                int distance = segment.distance;
+                int year = segment.dateTime.Year;
+                int month = segment.dateTime.Month;
+                int day = segment.dateTime.Day;
+                int hour = segment.dateTime.Hour;
+                int minute = segment.dateTime.Minute;
+
+                <script type="text/javascript">
+                        loadTrip((@year + "-" + @month + "-" + @day), @segment.distance, (@hour + ":" + @minute), (@hour + ":" + @minute));
+                </Script>
+            }
+        }
+    }
+}
 
 <div class="container">
     <div class="header">
         <div class="addpage">
-             
         </div>
-        <div class="arrows">
+        <div class="arrows" onclick="RazorFunction(-1)">
             <
         </div>
-        <div class="month">
+        <div class="month" id="month">
             september
         </div>
-        <div class="arrows">
+        <div class="arrows" onclick="RazorFunction(1)">
             >
         </div>
         <div class="addpage">
             +
         </div>
     </div>
-    <div class="calander">
-        @for(int i = 0; i < 7; i++){
-            <div class="day">
-                <div class="dateText">
-                    @switch (i)
-                {
-                    case 0:
-                        <div>m</div>
-                        <div>@i</div>
-                        break;
-                    case 1:
-                        <div>t</div>
-                        <div>@i</div>
-                        break;
-                    case 2:
-                        <div>w</div>
-                        <div>@i</div>
-                        break;
-                    case 3:
-                        <div>t</div>
-                        <div>@i</div>
-                        break;
-                    case 4:
-                        <div>f</div>
-                        <div>@i</div>
-                        break;
-                    case 5:
-                        <div>s</div>
-                        <div>@i</div>
-                        break;
-                    case 6:
-                        <div>s</div>
-                        <div>@i</div>
-                        break;
-                    default:
-                    break;
-                }
-                </div>
-            </div>
-        }
-    </div>
+    <div class="calander" id="calander"/>
 </div>
+
+<script>updateWeek(0)</script>
+@{updateTrips();}

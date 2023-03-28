@@ -6,19 +6,31 @@
 
 .calander {
     display: flex;
-    background-color: antiquewhite;
     flex-direction: row;
     margin: 10px;
     padding: 10px;
 }
 
-.day {
+.dayEven {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-grow: 100;
     margin: 10px;
-    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     background-color: #006A4F;
+    border-radius: 20px;
+    color: white;
+}
+
+.dayUneven {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 100;
+    margin: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #338872;
     border-radius: 20px;
     color: white;
 }
@@ -26,5 +38,65 @@
 .dateText {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    flex-grow: 0;
+}
+
+.dateText div {
+    display: flex;
+    justify-content: center;
+    border-color: white;
+}
+
+.line {
+    background-color: white;
+    height: 1px;
+}
+
+.arrows {
+    padding: 10px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.month {
     text-align: center;
+    align-self: center;
+    font-size: 20px;
+    min-width: 130px;
+}
+
+.tripDone {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    color: black;
+    background-color: rgba(255,255,255,0.7);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.tripDone div{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.tripNotDone {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    color: white;
+    background-color: rgba(0,0,0,0.7);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 90%;
 }

@@ -6,10 +6,10 @@ namespace CarbonCuttersView.Models
 {
     public class TripModel
     {
-        IUserCollection userCollection;
+        public IUserCollection userCollection;
         public TripModel()
         {
-            userCollection = new MockUsers(30, 100);
+            
         }
     }
 }

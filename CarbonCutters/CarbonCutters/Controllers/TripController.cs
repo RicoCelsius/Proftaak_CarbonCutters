@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarbonCuttersMockData;
+using CarbonCuttersView.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CarbonCuttersView.Controllers
 {
@@ -6,7 +8,9 @@ namespace CarbonCuttersView.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            TripModel model = new TripModel();
+            model.userCollection = new MockUsers(30, 100);
+            return View(model);
         }
     }
 }
