@@ -7,7 +7,7 @@ namespace CarbonCuttersView.Controllers
     public class ProfileController : Controller
     {
         [Authorize]
-        public IActionResult Profile()
+        public IActionResult Index()
         {
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             ViewBag.UserId = userId;
