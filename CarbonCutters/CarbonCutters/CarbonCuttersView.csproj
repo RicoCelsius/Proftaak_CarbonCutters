@@ -12,6 +12,12 @@
 
   <ItemGroup>
     <None Include="wwwroot\Images\TreeLogo.png" />
+    <None Include="wwwroot\images\TreeLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarbonCuttersCore\CarbonCuttersCore.csproj" />
+    <ProjectReference Include="..\CarbonCuttersDAL\CarbonCuttersDAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
