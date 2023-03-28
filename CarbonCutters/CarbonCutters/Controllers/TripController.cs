@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarbonCuttersView.Controllers
 {
-    public class Tripcontroller : Controller
+    public class TripController : Controller
     {
         [Authorize]
         public IActionResult Index()
         {
-            return View();
+            TripModel model = new TripModel();
+            model.userCollection = new MockUsers(30, 100);
+            return View(model);
         }
-
     }
 }
