@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarbonCuttersView.Controllers
 {
-	{
+	
     public class LeaderboardController : Controller
     {
         [Authorize]
