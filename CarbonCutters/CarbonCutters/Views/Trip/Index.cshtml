@@ -1,49 +1,7 @@
-﻿@using CarbonCuttersCore.Interface
-@using CarbonCuttersView.Models
-@using CarbonCuttersCore
-@model TripModel
-
-<link rel="stylesheet" href="~/css/tripCalander.css">
-<script type="text/javascript" src="/js/calander.js"></script>
-@functions{
-    void updateTrips(){
-        User user = Model.userCollection.users[0];
-        foreach (Trip trip in user.tripCollection.TripList){
-            foreach (TripSegment segment in trip.segments){
-                int distance = segment.distance;
-                int year = segment.dateTime.Year;
-                int month = segment.dateTime.Month;
-                int day = segment.dateTime.Day;
-                int hour = segment.dateTime.Hour;
-                int minute = segment.dateTime.Minute;
-
-                <script type="text/javascript">
-                        loadTrip((@year + "-" + @month + "-" + @day), @segment.distance, (@hour + ":" + @minute), (@hour + ":" + @minute));
-                </Script>
-            }
-        }
-    }
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
 }
 
-<div class="container">
-    <div class="header">
-        <div class="addpage">
-        </div>
-        <div class="arrows" onclick="RazorFunction(-1)">
-            <
-        </div>
-        <div class="month" id="month">
-            september
-        </div>
-        <div class="arrows" onclick="RazorFunction(1)">
-            >
-        </div>
-        <div class="addpage">
-            +
-        </div>
-    </div>
-    <div class="calander" id="calander"/>
-</div>
-
-<script>updateWeek(0)</script>
-@{updateTrips();}
+<h1>On this page you can add/edit/view your trips</h1>
