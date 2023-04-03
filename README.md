@@ -10,14 +10,14 @@ The Carbon Footprint Tracker is a web application designed to help reduce carbon
 
 ## Installation
 1. Clone the repository
-```git clone https://github.com/youru/carbon-footprint-tracker.git```
+```git clone https://github.com/RicoCelsius/Proftaak_CarbonCutters.git```
 2. Install dependencies
 ```npm install```
 3. Start the server
 ```npm start```
 
 ## Usage
-1. Navigate to ```localhost:3000``` in your web browser.
+1. Navigate to ```localhost:44308``` in your web browser.
 2. Create an account or login to an existing one.
 3. Start tracking your carbon footprint by entering your mode of transportation and distance traveled to work.
 4. View your rank on the leaderboard and compete with your colleagues to reduce your carbon footprint.
