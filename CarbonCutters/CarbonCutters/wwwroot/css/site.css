@@ -8,6 +8,29 @@ html {
   }
 }
 
+<<<<<<< HEAD
+=======
+@font-face {
+    font-family: Breton-Bold;
+    src: url(/fonts/Breton-Bold.otf);
+}
+
+@font-face {
+    font-family: Breton-Book;
+    src: url(/fonts/Breton-Book.otf);
+}
+
+/*fontss*/
+
+.breton-bold {
+    font-family: Breton-Bold;
+}
+
+.breton-book {
+    font-family: Breton-Book;
+}
+
+>>>>>>> frontend-index&addtrip
 html {
   position: relative;
   min-height: 100%;
@@ -113,6 +136,38 @@ a:hover {
     text-decoration: none;
     background-color: #01523D;
     border-radius: 5px;
+<<<<<<< HEAD
     border: none;
     padding: 4px 15px 4px 15px;
 }
+=======
+    border: solid;
+    border-color: black;
+    padding: 7px 60px 7px 60px;
+}
+
+.secondButton:hover {
+    font-size: 32px;
+    font-weight: 400;
+    font-family: Breton-Book, sans-serif;
+    color: black;
+    background-color: #F8F8F8;
+    border-radius: 5px;
+    border: solid;
+    border-color: black;
+    padding: 7px 60px 7px 60px;
+}
+
+#backgroundImg {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    opacity: 0.3;
+    z-index: -1;
+    background-image: url('/images/Background.png');
+    background-size: cover;
+}
+
+>>>>>>> frontend-index&addtrip
