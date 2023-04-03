@@ -10,7 +10,7 @@ The Carbon Footprint Tracker is a web application designed to help reduce carbon
 
 ## Installation
 1. Clone the repository
-```git clone https://github.com/yourusername/carbon-footprint-tracker.git```
+```git clone https://github.com/youru/carbon-footprint-tracker.git```
 2. Install dependencies
 ```npm install```
 3. Start the server
