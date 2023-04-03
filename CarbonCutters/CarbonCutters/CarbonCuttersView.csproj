@@ -7,12 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\TreeLogo.png" />
+    <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\TreeLogo.png" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CarbonCuttersCore\CarbonCuttersCore.csproj" />
     <ProjectReference Include="..\CarbonCuttersDAL\CarbonCuttersDAL.csproj" />
+    <ProjectReference Include="..\CarbonCuttersMockData\CarbonCuttersMockData.csproj" />
   </ItemGroup>
 
 </Project>
