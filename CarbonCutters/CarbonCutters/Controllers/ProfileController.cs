@@ -21,7 +21,7 @@ namespace CarbonCuttersView.Controllers
                 if (userExists)
                 {
                     // The user exists in the database
-                    // ...
+                    // ..
                 }
                 else
                 {
