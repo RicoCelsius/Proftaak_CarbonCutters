@@ -14,7 +14,7 @@ namespace CarbonCuttersView.Controllers
 
 
 
-            /*using (var db = new MyDbContext())
+            /*using (var db = new MyDbContext()
             {
                 var userExists = db.Users.Any(u => u.UserId == userId);
 
