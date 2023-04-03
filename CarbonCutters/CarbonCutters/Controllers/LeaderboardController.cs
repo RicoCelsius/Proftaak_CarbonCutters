@@ -2,11 +2,11 @@
 
 namespace CarbonCuttersView.Controllers
 {
-	public class LeaderboardController : Controller
-	{
-		public IActionResult Index()
-		{
-			return View();
-		}
-	}
+    public class LeaderboardController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
 }

@@ -18,7 +18,7 @@ html {
     src: url(/fonts/Breton-Book.otf);
 }
 
-/*fonts*/
+/*fontss*/
 
 .breton-bold {
     font-family: Breton-Bold;
@@ -180,3 +180,4 @@ a:hover {
     background-image: url('/images/Background.png');
     background-size: cover;
 }
+
