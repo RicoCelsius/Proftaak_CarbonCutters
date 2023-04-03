@@ -6,7 +6,7 @@ namespace CarbonCuttersView.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(); // pas dit aan
         }
     }
 }
