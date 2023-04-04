@@ -1,5 +1,4 @@
-﻿using CarbonCuttersMockData;
-using CarbonCuttersView.Models;
+﻿using CarbonCuttersView.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
