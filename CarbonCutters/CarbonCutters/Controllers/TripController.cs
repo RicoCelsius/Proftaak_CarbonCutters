@@ -1,4 +1,5 @@
-﻿using CarbonCuttersMockData;
+﻿using CarbonCuttersCore;
+using CarbonCuttersMockData;
 using CarbonCuttersView.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,5 +13,16 @@ namespace CarbonCuttersView.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult AddTrip(TripModel model)
+        {
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddTrip(AddTripModel model)
+        {
+            return RedirectToAction("Index");
+        }
     }
 }

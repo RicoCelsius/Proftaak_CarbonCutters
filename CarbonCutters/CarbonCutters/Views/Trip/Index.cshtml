@@ -1,7 +1,43 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using CarbonCuttersCore.Interface
+@using CarbonCuttersView.Models
+@using CarbonCuttersCore
+@model TripModel
 
-<h1>On this page you can add/edit/view your trips</h1>
+<link rel="stylesheet" href="~/css/tripCalander.css">
+<script type="text/javascript" src="/js/calander.js"></script>
+
+<script>
+    function updateTrips(i) {
+        updateWeek(i);
+        @{User user = Model.userCollection.users[0];}
+        @foreach (Trip trip in user.tripCollection.TripList)
+        {
+            foreach (TripSegment s in trip.segments)
+            {
+                @:loadTrip((@s.dateTime.Year + "-" + @s.dateTime.Month + "-" + @s.dateTime.Day), @s.distance, (@s.dateTime.Hour + ":" + @s.dateTime.Minute));
+            }
+        }
+    }
+</script>
+
+<div class="container">
+    <div class="header">
+        <div class="addpage">
+        </div>
+        <div class="arrows" onclick="updateTrips(-1)">
+            <
+        </div>
+        <div class="month" id="month">
+            september
+        </div>
+        <div class="arrows" onclick="updateTrips(1)">
+            >
+        </div>
+        <div class="addpage">
+            +
+        </div>
+    </div>
+    <div class="calander" id="calander"/>
+</div>
+
+<script>updateTrips(0)</script>
