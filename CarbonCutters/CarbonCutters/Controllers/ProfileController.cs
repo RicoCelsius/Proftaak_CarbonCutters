@@ -1,4 +1,3 @@
-﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -6,7 +5,6 @@ namespace CarbonCuttersView.Controllers
 {
     public class ProfileController : Controller
     {
-        [Authorize]
         public IActionResult Index()
         {
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
@@ -14,14 +12,14 @@ namespace CarbonCuttersView.Controllers
 
 
 
-            /*using (var db = new MyDbContext())
+            /*using (var db = new MyDbContext()
             {
                 var userExists = db.Users.Any(u => u.UserId == userId);
 
                 if (userExists)
                 {
                     // The user exists in the database
-                    // ...
+                    // ..
                 }
                 else
                 {
@@ -32,6 +30,5 @@ namespace CarbonCuttersView.Controllers
 
             return View();
         }
-
     }
 }
