@@ -1,7 +1,6 @@
-﻿namespace CarbonCuttersDAL
-{
-    public class Class1
-    {
+﻿namespace CarbonCuttersDAL;
 
-    }
+public class Class1
+{
+
 }
