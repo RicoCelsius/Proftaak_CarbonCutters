@@ -5,37 +5,32 @@
 
 <link rel="stylesheet" href="~/css/tripCalander.css">
 <script type="text/javascript" src="/js/calander.js"></script>
-@functions{
-    void updateTrips(){
-        User user = Model.userCollection.users[0];
-        foreach (Trip trip in user.tripCollection.TripList){
-            foreach (TripSegment segment in trip.segments){
-                int distance = segment.distance;
-                int year = segment.dateTime.Year;
-                int month = segment.dateTime.Month;
-                int day = segment.dateTime.Day;
-                int hour = segment.dateTime.Hour;
-                int minute = segment.dateTime.Minute;
 
-                <script type="text/javascript">
-                        loadTrip((@year + "-" + @month + "-" + @day), @segment.distance, (@hour + ":" + @minute), (@hour + ":" + @minute));
-                </Script>
+<script>
+    function updateTrips(i) {
+        updateWeek(i);
+        @{User user = Model.userCollection.users[0];}
+        @foreach (Trip trip in user.tripCollection.TripList)
+        {
+            foreach (TripSegment s in trip.segments)
+            {
+                @:loadTrip((@s.dateTime.Year + "-" + @s.dateTime.Month + "-" + @s.dateTime.Day), @s.distance, (@s.dateTime.Hour + ":" + @s.dateTime.Minute));
             }
         }
     }
-}
+</script>
 
 <div class="container">
     <div class="header">
         <div class="addpage">
         </div>
-        <div class="arrows" onclick="RazorFunction(-1)">
+        <div class="arrows" onclick="updateTrips(-1)">
             <
         </div>
         <div class="month" id="month">
             september
         </div>
-        <div class="arrows" onclick="RazorFunction(1)">
+        <div class="arrows" onclick="updateTrips(1)">
             >
         </div>
         <div class="addpage">
@@ -45,5 +40,4 @@
     <div class="calander" id="calander"/>
 </div>
 
-<script>updateWeek(0)</script>
-@{updateTrips();}
+<script>updateTrips(0)</script>
