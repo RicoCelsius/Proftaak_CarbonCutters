@@ -15,13 +15,15 @@ namespace CarbonCuttersView.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddTrip(TripModel model)
+        public IActionResult AddTrip()
         {
+            TripModel model = new TripModel();
+            model.userCollection = new MockUsers(30, 100);
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult AddTrip(AddTripModel model)
+        public IActionResult AddTrip(TripModel model)
         {
             return RedirectToAction("Index");
         }

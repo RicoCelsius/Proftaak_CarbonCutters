@@ -1,0 +1,77 @@
+﻿@using CarbonCuttersCore.Interface
+@using CarbonCuttersView.Models
+@using CarbonCuttersCore
+@model TripModel
+
+<link rel="stylesheet" href="~/css/tripCalander.css">
+<script type="text/javascript" src="/js/calander.js"></script>
+
+<script>
+    function updateTrips(i) {
+        updateWeek(i);
+    @{
+        User user = Model.userCollection.users[0];
+    }
+    @foreach (Trip trip in user.tripCollection.TripList)
+    {
+        foreach (TripSegment s in trip.segments)
+        {
+            @:loadTrip((@s.dateTime.Year + "-" + @s.dateTime.Month + "-" + @s.dateTime.Day), @s.distance, (@s.dateTime.Hour + ":" + @s.dateTime.Minute));
+        }
+    }
+        }
+</script>
+
+<div class="container">
+    <div class="header">
+        <div class="addpage">
+        </div>
+        <div class="arrows" onclick="updateTrips(-1)">
+            <
+        </div>
+        <div class="month" id="month">
+            september
+        </div>
+        <div class="arrows" onclick="updateTrips(1)">
+            >
+        </div>
+        <a asp-controller="Trip" asp-action="AddTrip">
+            +
+        </a>
+    </div>
+    <div class="calander" id="calander" />
+</div>
+
+<script>updateTrips(0)</script>
+
+<form class="overlay" method="post" asp-controller="Trip" asp-action="AddTrip">
+    <div class="popup">
+        <div>
+            Add new trip
+        </div>
+        <div class="inputContainer">
+            <label asp-for="date">date</label>
+            <input asp-for="date" type="date"/>
+        </div>
+        <div class="inputContainer">
+            <label asp-for="startTime">start time</label>
+            <input asp-for="startTime" type="time"/>
+            <label asp-for="endTime">end time</label>
+            <input asp-for="endTime" type="time"/>
+        </div>
+        <div class="inputContainer">
+            <label asp-for="vehicletype">vehicle</label>
+            <input asp-for="vehicletype" type="text"/>
+        </div>
+        <div class="inputContainer">
+            <label asp-for="distance">distance</label>
+            <input asp-for="distance" type="number"/>
+        </div>
+        <div>
+            <a class="link" asp-controller="Trip" asp-action="Index">
+                back
+            </a>
+            <input type="submit" value="add trip"/>
+        </div>
+    </div>
+</form>
