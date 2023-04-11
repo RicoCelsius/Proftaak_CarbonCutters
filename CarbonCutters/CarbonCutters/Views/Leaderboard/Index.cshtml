@@ -1,7 +1,39 @@
-﻿@{
-}
+﻿@using CarbonCuttersView.Models
+@using CarbonCuttersCore
+@model LeaderBoardModel
 
+<link rel="stylesheet" href="~/css/podium.css" asp-append-version="true" />
 <div>
-	<div class="podiumSection"></div>
-	<h2>hoi</h2>
+	<div class="podiumSection">
+		<div class="podiumContainer1">
+			<div class="place-1">
+				<div>#1</div>
+				<div>
+					@Model._users[0].name | @Model._users[0].score.points
+				</div>
+			</div>
+		</div>
+
+		<div class="podiumContainer2">
+			<div class="place-2">
+				<div>#2</div>
+				@Model._users[1].name | @Model._users[1].score.points
+			</div>
+			<div class="place-3">
+				<div>#3</div>
+				<div>
+					@Model._users[2].name | @Model._users[2].score.points
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="rest">
+		@for (int i = 3; i < Model._users.Count; i++)
+		{
+			<div>
+				@Model._users[i].name | @Model._users[i].score.points
+			</div>
+		}
+	</div>
 </div>

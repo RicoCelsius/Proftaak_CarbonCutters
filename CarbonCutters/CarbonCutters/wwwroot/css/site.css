@@ -187,22 +187,3 @@ a:hover {
     background-image: url('/images/Background.png');
     background-size: cover;
 }
-
-
-.podiumSection {
-    margin-top: 30px;
-    height: 385px;
-    width: 90%;
-    background-color: #608F73;
-    border-radius: 10px;
-}
-
-.secondSection {
-    margin-top: 30px;
-    height: 100px;
-    width: 45%;
-    background-color: #608F73;
-    border-radius: 10px;
-}
-
-

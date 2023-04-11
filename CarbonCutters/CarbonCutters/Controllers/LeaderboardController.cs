@@ -1,17 +1,19 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CarbonCuttersDAL;
+using CarbonCuttersView.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
-namespace CarbonCuttersView.Controllers
+namespace CarbonCuttersView.Controllers;
+
+public class LeaderboardController : Controller
 {
-    public class LeaderboardController : Controller
+    private UserCollectionDal UserCollectionDal = new();
+
+    public IActionResult Index()
     {
-
-        [Authorize]
-
-
-        public IActionResult Index()
-        {
-            return View();
-        }
+        LeaderBoardModel model = new();
+        model.user_id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+        model._users = UserCollectionDal.GetSortedUsersByScore();
+        return View(model);
     }
 }

@@ -2,6 +2,7 @@
 
 public class DtoUser
 {
+    public string id { get; private set; }
     public string name { get; private set; }
     public string picture { get; private set; }
     public string adress { get; private set; }
@@ -9,8 +10,9 @@ public class DtoUser
     public DtoTripCollection tripCollection { get; private set; }
     public DtoVehicleCollection vehicleCollection { get; private set; }
 
-    public DtoUser(string name, string picture, string adress, DtoScore score, DtoTripCollection tripCollection, DtoVehicleCollection vehicleCollection)
+    public DtoUser(string id, string name, string picture, string adress, DtoScore score, DtoTripCollection tripCollection, DtoVehicleCollection vehicleCollection)
     {
+        this.id = id;
         this.name = name;
         this.picture = picture;
         this.adress = adress;
@@ -21,6 +23,7 @@ public class DtoUser
 
     public DtoUser(User user)
     {
+        id = user.id;
         name = user.name;
         picture = user.picture;
         adress = user.adress;

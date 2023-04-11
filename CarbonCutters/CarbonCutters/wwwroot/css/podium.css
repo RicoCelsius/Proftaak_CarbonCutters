@@ -1,0 +1,52 @@
+﻿.podiumSection {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #608F73;
+    border-radius: 10px;
+}
+
+.podiumContainer2 {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.podiumContainer1{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+    .podiumContainer1 div, .podiumContainer2 div {
+        display: flex;
+        padding: 10px;
+        margin: 5px;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+.place-1 {
+    background-color: #fff2ae;
+    flex-grow: 0.6;
+}
+
+.place-2 {
+    background-color: #f0f0f0;
+    flex-grow: 0.3;
+}
+
+.place-3 {
+    background-color: #e0a469;
+    flex-grow: 0.3;
+}
+
+.secondSection {
+    margin-top: 30px;
+    height: 100px;
+    width: 45%;
+    background-color: #608F73;
+    border-radius: 10px;
+}
