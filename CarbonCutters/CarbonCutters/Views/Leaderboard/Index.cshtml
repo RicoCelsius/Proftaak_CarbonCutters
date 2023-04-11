@@ -7,33 +7,119 @@
 	<div class="podiumSection">
 		<div class="podiumContainer1">
 			<div class="place-1">
-				<div>#1</div>
-				<div>
-					@Model._users[0].name | @Model._users[0].score.points
+				<div class="place-number">
+					#1
+				</div>
+				<div class="place-container">
+					<div class="place-picture">
+						<img src="~/Images/profileIcon.png" />
+					</div>
+					<div class="place-text">
+						<div>
+							@Model._users[0].name
+						</div>
+						<div class="points-1">
+							@Model._users[0].score.points points
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="podiumContainer2">
 			<div class="place-2">
-				<div>#2</div>
-				@Model._users[1].name | @Model._users[1].score.points
+				<div class="place-number">
+					#2
+				</div>
+				<div class="place-container">
+					<div class="place-picture">
+						<img src="~/Images/profileIcon.png"/>
+					</div>
+					<div class="place-text">
+						<div>
+							@Model._users[1].name
+						</div>
+						<div class="points-2">
+							@Model._users[1].score.points points
+						</div>
+					</div>
+				</div>
 			</div>
+			<img class="picture" src="/Images/Trophy2.svg"/>
+			<img class="picture" src="/Images/Trophy1.svg" />
+			<img class="picture" src="/Images/Trophy3.svg" />
 			<div class="place-3">
-				<div>#3</div>
-				<div>
-					@Model._users[2].name | @Model._users[2].score.points
+				<div class="place-number">
+					#3
+				</div>
+				<div class="place-container">
+					<div class="place-picture">
+						<img src="~/Images/profileIcon.png" />
+					</div>
+					<div class="place-text">
+						<div>
+							@Model._users[2].name
+						</div>
+						<div class="points-3">
+							@Model._users[2].score.points points
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="honorarySection">
+		<div class="place-e">
+			<div class="place-number">
+				#4
+			</div>
+			<div class="place-container">
+				<div class="place-picture">
+					<img src="~/Images/profileIcon.png" />
+				</div>
+				<div class="place-text">
+					<div>
+						@Model._users[3].name
+					</div>
+					<div class="points-2">
+						@Model._users[3].score.points points
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="place-e">
+			<div class="place-number">
+				#5
+			</div>
+			<div class="place-container">
+				<div class="place-picture">
+					<img src="~/Images/profileIcon.png" />
+				</div>
+				<div class="place-text">
+					<div>
+						@Model._users[4].name
+					</div>
+					<div class="points-2">
+						@Model._users[4].score.points points
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="rest">
-		@for (int i = 3; i < Model._users.Count; i++)
+		@for (int i = 5; i < Model._users.Count; i++)
 		{
-			<div>
-				@Model._users[i].name | @Model._users[i].score.points
-			</div>
+			@if(i%2 == 0){
+				<div class="place-e">
+					@Model._users[i].name | @Model._users[i].score.points
+				</div>
+			} 
+			else {
+				<div class="place-o">
+					@Model._users[i].name | @Model._users[i].score.points
+				</div>
+			}
 		}
 	</div>
 </div>
