@@ -8,8 +8,6 @@ html {
   }
 }
 
-
-
 @font-face {
     font-family: Breton-Bold;
     src: url(/fonts/Breton-Bold.otf);
@@ -29,7 +27,6 @@ html {
 .breton-book {
     font-family: Breton-Book;
 }
-
 
 html {
   position: relative;
@@ -155,10 +152,6 @@ a:hover {
     text-decoration: none;
     background-color: #01523D;
     border-radius: 5px;
-
-    border: none;
-    padding: 4px 15px 4px 15px;
-
     border: solid;
     border-color: black;
     padding: 7px 60px 7px 60px;
@@ -188,7 +181,6 @@ a:hover {
     background-size: cover;
 }
 
-
 .podiumSection {
     margin-top: 30px;
     height: 385px;
@@ -197,12 +189,11 @@ a:hover {
     border-radius: 10px;
 }
 
-.secondSection {
-    margin-top: 30px;
+.4and5Section {
+    margin-top: 5px;
     height: 100px;
-    width: 45%;
-    background-color: #608F73;
+    width: 48%;
+    background-color: #78AE8E;
     border-radius: 10px;
 }
-
 
