@@ -99,7 +99,7 @@ function loadTrip(dateString, distance, starttime, endtime) {
         dis.innerHTML = distance + " km";
 
         var tim = document.createElement('div');
-        tim.innerHTML = starttime + " - " + starttime;
+        tim.innerHTML = starttime + " - " + endtime;
 
         var trip = document.createElement('div');
         trip.setAttribute('class', 'tripDone');
