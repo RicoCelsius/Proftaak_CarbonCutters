@@ -15,5 +15,8 @@
     <ProjectReference Include="..\CarbonCuttersDAL\CarbonCuttersDAL.csproj" />
     <ProjectReference Include="..\CarbonCuttersMockData\CarbonCuttersMockData.csproj" />
   </ItemGroup>
-
+  
+ <ItemGroup>
+    <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.2.0" />
+  </ItemGroup>
 </Project>
