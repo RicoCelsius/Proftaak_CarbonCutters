@@ -5,11 +5,18 @@ namespace CarbonCuttersCore;
 
 public class TripCollection : ITripCollection
 {
+    private ITripCollection _tripsDB;
     public List<Trip> TripList { get; private set; }
 
     public TripCollection()
     {
         TripList = new List<Trip>();
+    }
+
+    public TripCollection(ITripCollection tripsDB)
+    {
+        _tripsDB = tripsDB;
+        TripList = _tripsDB.TripList;
     }
 
     public TripCollection(DtoTripCollection Dto)

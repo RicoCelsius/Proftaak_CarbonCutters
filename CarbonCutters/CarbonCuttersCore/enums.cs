@@ -14,7 +14,8 @@ public enum fuel
     petrol,
     diesel,
     gas,
-    hybrid
+    hybrid,
+    none
 }
 
 public enum noEmission

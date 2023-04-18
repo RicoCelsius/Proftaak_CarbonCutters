@@ -1,8 +1,19 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using CarbonCuttersCore
+@using CarbonCuttersView.Models
 
-    <label>@ViewBag.UserId</label>
+@model ProfileModel
 
+
+<div>
+    @Model.user.name | @Model.user.score.points
+</div>
+
+@foreach (Trip trip in Model.user.tripCollection.TripList){
+    <div>
+        @foreach (TripSegment segment in trip.segments){
+            <div>
+                @segment.vehicle.ToString()
+            </div>
+        }
+    </div>
 }

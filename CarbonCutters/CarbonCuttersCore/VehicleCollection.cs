@@ -49,4 +49,9 @@ public class VehicleCollection : IVehicleCollection
         while (vehiclelist.Count > 0)
             vehicles.Remove(vehiclelist[0]);
     }
+
+    public IVehicle get(int id)
+    {
+        throw new NotImplementedException();
+    }
 }
