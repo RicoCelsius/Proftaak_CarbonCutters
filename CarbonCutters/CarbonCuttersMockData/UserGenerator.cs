@@ -27,9 +27,9 @@ internal class UserGenerator
 
     public User next()
     {
-        Score score = new(r.Next());
+        Score score = new(r.Next(10, 100000));
         TripCollection trips = new();
         trips.add(TripGenerator.Next(r.Next(3, 20)));
-        return new User(GenerateName(r.Next(3,10)),"","",score,trips,new VehicleCollection());
+        return new User(GenerateName(r.Next(3,10)),GenerateName(r.Next(3,10)),"","",score,trips,new VehicleCollection());
     }
 }

@@ -1,5 +1,6 @@
 ﻿@using CarbonCuttersView.Models
 @using CarbonCuttersCore
+@using System.Globalization
 @model LeaderBoardModel
 
 <link rel="stylesheet" href="~/css/podium.css" asp-append-version="true" />
@@ -19,7 +20,7 @@
 							@Model._users[0].name
 						</div>
 						<div class="points-1">
-							@Model._users[0].score.points points
+							@Model._users[0].score.getPointsAsString() points
 						</div>
 					</div>
 				</div>
@@ -40,7 +41,7 @@
 							@Model._users[1].name
 						</div>
 						<div class="points-2">
-							@Model._users[1].score.points points
+							@Model._users[1].score.getPointsAsString() points
 						</div>
 					</div>
 				</div>
@@ -61,7 +62,7 @@
 							@Model._users[2].name
 						</div>
 						<div class="points-3">
-							@Model._users[2].score.points points
+							@Model._users[2].score.getPointsAsString() points
 						</div>
 					</div>
 				</div>
@@ -82,7 +83,7 @@
 						@Model._users[3].name
 					</div>
 					<div class="points-2">
-						@Model._users[3].score.points points
+						@Model._users[3].score.getPointsAsString() points
 					</div>
 				</div>
 			</div>
@@ -100,7 +101,7 @@
 						@Model._users[4].name
 					</div>
 					<div class="points-2">
-						@Model._users[4].score.points points
+						@Model._users[4].score.getPointsAsString() points
 					</div>
 				</div>
 			</div>
@@ -108,16 +109,50 @@
 	</div>
 
 	<div class="rest">
-		@for (int i = 5; i < Model._users.Count; i++)
+		@for (int i = 0; i < 7; i++)
 		{
-			@if(i%2 == 0){
+			int j = i + Model.start_i;
+			string points = Model._users[j].score.getPointsAsString();
+			@if(i == 3){
+				<div class="place-user">
+					<div class="place-number">#@j</div>
+					<div class="place-container">
+						<div class="place-picture">
+							<img src="~/Images/profileIcon.png" />
+						</div>
+						<div class="place-text">
+							<div>@Model._users[j].name</div>
+							<div class="points">@points points</div>
+						</div>
+					</div>
+				</div>
+			}
+			else if(i%2 != 0){
 				<div class="place-e">
-					@Model._users[i].name | @Model._users[i].score.points
+					<div class="place-number">#@j</div>
+					<div class="place-container">
+						<div class="place-picture">
+							<img src="~/Images/profileIcon.png" />
+						</div>
+						<div class="place-text">
+							<div>@Model._users[j].name</div>
+							<div class="points">@points points</div>
+						</div>
+					</div>
 				</div>
 			} 
 			else {
 				<div class="place-o">
-					@Model._users[i].name | @Model._users[i].score.points
+					<div class="place-number">#@j</div>
+					<div class="place-container">
+						<div class="place-picture">
+							<img src="~/Images/profileIcon.png" />
+						</div>
+						<div class="place-text">
+							<div>@Model._users[j].name</div>
+							<div class="points">@points points</div>
+						</div>
+					</div>
 				</div>
 			}
 		}
