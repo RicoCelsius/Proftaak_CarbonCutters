@@ -1,8 +1,160 @@
-﻿@{
-}
+﻿@using CarbonCuttersView.Models
+@using CarbonCuttersCore
+@using System.Globalization
+@model LeaderBoardModel
 
+<link rel="stylesheet" href="~/css/podium.css" asp-append-version="true" />
 <div>
-	<h2 class="text-center">Leaderboard</h2>
+	<div class="podiumSection">
+		<div class="podiumContainer1">
+			<div class="place-1">
+				<div class="place-number">
+					#1
+				</div>
+				<div class="place-container">
+					<div class="place-picture">
+						<img src="~/Images/profileIcon.png" />
+					</div>
+					<div class="place-text">
+						<div>
+							@Model._users[0].name
+						</div>
+						<div class="points-1">
+							@Model._users[0].score.getPointsAsString() points
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-	<div class="podiumSection"></div>
+		<div class="podiumContainer2">
+			<div class="place-2">
+				<div class="place-number">
+					#2
+				</div>
+				<div class="place-container">
+					<div class="place-picture">
+						<img src="~/Images/profileIcon.png"/>
+					</div>
+					<div class="place-text">
+						<div>
+							@Model._users[1].name
+						</div>
+						<div class="points-2">
+							@Model._users[1].score.getPointsAsString() points
+						</div>
+					</div>
+				</div>
+			</div>
+			<img class="picture" src="/Images/Trophy2.svg"/>
+			<img class="picture" src="/Images/Trophy1.svg" />
+			<img class="picture" src="/Images/Trophy3.svg" />
+			<div class="place-3">
+				<div class="place-number">
+					#3
+				</div>
+				<div class="place-container">
+					<div class="place-picture">
+						<img src="~/Images/profileIcon.png" />
+					</div>
+					<div class="place-text">
+						<div>
+							@Model._users[2].name
+						</div>
+						<div class="points-3">
+							@Model._users[2].score.getPointsAsString() points
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="honorarySection">
+		<div class="place-e">
+			<div class="place-number">
+				#4
+			</div>
+			<div class="place-container">
+				<div class="place-picture">
+					<img src="~/Images/profileIcon.png" />
+				</div>
+				<div class="place-text">
+					<div>
+						@Model._users[3].name
+					</div>
+					<div class="points-2">
+						@Model._users[3].score.getPointsAsString() points
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="place-e">
+			<div class="place-number">
+				#5
+			</div>
+			<div class="place-container">
+				<div class="place-picture">
+					<img src="~/Images/profileIcon.png" />
+				</div>
+				<div class="place-text">
+					<div>
+						@Model._users[4].name
+					</div>
+					<div class="points-2">
+						@Model._users[4].score.getPointsAsString() points
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="rest">
+		@for (int i = 0; i < 7; i++)
+		{
+			int j = i + Model.start_i;
+			string points = Model._users[j].score.getPointsAsString();
+			@if(i == 3){
+				<div class="place-user">
+					<div class="place-number">#@j</div>
+					<div class="place-container">
+						<div class="place-picture">
+							<img src="~/Images/profileIcon.png" />
+						</div>
+						<div class="place-text">
+							<div>@Model._users[j].name</div>
+							<div class="points">@points points</div>
+						</div>
+					</div>
+				</div>
+			}
+			else if(i%2 != 0){
+				<div class="place-e">
+					<div class="place-number">#@j</div>
+					<div class="place-container">
+						<div class="place-picture">
+							<img src="~/Images/profileIcon.png" />
+						</div>
+						<div class="place-text">
+							<div>@Model._users[j].name</div>
+							<div class="points">@points points</div>
+						</div>
+					</div>
+				</div>
+			} 
+			else {
+				<div class="place-o">
+					<div class="place-number">#@j</div>
+					<div class="place-container">
+						<div class="place-picture">
+							<img src="~/Images/profileIcon.png" />
+						</div>
+						<div class="place-text">
+							<div>@Model._users[j].name</div>
+							<div class="points">@points points</div>
+						</div>
+					</div>
+				</div>
+			}
+		}
+	</div>
 </div>

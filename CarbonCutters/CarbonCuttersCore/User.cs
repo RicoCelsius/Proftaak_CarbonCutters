@@ -5,6 +5,7 @@ namespace CarbonCuttersCore;
 
 public class User
 {
+    public string id { get; private set; }
     public string name { get; private set; }
     public string picture { get; private set; }
     public string adress { get; private set; }
@@ -12,8 +13,9 @@ public class User
     public ITripCollection tripCollection { get; private set; }
     public IVehicleCollection vehicleCollection { get; private set; }
 
-    public User(string name, string picture, string adress, Score score, ITripCollection tripCollection, IVehicleCollection vehicleCollection)
+    public User(string id, string name, string picture, string adress, Score score, ITripCollection tripCollection, IVehicleCollection vehicleCollection)
     {
+        this.id = id;
         this.name = name;
         this.picture = picture;
         this.adress = adress;
@@ -24,6 +26,7 @@ public class User
 
     public User(DtoUser Dto)
     {
+        id = Dto.id;
         name = Dto.name;
         picture = Dto.picture;
         adress = Dto.adress;

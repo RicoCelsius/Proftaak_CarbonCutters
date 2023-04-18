@@ -11,6 +11,11 @@ public class Score
         this.points = points;
     }
 
+    public string getPointsAsString()
+    {
+        return $"{points:n0}";
+    }
+
     public Score()
     {
         points = 0;
