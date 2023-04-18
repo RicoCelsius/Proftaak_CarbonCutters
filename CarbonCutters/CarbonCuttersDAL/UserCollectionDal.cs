@@ -1,8 +1,6 @@
 ﻿using CarbonCuttersCore;
 using CarbonCuttersCore.Interface;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using System.Numerics;
 
 namespace CarbonCuttersDAL;
 
@@ -59,12 +57,6 @@ public class UserCollectionDal : IUserCollection
 
         connection.Close();
         users = temp;
-    }
-
-    public List<User> GetSortedUsersByScore()
-    {
-        List<User> sortedList = users.OrderBy(x => -x.score.points).ToList();
-        return sortedList;
     }
 
     public void add(User user)
