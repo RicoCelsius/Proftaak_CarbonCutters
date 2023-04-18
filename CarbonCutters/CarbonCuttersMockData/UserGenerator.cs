@@ -1,4 +1,5 @@
-﻿using CarbonCuttersCore;
+﻿
+using CarbonCuttersCore;
 
 namespace CarbonCuttersMockData;
 
