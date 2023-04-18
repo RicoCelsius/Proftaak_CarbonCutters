@@ -5,9 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
+  
+ <ItemGroup>
     <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.2.0" />
   </ItemGroup>
-
 </Project>

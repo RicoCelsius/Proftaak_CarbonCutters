@@ -1,14 +1,32 @@
-﻿using CarbonCuttersView.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using CarbonCuttersCore;
+using CarbonCuttersMockData;
+using CarbonCuttersView.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CarbonCuttersView.Controllers;
-
-public class Tripcontroller : Controller
+namespace CarbonCuttersView.Controllers
 {
-    public IActionResult Index()
+    public class TripController : Controller
     {
-        return View();
+        public IActionResult Index()
+        {
+            TripModel model = new TripModel();
+            model.userCollection = new MockUsers(30, 100);
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult AddTrip()
+        {
+            TripModel model = new TripModel();
+            model.userCollection = new MockUsers(30, 100);
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddTrip(TripModel model)
+        {
+            return RedirectToAction("Index");
+        }
     }
 
 }
