@@ -24,17 +24,6 @@ public class User
         this.vehicleCollection = vehicleCollection;
     }
 
-    public User(DtoUser Dto)
-    {
-        id = Dto.id;
-        name = Dto.name;
-        picture = Dto.picture;
-        adress = Dto.adress;
-        score = new(Dto.score);
-        tripCollection = new TripCollection(Dto.tripCollection);
-        vehicleCollection = new VehicleCollection(Dto.vehicleCollection);
-    }
-
     public void edit(string name, string picture, string adress, Score score, ITripCollection tripCollection, IVehicleCollection vehicleCollection)
     {
         this.name = name;

@@ -28,6 +28,7 @@ public class VehicleCollectionDal : IVehicleCollection
 
         if (reader != null)
         {
+            reader.Read();
             string clas = reader.GetString(0);
             if (clas == "Car")
             {

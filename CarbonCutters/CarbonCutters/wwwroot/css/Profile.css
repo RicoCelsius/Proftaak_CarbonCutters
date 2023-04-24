@@ -1,0 +1,61 @@
+﻿@font-face {
+    font-family: Breton-Bold;
+    src: url(/fonts/Breton-Bold.otf);
+}
+
+@font-face {
+    font-family: Breton-Book;
+    src: url(/fonts/Breton-Book.otf);
+}
+
+.picture {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 100px;
+}
+    .picture img {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        border-radius: 100px;
+    }
+
+.container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.profileinfo {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.text {
+    font-size: 1.6em;
+    font-family: Breton-Book;
+    display: flex;
+    margin-inline: 10px;
+    flex-direction: column;
+}
+
+.points {
+    font-family: Breton-Bold;
+    font-size: 2em;
+}
+
+.background-container {
+    display: flex;
+    position: absolute;
+    padding: 10%;
+    height: 80%;
+    width: 100%;
+    bottom: 10%;
+    left: 0%;
+}
