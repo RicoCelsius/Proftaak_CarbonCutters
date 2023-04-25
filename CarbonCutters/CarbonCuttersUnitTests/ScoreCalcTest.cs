@@ -30,10 +30,10 @@ namespace CarbonCuttersUnitTests
         public void randomtest1()
         {
             // Arrange
-            int distance = 50;
-            string group = "long distance";
-            string method = "car";
-            int expectedPoints = 180;
+            int distance = 19;
+            string group = "fauifhsefn";
+            string method = "public transit";
+            int expectedPoints = 150;
 
             // Act
             int actualPoints = Score.CalculateScore(distance, group, method);

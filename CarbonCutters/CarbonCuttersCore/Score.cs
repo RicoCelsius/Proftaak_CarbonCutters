@@ -39,30 +39,27 @@ public class Score
         int publicTransitPoints = 0;
         int airplane = 150;
 
-        switch (group)
+        switch (distance)
         {
-            case "close distance":
+            case int n when n < 20:
                 zeroEmmision = 160;
                 carPoints = 10;
                 perKmPoints = 5;
                 publicTransitPoints = 150;
                 break;
-            case "medium distance":
+        
+            case int n when n < 50:
                 zeroEmmision = 220;
                 carPoints = 20;
                 perKmPoints = 1;
                 publicTransitPoints = 180;
                 break;
-            case "long distance":
+            case int n when n >= 50:
                 zeroEmmision = 300;
                 carPoints = 30;
                 perKmPoints = 1;
                 publicTransitPoints = 200;
                 break;
-            case "flight":
-                airplane = 150;
-                break;
-            default:
                 throw new ArgumentException("Invalid group");
         }
 
