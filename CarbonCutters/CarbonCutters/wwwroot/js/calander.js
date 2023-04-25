@@ -97,7 +97,8 @@ function MakeTrip(dateString, id, isDone) {
 
     var trip = document.createElement('div');
 
-    if (isDone == true) {
+    console.log(isDone);
+    if (isDone == "True") {
         trip.setAttribute('class', 'tripDone');
     } else {
         trip.setAttribute('class', 'tripNotDone');
@@ -111,12 +112,17 @@ function MakeTrip(dateString, id, isDone) {
 function MakeTripSections(id, distance, starttime, endtime) {
     var trip = document.getElementById('trip-' + id);
 
+    var tripSegment = document.createElement('div');
+    tripSegment.setAttribute('class', 'tripSegment');
+
     var dis = document.createElement('div');
     dis.innerHTML = distance + " km";
 
     var tim = document.createElement('div');
     tim.innerHTML = starttime + ' - ' + endtime;
 
-    trip.appendChild(tim);
-    trip.appendChild(dis);
+    tripSegment.appendChild(tim);
+    tripSegment.appendChild(dis);
+
+    trip.appendChild(tripSegment);
 }

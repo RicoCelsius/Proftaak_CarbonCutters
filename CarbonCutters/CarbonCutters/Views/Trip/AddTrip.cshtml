@@ -9,15 +9,15 @@
 <script>
     function updateTrips(i) {
         updateWeek(i);
-        @foreach (Trip t in Model.trips)
+    @foreach (Trip t in Model.trips)
+    {
+        @:MakeTrip((@t.dateTime.Year + "-" + @t.dateTime.Month + "-" + @t.dateTime.Day), @t.id, '@t.isDone')
+        @foreach (TripSegment s in t.segments)
         {
-            @:MakeTrip((t.dateTime.Year + "-" + @t.dateTime.Month + "-" + @t.dateTime.Day), @t.id)
-            foreach (TripSegment s in t.segments)
-            {
-                @:MakeTripSections(@t.id, @s.distance, (@s.startTime.Hour + ':' + @s.startTime.Minute), (@s.endTime.Hour + ':' @s.endTime.Minute);
-            }
+            @:MakeTripSections(@t.id, @s.distance, (@s.startTime.Hour + ':' + @s.startTime.Minute), (@s.endTime.Hour + ':' + @s.endTime.Minute))
         }
     }
+        }
 </script>
 
 <div class="container">
@@ -44,26 +44,31 @@
 
 <form class="overlay" method="post" asp-controller="Trip" asp-action="AddTrip">
     <div class="popup">
-        <div>
-            Add new trip
+        <div class="title1">
+            New trip
         </div>
-        <div class="inputContainer">
+        <div class="container-date">
             <label asp-for="date">date</label>
             <input asp-for="date" type="date"/>
         </div>
-        <div class="inputContainer">
-            <label asp-for="startTime">start time</label>
-            <input asp-for="startTime" type="time"/>
-            <label asp-for="endTime">end time</label>
-            <input asp-for="endTime" type="time"/>
-        </div>
-        <div class="inputContainer">
-            <label asp-for="vehicletype">vehicle</label>
-            <input asp-for="vehicletype" type="text"/>
-        </div>
-        <div class="inputContainer">
-            <label asp-for="distance">distance</label>
-            <input asp-for="distance" type="number"/>
+        <div class="TripSegmentContainer">
+            <div class="title2">
+                New TripSegment
+            </div>
+            <div class="input">
+                <label asp-for="startTime">start time</label>
+                <input asp-for="startTime" type="time"/>
+                <label asp-for="endTime">end time</label>
+                <input asp-for="endTime" type="time"/>
+            </div>
+            <div>
+                <label asp-for="vehicletype">vehicle</label>
+                <input asp-for="vehicletype" type="text"/>
+            </div>
+            <div>
+                <label asp-for="distance">distance</label>
+                <input asp-for="distance" type="number"/>
+            </div>
         </div>
         <div>
             <a class="link" asp-controller="Trip" asp-action="Index">

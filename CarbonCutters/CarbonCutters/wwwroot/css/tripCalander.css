@@ -77,14 +77,24 @@
     background-color: rgba(255,255,255,0.7);
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 90%;
 }
 
-.tripDone div{
+.tripSegment {
+    border-radius: 5px;
+    margin: 2px;
     display: flex;
     flex-grow: 1;
-    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.tripNotDone .tripSegment {
+    background-color: rgba(255,255,255, 0.1);
+}
+
+.tripDone .tripSegment {
+    background-color: rgba(0,0,0, 0.1);
 }
 
 .tripNotDone {
@@ -97,7 +107,7 @@
     background-color: rgba(0,0,0,0.7);
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 90%;
 }
 
@@ -130,7 +140,6 @@
 
 .popup div {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
 }
 
@@ -165,4 +174,19 @@
     display: none;
     margin-inline: 10px;
     min-width: 100px;
+}
+
+.tripSegment {
+    background-color: rgba(255,255,255, 0.1);
+    border-radius: 10px;
+    margin : 2px;
+}
+
+.TripSegmentContainer{
+    display: flex;
+    flex-grow: 1;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: cadetblue;
 }
