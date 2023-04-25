@@ -22,7 +22,7 @@ public class VehicleCollectionDal : IVehicleCollection
         connection.Open();
 
         var command = new SqlCommand(
-            "select [class],[type],[emission],[size],[fuel] from [dbo].[vehicle] where [vehicle_id] = '" + id + "'",
+            "SELECT [class],[type],[emission],[size],[fuel] FROM [vehicle] where [vehicle_id] = '" + id + "'",
             connection);
         var reader = command.ExecuteReader();
 

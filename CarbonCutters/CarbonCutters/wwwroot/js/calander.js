@@ -91,23 +91,32 @@ function updateWeek(i) {
     loaddays();
 }
 
-function loadTrip(dateString, distance, starttime, endtime) {
-    try {
-        var day = document.getElementById(dateString);
+function MakeTrip(dateString, id, isDone) {
+    console.log('making trip');
+    var day = document.getElementById(dateString);
 
-        var dis = document.createElement('div');
-        dis.innerHTML = distance + " km";
+    var trip = document.createElement('div');
 
-        var tim = document.createElement('div');
-        tim.innerHTML = starttime + " - " + endtime;
-
-        var trip = document.createElement('div');
+    if (isDone == true) {
         trip.setAttribute('class', 'tripDone');
-        trip.appendChild(tim);
-        trip.appendChild(dis);
-
-        day.appendChild(trip);
-    } catch {
-
+    } else {
+        trip.setAttribute('class', 'tripNotDone');
     }
+
+    trip.setAttribute('id', 'trip-' + id);
+
+    day.appendChild(trip);
+}
+
+function MakeTripSections(id, distance, starttime, endtime) {
+    var trip = document.getElementById('trip-' + id);
+
+    var dis = document.createElement('div');
+    dis.innerHTML = distance + " km";
+
+    var tim = document.createElement('div');
+    tim.innerHTML = starttime + ' - ' + endtime;
+
+    trip.appendChild(tim);
+    trip.appendChild(dis);
 }

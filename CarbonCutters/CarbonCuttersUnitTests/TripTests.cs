@@ -17,7 +17,7 @@ public class TripTests
         Trip trip = new(segments, 200, false);
         Assert.NotNull(trip);
         Assert.Equal(segments, trip.segments);
-        Assert.Equal(200, trip.emission);
+        Assert.Equal(200, trip.points);
         Assert.False(trip.isDone);
     }
 
@@ -28,7 +28,7 @@ public class TripTests
         segments.Add(new(50, car, now));
         Trip trip = new(segments, 200, false);
         trip.Edit(segments, 100, false);
-        Assert.Equal(100, trip.emission);
+        Assert.Equal(100, trip.points);
     }
 
     [Fact]
@@ -95,7 +95,7 @@ public class TripTests
         Trip trip = new(Dto);
         Assert.NotNull(trip);
         Assert.Equal(segments.Count, trip.segments.Count);
-        Assert.Equal(200, trip.emission);
+        Assert.Equal(200, trip.points);
         Assert.False(trip.isDone);
     }
 }

@@ -17,6 +17,5 @@ public class DtoTripSegment
     {
         distance = tripSegment.distance;
         vehicle = tripSegment.vehicle;
-        dateTime = tripSegment.dateTime;
     }
 }

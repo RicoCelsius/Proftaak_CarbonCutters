@@ -22,13 +22,14 @@ public class TripCollectionDal : ITripCollection
         List<TripSegment> tripSegments = new List<TripSegment>();
         List<int> distances = new();
         List<int> vehicleIDs = new();
-        List<DateTime> datetimes = new();
+        List<TimeOnly> starttimes = new();
+        List<TimeOnly> endTimes = new();
 
         using var connection = new SqlConnection(ConnectionString);
         connection.Open();
 
         var command = new SqlCommand(
-            "select [distance],[vehicle_id],[trip_date] from [dbo].[trip_segment] where [trip_id] = '" + tripID + "'",
+            "select [distance],[vehicle_id],[startTime],[endTime] from [dbo].[trip_segment] where [trip_id] = '" + tripID + "'",
             connection);
         var reader = command.ExecuteReader();
 
@@ -37,7 +38,8 @@ public class TripCollectionDal : ITripCollection
             {
                 distances.Add(reader.GetInt32(0));
                 vehicleIDs.Add(reader.GetInt32(1));
-                datetimes.Add(reader.GetDateTime(2));
+                starttimes.Add(TimeOnly.FromTimeSpan(reader.GetTimeSpan(2)));
+                endTimes.Add(TimeOnly.FromTimeSpan(reader.GetTimeSpan(3)));
             }
 
         connection.Close();
@@ -45,7 +47,7 @@ public class TripCollectionDal : ITripCollection
         for (int i = 0; i < distances.Count; i++)
         {
             Vehicle vehicle = (Vehicle)_vehicleCollectionDB.get(vehicleIDs[i]);
-            TripSegment segment = new(distances[i], vehicle, datetimes[i]);
+            TripSegment segment = new(distances[i], vehicle, starttimes[i], endTimes[i]);
             tripSegments.Add(segment);
         }
 
@@ -57,14 +59,15 @@ public class TripCollectionDal : ITripCollection
         List<Trip> tripList = new List<Trip>();
 
         List<int> tripids = new();
-        List<int> emissions = new();
+        List<int> points = new();
         List<bool> dones = new();
+        List<DateOnly> dates = new();
 
         using var connection = new SqlConnection(ConnectionString);
         connection.Open();
 
         var command = new SqlCommand(
-            "select [trip_id],[emission],[done] from [dbo].[trip] where [authzero_user_id] = '" + userID + "'",
+            "select [trip_id],[points],[done],[Date] from [trip] where [authzero_user_id] = '" + userID + "'",
             connection);
         var reader = command.ExecuteReader();
 
@@ -72,14 +75,15 @@ public class TripCollectionDal : ITripCollection
             while (reader.Read())
             {
                 tripids.Add(reader.GetInt32(0));
-                emissions.Add(reader.GetInt32(1));
+                points.Add(reader.GetInt32(1));
                 dones.Add(reader.GetBoolean(2));
+                dates.Add(DateOnly.FromDateTime(reader.GetDateTime(3)));
             }
 
         for(int i = 0; i < tripids.Count; i++)
         {
             List<TripSegment> tripsegments = GetTripSegmentsFromDB(tripids[i]);
-            Trip trip = new Trip(tripsegments , emissions[i], dones[i]);
+            Trip trip = new Trip(tripsegments , points[i], dones[i], dates[i], tripids[i]);
             tripList.Add(trip);
         }
 
