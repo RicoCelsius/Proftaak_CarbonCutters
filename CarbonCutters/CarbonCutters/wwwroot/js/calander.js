@@ -128,12 +128,14 @@ function MakeTripSections(id, distance, starttime, endtime) {
     trip.appendChild(tripSegment);
 }
 
-function ChangeInput(transportType) {
+function ChangeInput(transportType, id) {
     console.log(transportType);
 
-    var car = document.getElementById('CarOptions');
-    var noEmission = document.getElementById('NoEmissionOptions');
-    var PublicTransport = document.getElementById('PublicTransportOptions');
+    var parent = document.getElementById(id);
+
+    var car = parent.getElementById('CarOptions');
+    var noEmission = parent.getElementById('NoEmissionOptions');
+    var PublicTransport = parent.getElementById('PublicTransportOptions');
 
     car.setAttribute('class', 'optionHidden');
     noEmission.setAttribute('class', 'optionHidden');
@@ -157,11 +159,13 @@ function ChangeInput(transportType) {
 function MakeNewForm(i) {
     var form = document.getElementById('Original');
     var newform = form.cloneNode(true);
+    var selecttype = newform.getElementBy('input');
 
     formAmount += i;
     console.log(formAmount);
     newform.setAttribute('id', 'clone' + formAmount)
     newform.setAttribute('style', 'display: flex')
+    selecttype.setAttribute('onchange', 'ChangeInput(this.value, clone' + formAmount + ')')
     var dump = document.getElementById('dumpContainer');
 
     if (i == 1) {

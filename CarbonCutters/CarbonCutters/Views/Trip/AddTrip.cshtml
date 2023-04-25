@@ -31,7 +31,7 @@
             </div>
             <div class="inputContainer">
                 <label asp-for="vehicletype">Transport</label>
-                <select asp-for="vehicletype" onchange="ChangeInput(this.value)">
+                <select id="input" asp-for="vehicletype" onchange="ChangeInput(this.value, Original)">
                     <option value="Car">Car</option>
                     <option value="NoEmission">No emission</option>
                     <option value="PublicTransport">Public transport</option>
