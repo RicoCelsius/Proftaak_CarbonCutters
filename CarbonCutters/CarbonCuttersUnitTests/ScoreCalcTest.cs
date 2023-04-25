@@ -17,8 +17,23 @@ namespace CarbonCuttersUnitTests
             // Arrange
             int distance = 20;
             string group = "close distance";
-            string method = "zeroEmmision";
+            string method = "zero emmision";
             int expectedPoints = 210;
+
+            // Act
+            int actualPoints = Score.CalculateScore(distance, group, method);
+
+            // Assert
+            Assert.Equal(expectedPoints, actualPoints);
+        }
+        [Fact]
+        public void randomtest1()
+        {
+            // Arrange
+            int distance = 50;
+            string group = "long distance";
+            string method = "car";
+            int expectedPoints = 180;
 
             // Act
             int actualPoints = Score.CalculateScore(distance, group, method);
@@ -28,13 +43,13 @@ namespace CarbonCuttersUnitTests
         }
 
         [Fact]
-        public void CalculateScore_Returns_Correct_Points_For_Medium_Distance_Car_Method()
+        public void CalculateScore_airplane()
         {
             // Arrange
             int distance = 40;
-            string group = "medium distance";
-            string method = "car";
-            int expectedPoints = 140;
+            string group = "flight";
+            string method = "airplane";
+            int expectedPoints = 150;
 
             // Act
             int actualPoints = Score.CalculateScore(distance, group, method);
@@ -49,7 +64,7 @@ namespace CarbonCuttersUnitTests
             // Arrange
             int distance = 100;
             string group = "long distance";
-            string method = "publicTransit";
+            string method = "public transit";
             int expectedPoints = 200;
 
             // Act
@@ -65,7 +80,7 @@ namespace CarbonCuttersUnitTests
             // Arrange
             int distance = 10;
             string group = "invalid group";
-            string method = "zeroEmmision";
+            string method = "zero emmision";
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => Score.CalculateScore(distance, group, method));

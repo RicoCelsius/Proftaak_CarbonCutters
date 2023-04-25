@@ -37,7 +37,7 @@ public class Score
         int perKmPointsCar = 3;
         int carPoints = 0;
         int publicTransitPoints = 0;
-        int airplane = 0;
+        int airplane = 150;
 
         switch (group)
         {
@@ -70,16 +70,16 @@ public class Score
 
         switch (method)
         {
-            case "zeroEmmision" when distance < 20.1:
+            case "zero emmision" when distance < 20.1:
                 points = zeroEmmision + perKmPoints * Math.Max(distance - 10, 0);
                 break;
-            case "zeroEmmision" when distance >= 21:
+            case "zero emmision" when distance >= 21:
                 points = zeroEmmision;
                 break;
             case "car":
                 points = carPoints + perKmPointsCar * distance;
                 break;
-            case "publicTransit":
+            case "public transit":
                 points = publicTransitPoints;
                 break;
             case "airplane":
