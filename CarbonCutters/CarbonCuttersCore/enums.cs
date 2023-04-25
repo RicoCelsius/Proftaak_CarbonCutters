@@ -24,14 +24,6 @@ public enum noEmission
     biking
 }
 
-public enum motorized
-{
-    motorcycle,
-    car,
-    bicycle,
-    plane
-}
-
 public enum publicTransport
 {
     tram,

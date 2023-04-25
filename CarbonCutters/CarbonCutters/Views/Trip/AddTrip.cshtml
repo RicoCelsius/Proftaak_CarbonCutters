@@ -6,71 +6,86 @@
 <link rel="stylesheet" href="~/css/tripCalander.css">
 <script type="text/javascript" src="/js/calander.js"></script>
 
-<script>
-    function updateTrips(i) {
-        updateWeek(i);
-    @foreach (Trip t in Model.trips)
-    {
-        @:MakeTrip((@t.dateTime.Year + "-" + @t.dateTime.Month + "-" + @t.dateTime.Day), @t.id, '@t.isDone')
-        @foreach (TripSegment s in t.segments)
-        {
-            @:MakeTripSections(@t.id, @s.distance, (@s.startTime.Hour + ':' + @s.startTime.Minute), (@s.endTime.Hour + ':' + @s.endTime.Minute))
-        }
-    }
-        }
-</script>
-
-<div class="container">
-    <div class="header">
-        <div class="addpage">
-        </div>
-        <div class="arrows" onclick="updateTrips(-1)">
-            <
-        </div>
-        <div class="month" id="month">
-            september
-        </div>
-        <div class="arrows" onclick="updateTrips(1)">
-            >
-        </div>
-        <a asp-controller="Trip" asp-action="AddTrip">
-            +
-        </a>
-    </div>
-    <div class="calander" id="calander" />
-</div>
-
-<script>updateTrips(0)</script>
-
 <form class="overlay" method="post" asp-controller="Trip" asp-action="AddTrip">
     <div class="popup">
-        <div class="title1">
-            New trip
-        </div>
-        <div class="container-date">
-            <label asp-for="date">date</label>
-            <input asp-for="date" type="date"/>
-        </div>
-        <div class="TripSegmentContainer">
-            <div class="title2">
-                New TripSegment
+        <div class="title">
+            <div class="title1">
+                Trip
             </div>
-            <div class="input">
+            <div class="inputContainer">
+                <label asp-for="date">date</label>
+                <input asp-for="date" type="date"/>
+            </div>
+        </div>
+
+        <div id="Original" class="TripSegmentContainer" style="display: none">
+            <div class="title2">
+                TripSegment
+            </div>
+            <div class="inputContainer">
                 <label asp-for="startTime">start time</label>
                 <input asp-for="startTime" type="time"/>
-                <label asp-for="endTime">end time</label>
+                -
                 <input asp-for="endTime" type="time"/>
+                <label asp-for="endTime">end time</label>
             </div>
-            <div>
-                <label asp-for="vehicletype">vehicle</label>
-                <input asp-for="vehicletype" type="text"/>
+            <div class="inputContainer">
+                <label asp-for="vehicletype">Transport</label>
+                <select asp-for="vehicletype" onchange="ChangeInput(this.value)">
+                    <option value="Car">Car</option>
+                    <option value="NoEmission">No emission</option>
+                    <option value="PublicTransport">Public transport</option>
+                </select>
             </div>
-            <div>
+            <div class="optionHidden" id="CarOptions">
+                <label asp-for="size">size</label>
+                <select asp-for="size">
+                    <option value="small">small</option>
+                    <option value="medium">medium</option>
+                    <option value="large">large</option>
+                </select>
+                <label asp-for="fuel">fuel</label>
+                <select asp-for="fuel">
+                    <option value="electric">electric</option>
+                    <option value="petrol">petrol</option>
+                    <option value="diesel">diesel</option>
+                    <option value="gas">gas</option>
+                    <option value="hybrid">hybrid</option>
+                </select>
+            </div>
+            <div class="optionHidden" id="NoEmissionOptions">
+                <label asp-for="type">type</label>
+                <select asp-for="type">
+                    <option value="walking">walking</option>
+                    <option value="biking">biking</option>
+                </select>
+            </div>
+            <div class="optionHidden" id="PublicTransportOptions">
+                <label asp-for="type">type</label>
+                <select asp-for="type">
+                    <option value="tram">tram</option>
+                    <option value="subway">subway</option>
+                    <option value="bus">bus</option>
+                    <option value="taxi">taxi</option>
+                    <option value="train">train</option>
+                </select>
+            </div>
+            <div class="inputContainer">
                 <label asp-for="distance">distance</label>
                 <input asp-for="distance" type="number"/>
             </div>
         </div>
-        <div>
+
+        <div id="dumpContainer">
+
+        </div>
+
+        <div class="backNext">
+            <div class="NewTripSegment" onclick="MakeNewForm(1)">add tripsegment</div>
+            <div id="removeForm" class="NewTripSegment" onclick="MakeNewForm(-1)" style="display: none">remove tripsegment</div>
+        </div>
+
+        <div class="backNext">
             <a class="link" asp-controller="Trip" asp-action="Index">
                 back
             </a>
@@ -78,3 +93,5 @@
         </div>
     </div>
 </form>
+
+<script>MakeNewForm(1)</script>

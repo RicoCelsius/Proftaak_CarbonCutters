@@ -1,4 +1,5 @@
 ﻿var weekoffset = 0;
+var formAmount = 0;
 
 function loaddays() {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -125,4 +126,48 @@ function MakeTripSections(id, distance, starttime, endtime) {
     tripSegment.appendChild(dis);
 
     trip.appendChild(tripSegment);
+}
+
+function ChangeInput(transportType) {
+    console.log(transportType);
+
+    var car = document.getElementById('CarOptions');
+    var noEmission = document.getElementById('NoEmissionOptions');
+    var PublicTransport = document.getElementById('PublicTransportOptions');
+
+    car.setAttribute('class', 'optionHidden');
+    noEmission.setAttribute('class', 'optionHidden');
+    PublicTransport.setAttribute('class', 'optionHidden');
+
+    switch (transportType) {
+        case 'Car':
+            car.setAttribute('class', 'optionShow');
+            break;
+        case 'NoEmission':
+            noEmission.setAttribute('class', 'optionShow');
+            break;
+        case 'PublicTransport':
+            PublicTransport.setAttribute('class', 'optionShow');
+            break;
+        default:
+            break;
+    }
+}
+
+function MakeNewForm(i) {
+    var form = document.getElementById('Original');
+    var newform = form.cloneNode(true);
+
+    formAmount += i;
+    console.log(formAmount);
+    newform.setAttribute('id', 'clone' + formAmount)
+    newform.setAttribute('style', 'display: flex')
+    var dump = document.getElementById('dumpContainer');
+
+    if (i == 1) {
+        dump.appendChild(newform);
+    }
+    else {
+        dump.removeChild(dump.lastChild)
+    }
 }
