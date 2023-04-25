@@ -43,4 +43,9 @@ public class UserCollection : IUserCollection
         List<User> sortedList = users.OrderBy(x => -x.score.points).ToList();
         return sortedList;
     }
+
+    public User get(string id)
+    {
+        return DBusers.get(id);
+    }
 }

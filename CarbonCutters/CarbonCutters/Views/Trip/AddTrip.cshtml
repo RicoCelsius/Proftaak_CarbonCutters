@@ -1,7 +1,7 @@
 ﻿@using CarbonCuttersCore.Interface
 @using CarbonCuttersView.Models
 @using CarbonCuttersCore
-@model TripModel
+@model TripsModel
 
 <link rel="stylesheet" href="~/css/tripCalander.css">
 <script type="text/javascript" src="/js/calander.js"></script>
@@ -9,10 +9,7 @@
 <script>
     function updateTrips(i) {
         updateWeek(i);
-    @{
-        User user = Model.userCollection.users[0];
-    }
-    @foreach (Trip trip in user.tripCollection.TripList)
+    @foreach (Trip trip in Model.trips)
     {
         foreach (TripSegment s in trip.segments)
         {

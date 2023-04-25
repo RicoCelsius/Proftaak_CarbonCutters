@@ -78,4 +78,45 @@ public class UserCollectionDal : IUserCollection
     {
         throw new NotImplementedException();
     }
+
+    public User get(string id)
+    {
+        User? user = null;
+
+        string name = "";
+        string picture = "";
+        string adress = "";
+        int s = 0;
+
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var command = new SqlCommand(
+            "select [full_name],[picture],[address],[score] from [application_user] where [authzero_user_id] = '" + id + "'",
+            connection);
+        var reader = command.ExecuteReader();
+
+        if (reader != null)
+            while (reader.Read())
+            {
+                if (!reader.IsDBNull(0))
+                    name = reader.GetString(0);
+                if (!reader.IsDBNull(1))
+                    picture = reader.GetString(1);
+                if (!reader.IsDBNull(2))
+                    adress = reader.GetString(2);
+                if (!reader.IsDBNull(3))
+                    s = reader.GetInt32(3);
+            }
+
+        connection.Close();
+
+        Score score = new Score(s);
+        TripCollection trips = new TripCollection(new TripCollectionDal(id, new VehicleCollectionDal()));
+        user = new User(id, name, picture, adress, score, new TripCollection(), new VehicleCollection());
+
+        if (user == null)
+            throw new Exception("Cant find user with this id");
+        return user;
+    }
 }
