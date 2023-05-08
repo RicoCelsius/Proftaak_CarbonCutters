@@ -30,7 +30,7 @@ public class Score
     {
         this.points = points;
     }
-    public static int CalculateScore(int distance, string group, string method)
+    public static int CalculateScore(int distance, string method)
     {
         int zeroEmmision = 0;
         int perKmPoints = 0;

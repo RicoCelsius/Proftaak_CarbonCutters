@@ -5,9 +5,9 @@ namespace CarbonCuttersView.Controllers
 {
     public class CalculateScoreController : Controller
     {
-        public ActionResult CalculateScore(int distance, string group, string method)
+        public ActionResult CalculateScore(int distance, string method)
         {
-            int points = Score.CalculateScore(distance, group, method);
+            int points = Score.CalculateScore(distance,  method);
             ViewBag.Points = points;
             return View();
         }

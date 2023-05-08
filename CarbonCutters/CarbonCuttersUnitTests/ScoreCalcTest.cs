@@ -16,12 +16,11 @@ namespace CarbonCuttersUnitTests
         {
             // Arrange
             int distance = 20;
-            string group = "close distance";
             string method = "zero emmision";
             int expectedPoints = 210;
 
             // Act
-            int actualPoints = Score.CalculateScore(distance, group, method);
+            int actualPoints = Score.CalculateScore(distance, method);
 
             // Assert
             Assert.Equal(expectedPoints, actualPoints);
@@ -31,12 +30,11 @@ namespace CarbonCuttersUnitTests
         {
             // Arrange
             int distance = 19;
-            string group = "fauifhsefn";
             string method = "public transit";
             int expectedPoints = 150;
 
             // Act
-            int actualPoints = Score.CalculateScore(distance, group, method);
+            int actualPoints = Score.CalculateScore(distance, method);
 
             // Assert
             Assert.Equal(expectedPoints, actualPoints);
@@ -47,12 +45,11 @@ namespace CarbonCuttersUnitTests
         {
             // Arrange
             int distance = 40;
-            string group = "flight";
             string method = "airplane";
             int expectedPoints = 150;
 
             // Act
-            int actualPoints = Score.CalculateScore(distance, group, method);
+            int actualPoints = Score.CalculateScore(distance,  method);
 
             // Assert
             Assert.Equal(expectedPoints, actualPoints);
@@ -63,12 +60,11 @@ namespace CarbonCuttersUnitTests
         {
             // Arrange
             int distance = 100;
-            string group = "long distance";
             string method = "public transit";
             int expectedPoints = 200;
 
             // Act
-            int actualPoints = Score.CalculateScore(distance, group, method);
+            int actualPoints = Score.CalculateScore(distance,  method);
 
             // Assert
             Assert.Equal(expectedPoints, actualPoints);
@@ -79,11 +75,10 @@ namespace CarbonCuttersUnitTests
         {
             // Arrange
             int distance = 10;
-            string group = "invalid group";
             string method = "zero emmision";
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => Score.CalculateScore(distance, group, method));
+            Assert.Throws<ArgumentException>(() => Score.CalculateScore(distance, method));
         }
 
         [Fact]
@@ -91,11 +86,10 @@ namespace CarbonCuttersUnitTests
         {
             // Arrange
             int distance = 10;
-            string group = "close distance";
             string method = "invalid method";
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => Score.CalculateScore(distance, group, method));
+            Assert.Throws<ArgumentException>(() => Score.CalculateScore(distance, method));
         }
     }
 }
