@@ -18,7 +18,7 @@ public class DtoTrip
         segments = new();
         foreach (TripSegment segment in trip.segments)
             segments.Add(new(segment));
-        emission = trip.emission;
+        emission = trip.points;
         isDone = trip.isDone;
     }
 }

@@ -37,5 +37,10 @@ namespace CarbonCuttersMockData
             while (users.Count > 0)
                 this.users.Remove(users[0]);
         }
+
+        public User get(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

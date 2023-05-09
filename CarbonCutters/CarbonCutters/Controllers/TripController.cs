@@ -1,24 +1,32 @@
 ﻿using CarbonCuttersCore;
+using CarbonCuttersDAL;
 using CarbonCuttersMockData;
 using CarbonCuttersView.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace CarbonCuttersView.Controllers
 {
     public class TripController : Controller
     {
+        VehicleCollectionDal vehicles = new VehicleCollectionDal();
+
         public IActionResult Index()
         {
-            TripModel model = new TripModel();
-            model.userCollection = new MockUsers(30, 100);
+            string user_id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            TripCollection trips = new TripCollection(new TripCollectionDal(user_id, vehicles));
+            TripsModel model = new();
+            model.trips = trips.TripList;
             return View(model);
         }
 
         [HttpGet]
-        public IActionResult AddTrip()
+        public IActionResult AddTrip(TripsModel model)
         {
-            TripModel model = new TripModel();
-            model.userCollection = new MockUsers(30, 100);
+            string user_id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            TripCollection trips = new TripCollection(new TripCollectionDal(user_id, vehicles));
+            model.trips = trips.TripList;
+
             return View(model);
         }
 
