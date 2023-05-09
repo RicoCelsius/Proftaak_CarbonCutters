@@ -108,7 +108,44 @@ function MakeTrip(dateString, id, isDone) {
     trip.setAttribute('id', 'trip-' + id);
 
     day.appendChild(trip);
+
 }
+
+
+// Get a reference to the Original TripSegmentContainer element
+
+var tripSegmentCount = 0;
+
+function MakeNewForm(value) {
+    const originalTripSegmentContainer = document.getElementById('Original');
+    tripSegmentCount += value;
+    console.log("test");
+    if (tripSegmentCount <= 1) {
+        document.getElementById('removeForm').style.display = 'none';
+    } else {
+        document.getElementById('removeForm').style.display = 'block';
+    }
+
+    if (value === 1) {
+        // Clone the original TripSegmentContainer and set its display to block
+        const newTripSegmentContainer = originalTripSegmentContainer.cloneNode(true);
+        newTripSegmentContainer.style.display = 'block';
+
+        // Set the IDs for the new trip segment elements to make them unique
+        newTripSegmentContainer.id = 'TripSegmentContainer' + tripSegmentCount;
+
+        // Append the new trip segment container to the dumpContainer
+        document.getElementById('dumpContainer').appendChild(newTripSegmentContainer);
+    } else if (tripSegmentCount >= 1) {
+        // Remove the last trip segment container from the dumpContainer
+        document.getElementById('dumpContainer').lastElementChild.remove();
+    }
+}
+
+
+
+
+
 
 function MakeTripSections(id, distance, starttime, endtime) {
     var trip = document.getElementById('trip-' + id);
@@ -153,25 +190,5 @@ function ChangeInput(transportType, id) {
             break;
         default:
             break;
-    }
-}
-
-function MakeNewForm(i) {
-    var form = document.getElementById('Original');
-    var newform = form.cloneNode(true);
-    var selecttype = newform.getElementBy('input');
-
-    formAmount += i;
-    console.log(formAmount);
-    newform.setAttribute('id', 'clone' + formAmount)
-    newform.setAttribute('style', 'display: flex')
-    selecttype.setAttribute('onchange', 'ChangeInput(this.value, clone' + formAmount + ')')
-    var dump = document.getElementById('dumpContainer');
-
-    if (i == 1) {
-        dump.appendChild(newform);
-    }
-    else {
-        dump.removeChild(dump.lastChild)
     }
 }
