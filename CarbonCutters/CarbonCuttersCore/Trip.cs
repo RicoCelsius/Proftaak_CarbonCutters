@@ -4,15 +4,23 @@ namespace CarbonCuttersCore;
 
 public class Trip
 {
+    public int? id { get; private set; }
+    public DateOnly dateTime { get; private set; }
     public List<TripSegment> segments { get; private set; }
-    public int emission { get; private set; }
+    public int points { get; private set; }
     public bool isDone { get; private set; }
 
-    public Trip(List<TripSegment> segments, int emission, bool isDone)
+    public Trip(List<TripSegment> segments, int points, bool isDone, DateOnly dateTime)
     {
         this.segments = segments;
-        this.emission = emission;
+        this.points = points;
         this.isDone = isDone;
+        this.dateTime = dateTime;
+    }
+
+    public Trip(List<TripSegment> segments, int points, bool isDone, DateOnly dateTime, int id) : this(segments, points, isDone, dateTime)
+    {
+        this.id = id;
     }
 
     public Trip(DtoTrip Dto)
@@ -20,14 +28,14 @@ public class Trip
         segments = new();
         foreach (DtoTripSegment segment in Dto.segments)
             segments.Add(new(segment));
-        emission = Dto.emission;
+        points = Dto.emission;
         isDone = Dto.isDone;
     }
 
     public void Edit(List<TripSegment> segments, int emission, bool isDone)
     {
         this.segments = segments;
-        this.emission = emission;
+        this.points = emission;
         this.isDone = isDone;
     }
 

@@ -1,8 +1,34 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using CarbonCuttersCore
+@using CarbonCuttersView.Models
 
-    <label>@ViewBag.UserId</label>
+@model ProfileModel
 
+<link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true" />
+
+<div class="background-container">
+	<div class="profileinfo">
+		<div class="container">
+			<div class="picture">
+				<img src="@Model.user.picture" />
+			</div>
+			<div class="text">
+				<div>
+					@Model.user.name
+				</div>
+				<div class="points">
+					@Model.user.score.getPointsAsString()
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@foreach (Trip trip in Model.user.tripCollection.TripList){
+    <div>
+        @foreach (TripSegment segment in trip.segments){
+            <div>
+                @segment.vehicle.ToString()
+            </div>
+        }
+    </div>
 }

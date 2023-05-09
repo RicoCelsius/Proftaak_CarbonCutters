@@ -13,7 +13,7 @@ internal class TripGenerator
             isdone = true;
         List<TripSegment> tripSegments = NextTripSegment(r.Next(1,3));
 
-        return new Trip(tripSegments , r.Next(5, 1000), isdone);
+        return new Trip(tripSegments , r.Next(5, 1000), isdone, DateOnly.FromDateTime(DateTime.Now.AddDays(r.Next(-14,14))));
     }
 
     static public List<Trip> Next(int amount)
@@ -27,7 +27,7 @@ internal class TripGenerator
     static private TripSegment NextTripSegment()
     {
         Car vehicle = new Car(r.Next(10, 500), fuel.gas, sizes.small);
-        return new TripSegment(r.Next(10, 400), vehicle ,DateTime.Now.AddDays(r.Next(-7,7)).AddHours(r.Next(0,12)));
+        return new TripSegment(r.Next(10, 400), vehicle , TimeOnly.FromDateTime(DateTime.Now.AddHours(r.Next(-6,0))), TimeOnly.FromDateTime(DateTime.Now.AddHours(r.Next(0, 6))));
     }
 
     static private List<TripSegment> NextTripSegment(int amount)

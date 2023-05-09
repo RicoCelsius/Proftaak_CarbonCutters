@@ -61,6 +61,7 @@
 }
 
 .month {
+    display: flex;
     text-align: center;
     align-self: center;
     font-size: 20px;
@@ -77,14 +78,24 @@
     background-color: rgba(255,255,255,0.7);
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 90%;
 }
 
-.tripDone div{
+.tripSegment {
+    border-radius: 5px;
+    margin: 2px;
     display: flex;
     flex-grow: 1;
-    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.tripNotDone .tripSegment {
+    background-color: rgba(255,255,255, 0.1);
+}
+
+.tripDone .tripSegment {
+    background-color: rgba(0,0,0, 0.1);
 }
 
 .tripNotDone {
@@ -97,7 +108,7 @@
     background-color: rgba(0,0,0,0.7);
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 90%;
 }
 
@@ -105,9 +116,6 @@
     display: flex;
     height: 100%;
     width: 100%;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
     background-color: rgba(255,255,255,0.7);
     justify-content: center;
 }
@@ -129,18 +137,18 @@
 }
 
 .popup div {
-    display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
 }
 
 .inputContainer {
-    background-color: white;
+    display: flex;
+    margin: 2px;
     border-radius: 5px;
     color: black;
 }
 
 .link {
+    display: flex;
     color: white;
     border: none;
     text-decoration: none;
@@ -152,17 +160,76 @@
     border-radius: 5px;
 }
 
-.popup input {
+.popup input, select {
     justify-content: center;
     display: flex;
     border: none;
     flex-direction: row;
     flex-grow: 1;
     padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
 }
 
-.popup label{
-    display: none;
+.popup label {
+    display: flex;
     margin-inline: 10px;
     min-width: 100px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.backNext {
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.title1 {
+    display: flex;
+}
+
+.title2 {
+    display: flex;
+}
+
+.tripSegment {
+    display: flex;
+    background-color: rgba(255,255,255, 0.1);
+    border-radius: 10px;
+    margin: px;
+}
+
+.TripSegmentContainer{
+    display: flex;
+    margin: 5px;
+    flex-direction: column;
+    background-color: rgba(255,255,255, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.optionHidden {
+    display: none;
+}
+
+.optionShow {
+    display: flex;
+    margin: 1px;
+    border-radius: 5px;
+    color: black;
+}
+
+.NewTripSegment{
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.5);
 }
