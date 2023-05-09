@@ -143,20 +143,21 @@ function MakeNewForm(value) {
 
 function MakeTripSections(id, distance, starttime, endtime) {
     var trip = document.getElementById('trip-' + id);
+    if (trip != null) {
+        var tripSegment = document.createElement('div');
+        tripSegment.setAttribute('class', 'tripSegment');
 
-    var tripSegment = document.createElement('div');
-    tripSegment.setAttribute('class', 'tripSegment');
+        var dis = document.createElement('div');
+        dis.innerHTML = distance + " km";
 
-    var dis = document.createElement('div');
-    dis.innerHTML = distance + " km";
+        var tim = document.createElement('div');
+        tim.innerHTML = starttime + ' - ' + endtime;
 
-    var tim = document.createElement('div');
-    tim.innerHTML = starttime + ' - ' + endtime;
+        tripSegment.appendChild(tim);
+        tripSegment.appendChild(dis);
 
-    tripSegment.appendChild(tim);
-    tripSegment.appendChild(dis);
-
-    trip.appendChild(tripSegment);
+        trip.appendChild(tripSegment);
+    }
 }
 
 function ChangeInput(transportType, id) {
