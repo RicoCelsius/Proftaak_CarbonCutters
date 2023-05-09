@@ -12,12 +12,23 @@ namespace CarbonCuttersView.Controllers
     public class ProfileController : Controller
     {
         private UserCollectionDal _userCollectionDal = new();
+        private TripCollectionDal  _tripCollectionDal = new();
 
         [Authorize]
         public IActionResult Index(ProfileModel model)
         {
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            ViewBag.UserId = userId;
+            List<Trip> trips = _tripCollectionDal.GetTripsFromDB(userId);
+            List<ScoreData> scoreDataList = new List<ScoreData>();
+
+            foreach (Trip trip in trips)
+            {
+                ScoreData data = new ScoreData(trip.dateTime,trip.points);
+                scoreDataList.Add(data);
+            }
+            
+
+            model.ScoreDataList = scoreDataList;
 
             return View(model);
         }

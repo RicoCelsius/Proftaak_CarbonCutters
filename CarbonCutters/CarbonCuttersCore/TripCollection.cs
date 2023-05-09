@@ -19,6 +19,7 @@ public class TripCollection : ITripCollection
         TripList = _tripsDB.TripList;
     }
 
+
     public TripCollection(DtoTripCollection Dto)
     {
         TripList = new();

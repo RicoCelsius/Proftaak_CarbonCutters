@@ -17,6 +17,11 @@ public class TripCollectionDal : ITripCollection
         TripList = GetTripsFromDB(userID);
     }
 
+    public TripCollectionDal()
+    {
+
+    }
+
     private List<TripSegment> GetTripSegmentsFromDB(int tripID)
     {
         List<TripSegment> tripSegments = new List<TripSegment>();
@@ -54,7 +59,7 @@ public class TripCollectionDal : ITripCollection
         return tripSegments;
     }
     
-    private List<Trip> GetTripsFromDB(string userID)
+    public List<Trip> GetTripsFromDB(string userID)
     {
         List<Trip> tripList = new List<Trip>();
 
