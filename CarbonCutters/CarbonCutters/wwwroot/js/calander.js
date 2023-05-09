@@ -1,4 +1,5 @@
 ﻿var weekoffset = 0;
+var formAmount = 0;
 
 function loaddays() {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -91,23 +92,103 @@ function updateWeek(i) {
     loaddays();
 }
 
-function loadTrip(dateString, distance, starttime, endtime) {
-    try {
-        var day = document.getElementById(dateString);
+function MakeTrip(dateString, id, isDone) {
+    console.log('making trip');
+    var day = document.getElementById(dateString);
 
-        var dis = document.createElement('div');
-        dis.innerHTML = distance + " km";
+    var trip = document.createElement('div');
 
-        var tim = document.createElement('div');
-        tim.innerHTML = starttime + " - " + endtime;
-
-        var trip = document.createElement('div');
+    console.log(isDone);
+    if (isDone == "True") {
         trip.setAttribute('class', 'tripDone');
-        trip.appendChild(tim);
-        trip.appendChild(dis);
+    } else {
+        trip.setAttribute('class', 'tripNotDone');
+    }
 
-        day.appendChild(trip);
-    } catch {
+    trip.setAttribute('id', 'trip-' + id);
 
+    day.appendChild(trip);
+
+}
+
+
+// Get a reference to the Original TripSegmentContainer element
+
+var tripSegmentCount = 0;
+
+function MakeNewForm(value) {
+    const originalTripSegmentContainer = document.getElementById('Original');
+    tripSegmentCount += value;
+    console.log("test");
+    if (tripSegmentCount <= 1) {
+        document.getElementById('removeForm').style.display = 'none';
+    } else {
+        document.getElementById('removeForm').style.display = 'block';
+    }
+
+    if (value === 1) {
+        // Clone the original TripSegmentContainer and set its display to block
+        const newTripSegmentContainer = originalTripSegmentContainer.cloneNode(true);
+        newTripSegmentContainer.style.display = 'block';
+
+        // Set the IDs for the new trip segment elements to make them unique
+        newTripSegmentContainer.id = 'TripSegmentContainer' + tripSegmentCount;
+
+        // Append the new trip segment container to the dumpContainer
+        document.getElementById('dumpContainer').appendChild(newTripSegmentContainer);
+    } else if (tripSegmentCount >= 1) {
+        // Remove the last trip segment container from the dumpContainer
+        document.getElementById('dumpContainer').lastElementChild.remove();
+    }
+}
+
+
+
+
+
+
+function MakeTripSections(id, distance, starttime, endtime) {
+    var trip = document.getElementById('trip-' + id);
+
+    var tripSegment = document.createElement('div');
+    tripSegment.setAttribute('class', 'tripSegment');
+
+    var dis = document.createElement('div');
+    dis.innerHTML = distance + " km";
+
+    var tim = document.createElement('div');
+    tim.innerHTML = starttime + ' - ' + endtime;
+
+    tripSegment.appendChild(tim);
+    tripSegment.appendChild(dis);
+
+    trip.appendChild(tripSegment);
+}
+
+function ChangeInput(transportType, id) {
+    console.log(transportType);
+
+    var parent = document.getElementById(id);
+
+    var car = parent.getElementById('CarOptions');
+    var noEmission = parent.getElementById('NoEmissionOptions');
+    var PublicTransport = parent.getElementById('PublicTransportOptions');
+
+    car.setAttribute('class', 'optionHidden');
+    noEmission.setAttribute('class', 'optionHidden');
+    PublicTransport.setAttribute('class', 'optionHidden');
+
+    switch (transportType) {
+        case 'Car':
+            car.setAttribute('class', 'optionShow');
+            break;
+        case 'NoEmission':
+            noEmission.setAttribute('class', 'optionShow');
+            break;
+        case 'PublicTransport':
+            PublicTransport.setAttribute('class', 'optionShow');
+            break;
+        default:
+            break;
     }
 }

@@ -6,26 +6,28 @@ public class TripSegment
 {
     public int distance { get; private set; }
     public Vehicle vehicle { get; private set; }
-    public DateTime dateTime { get; private set; }
+    public TimeOnly startTime { get; private set; }
+    public TimeOnly endTime { get; private set; }
 
-    public TripSegment(int distance, Vehicle vehicle, DateTime dateTime)
+    public TripSegment(int distance, Vehicle vehicle, TimeOnly start, TimeOnly end)
     {
         this.distance = distance;
         this.vehicle = vehicle;
-        this.dateTime = dateTime;
+        startTime = start;
+        endTime = end;
     }
 
     public TripSegment(DtoTripSegment Dto)
     {
         distance = Dto.distance;
         vehicle = Dto.vehicle;
-        dateTime = Dto.dateTime;
     }
 
-    public void edit(int distance, Vehicle vehicle, DateTime dateTime)
+    public void edit(int distance, Vehicle vehicle, TimeOnly start, TimeOnly end)
     {
         this.distance = distance;
         this.vehicle = vehicle;
-        this.dateTime = dateTime;
+        startTime = start;
+        endTime = end;
     }
 }

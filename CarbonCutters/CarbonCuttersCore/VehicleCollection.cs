@@ -5,6 +5,7 @@ namespace CarbonCuttersCore;
 
 public class VehicleCollection : IVehicleCollection
 {
+    private IVehicleCollection _vehicles { get; set; }
     public List<IVehicle> vehicles { get; private set; }
 
 
@@ -18,35 +19,38 @@ public class VehicleCollection : IVehicleCollection
         vehicles = new();
     }
 
-    public VehicleCollection(DtoVehicleCollection Dto)
+    public VehicleCollection(IVehicleCollection vehicleDal)
     {
-        vehicles = new();
-        foreach (DtoCar vehicle in Dto.vehicles.OfType<DtoCar>())
-            vehicles.Add(new Car(vehicle));
-        foreach (DtoNoEmission vehicle in Dto.vehicles.OfType<DtoNoEmission>())
-            vehicles.Add(new NoEmission(vehicle));
-        foreach (DtoPublicTransport vehicle in Dto.vehicles.OfType<DtoPublicTransport>())
-            vehicles.Add(new PublicTransport(vehicle));
+        _vehicles = vehicleDal;
     }
 
     public void add(IVehicle vehicle)
     {
         vehicles.Add(vehicle);
+        _vehicles.add(vehicle);
     }
 
     public void add(List<IVehicle> vehicles)
     {
         this.vehicles.AddRange(vehicles);
+        _vehicles.add(vehicles);
     }
 
     public void remove(IVehicle vehicle)
     {
         vehicles.Remove(vehicle);
+        _vehicles.remove(vehicle);
     }
 
     public void remove(List<IVehicle> vehiclelist)
     {
         while (vehiclelist.Count > 0)
             vehicles.Remove(vehiclelist[0]);
+        _vehicles.remove(vehiclelist);
+    }
+
+    public IVehicle get(int id)
+    {
+        throw new NotImplementedException();
     }
 }
