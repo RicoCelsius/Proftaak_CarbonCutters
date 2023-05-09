@@ -6,14 +6,14 @@ namespace CarbonCuttersView.Repository
     {
         public ProfileModel getProfileById(int id)
         {
-            return dataSource().Where(x => x.Id == id).FirstOrDefault();
+            return dataSource().Where(x => x.Id == id.ToString()).FirstOrDefault();
         }
 
         private List<ProfileModel> dataSource()
         {
             return new List<ProfileModel>()
             {
-                new ProfileModel() { Id = 1, Name = "" } }; 
+                new ProfileModel() { Id = 1.ToString(), Name = "" } }; 
         }
     }
 }
