@@ -34,6 +34,7 @@ public class TripCollection : ITripCollection
     public void add(Trip trip)
     {
         TripList.Add(trip);
+        _tripsDB.add(trip);
     }
 
     public void add(List<Trip> trips)
