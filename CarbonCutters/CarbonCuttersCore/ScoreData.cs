@@ -8,10 +8,10 @@ namespace CarbonCuttersCore
 {
     public class ScoreData
     {
-        public DateOnly Date { get; set; }
+        public string Date { get; set; }
         public int Score { get; set; }
 
-        public ScoreData(DateOnly date, int score)
+        public ScoreData(string date, int score)
         {
             Date = date;
             Score = score;

@@ -57,8 +57,8 @@ public class TripCollectionDal : ITripCollection
 
         for (int i = 0; i < distances.Count; i++)
         {
-            Vehicle vehicle = (Vehicle)_vehicleCollectionDB.get(vehicleIDs[i]);
-            TripSegment segment = new(distances[i], vehicle, starttimes[i], endTimes[i]);
+            Car car = new(3,fuel.diesel,sizes.large);
+            TripSegment segment = new(distances[i], car, starttimes[i], endTimes[i]);
             tripSegments.Add(segment);
         }
 
