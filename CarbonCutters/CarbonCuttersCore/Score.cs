@@ -38,12 +38,6 @@ public class Score
                 points += CalculateScore(segment.distance, "public transit");
         }
     }
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     public static int CalculateScore(int distance, string method)
     {
         int zeroEmmision = 0;
@@ -102,8 +96,4 @@ public class Score
 
         return points;
     }
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 }
