@@ -7,12 +7,27 @@ public class Trip
     public List<TripSegment> segments { get; private set; }
     public int emission { get; private set; }
     public bool isDone { get; private set; }
+    public Score score { get; private set; }
 
     public Trip(List<TripSegment> segments, int emission, bool isDone)
     {
         this.segments = segments;
         this.emission = emission;
         this.isDone = isDone;
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+        this.dateTime = dateTime;
+    }
+
+    public Trip(List<TripSegment> segments, int points, bool isDone, DateOnly dateTime, int id) : this(segments, points, isDone, dateTime)
+    {
+        this.id = id;
+=======
+        score = new Score();
+        score.updatePoints(segments);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     }
 
     public Trip(DtoTrip Dto)

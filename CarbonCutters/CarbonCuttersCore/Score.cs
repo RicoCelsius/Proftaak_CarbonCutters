@@ -26,10 +26,24 @@ public class Score
         points = Dto.points;
     }
 
-    public void updatePoints(int points)
+    public void updatePoints(List<TripSegment> segments)
     {
-        this.points = points;
+        foreach (TripSegment segment in segments)
+        {
+            if (segment.vehicle is NoEmission)
+                points += CalculateScore(segment.distance, "zero emmision");
+            else if (segment.vehicle is Car)
+                points += CalculateScore(segment.distance, "car");
+            else if (segment.vehicle is PublicTransport)
+                points += CalculateScore(segment.distance, "public transit");
+        }
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     public static int CalculateScore(int distance, string method)
     {
         int zeroEmmision = 0;
@@ -88,4 +102,8 @@ public class Score
 
         return points;
     }
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }
