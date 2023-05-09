@@ -47,7 +47,7 @@ namespace CarbonCuttersView.Controllers
             }
 
             DateOnly date = DateOnly.Parse(model.date);
-            trips.add(new Trip(segments, 0, false, date));
+            trips.add(new Trip(segments, false, date));
 
             return RedirectToAction("Index");
         }

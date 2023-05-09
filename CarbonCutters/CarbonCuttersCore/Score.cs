@@ -26,6 +26,11 @@ public class Score
         points = Dto.points;
     }
 
+    public void updatePoints(int points)
+    {
+        this.points = points;
+    }
+
     public void updatePoints(List<TripSegment> segments)
     {
         foreach (TripSegment segment in segments)

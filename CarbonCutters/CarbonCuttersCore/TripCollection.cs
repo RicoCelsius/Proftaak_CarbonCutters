@@ -19,13 +19,6 @@ public class TripCollection : ITripCollection
         TripList = _tripsDB.TripList;
     }
 
-    public TripCollection(DtoTripCollection Dto)
-    {
-        TripList = new();
-        foreach (DtoTrip trip in Dto.TripList)
-            TripList.Add(new(trip));
-    }
-
     public TripCollection(List<Trip> tripList)
     {
         TripList = tripList;

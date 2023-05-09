@@ -106,11 +106,14 @@ function MakeTrip(dateString, id, isDone) {
 
     trip.setAttribute('id', 'trip-' + id);
     console.log(trip);
-    day.appendChild(trip);
+
+    try {
+        day.appendChild(trip);
+    }
+    catch {
+
+    }
 }
-
-
-// Get a reference to the Original TripSegmentContainer element
 
 var tripSegmentCount = 0;
 
