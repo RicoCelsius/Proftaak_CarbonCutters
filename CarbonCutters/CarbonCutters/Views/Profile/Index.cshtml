@@ -1,6 +1,52 @@
 ﻿@model CarbonCuttersView.Models.ProfileModel
 <label>@Model.Id</label>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <canvas id="scoreChart"></canvas>
 
+<script>
+    var scoreData = @Html.Raw(Json.Serialize(Model.ScoreDataList));
+    console.log("scoreData: ", scoreData);
 
-}
+    var labels = [];
+    var scores = [];
+
+    for (var i = 0; i < scoreData.length; i++) {
+        labels.push(scoreData[i].date);
+        scores.push(scoreData[i].score);
+    }
+
+    var ctx = document.getElementById('scoreChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Score',
+                data: scores,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Score'
+                    }
+                }
+            }
+        }
+    });
+</script>

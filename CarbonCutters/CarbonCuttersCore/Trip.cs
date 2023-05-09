@@ -5,6 +5,7 @@ namespace CarbonCuttersCore;
 public class Trip
 {
     public List<TripSegment> segments { get; private set; }
+
     public int emission { get; private set; }
     public bool isDone { get; private set; }
 
