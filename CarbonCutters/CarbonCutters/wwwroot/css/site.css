@@ -196,3 +196,10 @@ html {
       background-color: #78AE8E;
       border-radius: 10px;
   }
+
+  #socialIcon {
+      height: 50px;
+      width: 50px;
+      border-radius: 12px;
+      margin-right: 4px
+  }
