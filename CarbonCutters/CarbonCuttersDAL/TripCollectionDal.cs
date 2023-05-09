@@ -117,7 +117,7 @@ public class TripCollectionDal : ITripCollection
             "insert into trip (authzero_user_id, done, Date, points)" +
             "OUTPUT (INSERTED.trip_id) " +
             "values " +
-            "('" + UserID + "'," + done + ",'" + trip.dateTime + "'," + trip.points + ")",
+            "('" + UserID + "'," + done + ",'" + trip.dateTime.ToString(@"yyyy-MM-dd") + "'," + trip.points + ")",
             connection);
         var reader = command.ExecuteReader();
         if (reader != null)
