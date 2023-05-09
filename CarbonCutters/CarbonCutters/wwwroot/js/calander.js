@@ -95,23 +95,17 @@ function updateWeek(i) {
 function MakeTrip(dateString, id, isDone) {
     console.log(dateString);
     var day = document.getElementById(dateString);
-    console.log(day);
-    var trip = document.createElement('div');
+    if (day != null) {
+        var trip = document.createElement('div');
 
-    if (isDone == "True") {
-        trip.setAttribute('class', 'tripDone');
-    } else {
-        trip.setAttribute('class', 'tripNotDone');
-    }
+        if (isDone == "True") {
+            trip.setAttribute('class', 'tripDone');
+        } else {
+            trip.setAttribute('class', 'tripNotDone');
+        }
 
-    trip.setAttribute('id', 'trip-' + id);
-    console.log(trip);
-
-    try {
+        trip.setAttribute('id', 'trip-' + id);
         day.appendChild(trip);
-    }
-    catch {
-
     }
 }
 
