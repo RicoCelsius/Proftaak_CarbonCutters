@@ -11,7 +11,7 @@
         updateWeek(i);
         @foreach (Trip t in Model.trips)
         {
-            @:MakeTrip((@t.dateTime.Year + "-" + @t.dateTime.Day + "-" + @t.dateTime.Month), @t.id, '@t.isDone')
+            @:MakeTrip((@t.dateTime.Year + "-" + @t.dateTime.Month + "-" + @t.dateTime.Day), @t.id, '@t.isDone')
             @foreach (TripSegment s in t.segments)
             {
                 @:MakeTripSections(@t.id, @s.distance, (@s.startTime.Hour + ':' + @s.startTime.Minute), (@s.endTime.Hour + ':' + @s.endTime.Minute))
