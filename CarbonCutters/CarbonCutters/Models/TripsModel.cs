@@ -5,15 +5,16 @@ namespace CarbonCuttersView.Models
 	public class TripsModel
 	{
 		public List<Trip> trips { get; set; }
-		public DateOnly date { get; set; }
-		public TimeOnly startTime { get; set; }
-		public TimeOnly endTime { get; set; }
-		public string vehicletype { get; set; }
-		public string size { get; set; }
-		public string fuel { get; set; }
-		public int distance { get; set; }
-		public string type { get; set; }
-		public TripsModel()
+		public string date { get; set; }
+		public List<string> startTime { get; set; }
+		public List<string> endTime { get; set; }
+		public List<string> vehicletype { get; set; }
+		public List<string> size { get; set; }
+		public List<string> fuel { get; set; }
+		public List<int> distance { get; set; }
+		public List<string> type1 { get; set; }
+        public List<string> type2 { get; set; }
+        public TripsModel()
 		{
 
 		}

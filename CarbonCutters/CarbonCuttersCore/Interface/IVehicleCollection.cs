@@ -9,4 +9,5 @@ public interface IVehicleCollection
     void remove(IVehicle vehicle);
     void remove(List<IVehicle> vehicles);
     IVehicle get(int id);
+    int GetVehicleId(Vehicle vehicle);
 }

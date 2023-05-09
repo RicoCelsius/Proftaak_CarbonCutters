@@ -93,12 +93,11 @@ function updateWeek(i) {
 }
 
 function MakeTrip(dateString, id, isDone) {
-    console.log('making trip');
+    console.log(dateString);
     var day = document.getElementById(dateString);
-
+    console.log(day);
     var trip = document.createElement('div');
 
-    console.log(isDone);
     if (isDone == "True") {
         trip.setAttribute('class', 'tripDone');
     } else {
@@ -106,9 +105,8 @@ function MakeTrip(dateString, id, isDone) {
     }
 
     trip.setAttribute('id', 'trip-' + id);
-
+    console.log(trip);
     day.appendChild(trip);
-
 }
 
 
@@ -119,7 +117,6 @@ var tripSegmentCount = 0;
 function MakeNewForm(value) {
     const originalTripSegmentContainer = document.getElementById('Original');
     tripSegmentCount += value;
-    console.log("test");
     if (tripSegmentCount <= 1) {
         document.getElementById('removeForm').style.display = 'none';
     } else {

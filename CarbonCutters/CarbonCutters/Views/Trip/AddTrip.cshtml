@@ -32,6 +32,7 @@
             <div class="inputContainer">
                 <label asp-for="vehicletype">Transport</label>
                 <select id="input" asp-for="vehicletype" onchange="ChangeInput(this.value, Original)">
+                    <option value="none" selected hidden>choose here</option>
                     <option value="Car">Car</option>
                     <option value="NoEmission">No emission</option>
                     <option value="PublicTransport">Public transport</option>
@@ -40,12 +41,14 @@
             <div class="optionHidden" id="CarOptions">
                 <label asp-for="size">size</label>
                 <select asp-for="size">
+                    <option value="none" selected hidden>choose here</option>
                     <option value="small">small</option>
                     <option value="medium">medium</option>
                     <option value="large">large</option>
                 </select>
                 <label asp-for="fuel">fuel</label>
                 <select asp-for="fuel">
+                    <option value="none" selected hidden>choose here</option>
                     <option value="electric">electric</option>
                     <option value="petrol">petrol</option>
                     <option value="diesel">diesel</option>
@@ -54,15 +57,17 @@
                 </select>
             </div>
             <div class="optionHidden" id="NoEmissionOptions">
-                <label asp-for="type">type</label>
-                <select asp-for="type">
+                <label asp-for="type1">type</label>
+                <select asp-for="type1" value="none">
+                    <option value="none" selected hidden>choose here</option>
                     <option value="walking">walking</option>
                     <option value="biking">biking</option>
                 </select>
             </div>
             <div class="optionHidden" id="PublicTransportOptions">
-                <label asp-for="type">type</label>
-                <select asp-for="type">
+                <label asp-for="type2">type</label>
+                <select asp-for="type2">
+                    <option value="none" selected hidden>choose here</option>
                     <option value="tram">tram</option>
                     <option value="subway">subway</option>
                     <option value="bus">bus</option>
@@ -72,7 +77,7 @@
             </div>
             <div class="inputContainer">
                 <label asp-for="distance">distance</label>
-                <input asp-for="distance" type="number"/>
+                <input asp-for="distance" type="number" value="0" min="0"/>
             </div>
         </div>
 
