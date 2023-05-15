@@ -123,7 +123,7 @@ function MakeNewForm(value) {
     if (value === 1) {
         // Clone the original TripSegmentContainer and set its display to block
         const newTripSegmentContainer = originalTripSegmentContainer.cloneNode(true);
-        newTripSegmentContainer.style.display = 'block';
+        newTripSegmentContainer.style.display = 'flex';
 
         // Set the IDs for the new trip segment elements to make them unique
         newTripSegmentContainer.id = 'TripSegmentContainer' + tripSegmentCount;
@@ -135,11 +135,6 @@ function MakeNewForm(value) {
         document.getElementById('dumpContainer').lastElementChild.remove();
     }
 }
-
-
-
-
-
 
 function MakeTripSections(id, distance, starttime, endtime) {
     var trip = document.getElementById('trip-' + id);
@@ -160,28 +155,58 @@ function MakeTripSections(id, distance, starttime, endtime) {
     }
 }
 
-function ChangeInput(transportType, id) {
-    console.log(transportType);
+function ChangeInput(transportType, child) {
+    var parentID = child.parentNode.parentNode.id;
 
-    var parent = document.getElementById(id);
+    var car = document.getElementsByName('CarOptions');
+    var noEmission = document.getElementsByName('NoEmissionOptions');
+    var publicTransport = document.getElementsByName('PublicTransportOptions');
 
-    var car = parent.getElementById('CarOptions');
-    var noEmission = parent.getElementById('NoEmissionOptions');
-    var PublicTransport = parent.getElementById('PublicTransportOptions');
+    for (var i = 0; i < car.length; i++) {
+        for (var i = 0; i < car.length; i++) {
+            var testID = car[i].parentNode.id;
+            if (testID === parentID) {
+                console.log('match');
+                car[i].setAttribute('class', 'optionHidden');
+            }
 
-    car.setAttribute('class', 'optionHidden');
-    noEmission.setAttribute('class', 'optionHidden');
-    PublicTransport.setAttribute('class', 'optionHidden');
+            testID = noEmission[i].parentNode.id;
+            if (testID === parentID) {
+                noEmission[i].setAttribute('class', 'optionHidden');
+            }
+
+            testID = publicTransport[i].parentNode.id;
+            if (testID === parentID) {
+                publicTransport[i].setAttribute('class', 'optionHidden');
+            }
+        }
+    }
 
     switch (transportType) {
         case 'Car':
-            car.setAttribute('class', 'optionShow');
+            for (var i = 0; i < car.length; i++) {
+                var testID = car[i].parentNode.id;
+                if (testID === parentID) {
+                    console.log('match');
+                    car[i].setAttribute('class', 'optionShow');
+                }
+            }
             break;
         case 'NoEmission':
-            noEmission.setAttribute('class', 'optionShow');
+            for (var i = 0; i < noEmission.length; i++) {
+                var testID = noEmission[i].parentNode.id;
+                if (testID === parentID) {
+                    noEmission[i].setAttribute('class', 'optionShow');
+                }
+            }
             break;
         case 'PublicTransport':
-            PublicTransport.setAttribute('class', 'optionShow');
+            for (var i = 0; i < publicTransport.length; i++) {
+                var testID = publicTransport[i].parentNode.id;
+                if (testID === parentID) {
+                    publicTransport[i].setAttribute('class', 'optionShow');
+                }
+            }
             break;
         default:
             break;
