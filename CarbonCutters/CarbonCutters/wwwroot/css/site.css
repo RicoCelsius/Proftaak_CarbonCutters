@@ -1,6 +1,184 @@
 html {
     font-size: 14px;
   }
+
+@font-face {
+    font-family: Breton-Bold;
+    src: url(/fonts/Breton-Bold.otf);
+}
+
+@font-face {
+    font-family: Breton-Book;
+    src: url(/fonts/Breton-Book.otf);
+}
+
+/*fonts*/
+
+.breton-bold {
+    font-family: Breton-Bold;
+}
+
+.breton-book {
+    font-family: Breton-Book;
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.NavbarItems {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Breton-Bold, sans-serif;
+    color: black;
+    text-decoration: none;
+}
+
+.NavbarItems:hover {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Breton-Bold, sans-serif;
+    color: #D9D9D9;
+    text-decoration: none;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: right;
+}
+
+.margin-left-10 {
+    margin: 0% 0% 0% 8%;
+}
+
+.margin-right-10 {
+    margin: 0% 8% 0% 0%;
+}
+
+footer {
+    margin-top: 150px;
+    background-color: #006A4F;
+}
+
+.Hero {
+    margin-top: 120px;
+}
+
+.column {
+    width: 25%;
+}
+
+.FooterTitle {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Breton-Bold, sans-serif;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #D2D2D2;
+}
+
+.FooterText {
+    font-size: 20px;
+    font-weight: 200;
+    font-family: Breton-Book, sans-serif;
+    color: white;
+    text-decoration: none;
+}
+
+.Header1 {
+    font-size: 60px;
+    font-weight: 800;
+    font-family: Breton-Bold, sans-serif;
+    color: #302F2F;
+    text-decoration: none;
+}
+
+.Header2 {
+    font-size: 36px;
+    font-weight: 400;
+    font-family: Breton-Book, sans-serif;
+    color: #302F2F;
+    text-decoration: none;
+}
+
+.mainButton {
+    font-size: 32px;
+    font-weight: 300;
+    font-family: Breton-Bold, sans-serif;
+    color: white;
+    text-decoration: none;
+    background-color: #006A4F;
+    border-radius: 5px;
+    border: solid;
+    border-color: black;
+    padding: 7px 60px 7px 60px;
+    margin-right: 20px;
+}
+
+.secondButton {
+    font-size: 32px;
+    font-weight: 400;
+    font-family: Breton-Book, sans-serif;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    border: solid;
+    border-color: black;
+    padding: 7px 60px 7px 60px;
+    margin-left: 20px;
+}
+
+.mainButton:hover {
+    font-size: 32px;
+    font-weight: 300;
+    font-family: Breton-Bold, sans-serif;
+    color: white;
+    text-decoration: none;
+    background-color: #01523D;
+    border-radius: 5px;
+
+    border: none;
+    padding: 4px 15px 4px 15px;
+
+    border: solid;
+    border-color: black;
+    padding: 7px 60px 7px 60px;
+}
+
+.secondButton:hover {
+    font-size: 32px;
+    font-weight: 400;
+    font-family: Breton-Book, sans-serif;
+    color: black;
+    background-color: #F8F8F8;
+    border-radius: 5px;
+    border: solid;
+    border-color: black;
+    padding: 7px 60px 7px 60px;
+}
+
+#backgroundImg {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    opacity: 0.3;
+    z-index: -1;
+    background-image: url('/images/Background.png');
+    background-size: cover;
+}
   
   @media (min-width: 768px) {
     html {
