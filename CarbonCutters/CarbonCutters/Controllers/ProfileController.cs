@@ -23,6 +23,7 @@ namespace CarbonCuttersView.Controllers
             User user = usercollection.get(userId);
             model.Name = user.name;
             model.Picture = user.picture;
+            model.Score = user.score;
             model.AverageScoreDataList = tripcollection.CalculateAverageScoreOfAllUsers();
             model.ScoreDataList = tripcollection.CalculateAverageScoreOfUser(userId);
 
