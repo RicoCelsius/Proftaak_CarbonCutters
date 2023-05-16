@@ -294,6 +294,36 @@ a:hover {
       color: #302F2F;
       text-decoration: none;
   }
+
+.Header3 {
+    font-size: 26px;
+    font-weight: 600;
+    font-family: Breton-Bold, sans-serif;
+    color: #302F2F;
+}
+
+.profileNameText {
+    font-size: 32px;
+    font-weight: 200;
+    font-family: Breton-Book, sans-serif;
+    color: #302F2F;
+    margin-left: 130px;
+}
+
+.profileScoreText {
+    font-size: 48px;
+    font-weight: 600;
+    font-family: Breton-Bold, sans-serif;
+    color: #000000;
+    margin-left: 130px;
+}
+
+.profileChartText {
+    font-size: 22px;
+    font-weight: 600;
+    font-family: Breton-Bold, sans-serif;
+    color: #000000;
+}
   
   .mainButton {
       font-size: 32px;
@@ -380,4 +410,10 @@ a:hover {
       width: 50px;
       border-radius: 12px;
       margin-right: 4px
+  }
+
+  #profilePicture {
+      height: 100px;
+      width: 100px;
+      border-radius: 50px;
   }

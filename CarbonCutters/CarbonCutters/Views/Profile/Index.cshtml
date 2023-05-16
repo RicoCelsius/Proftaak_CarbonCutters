@@ -2,15 +2,23 @@
 <label>@Model.Id</label>
 @if (!string.IsNullOrEmpty(Model.Picture))
 {
-    <div>
-        <img src="@Model.Picture" alt="Profile Picture" style="width: 200px; height: auto;" />
-    </div>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-<div><p><strong><span style="font-size: larger;">Welcome @Model.Name</span></strong></p></div>
-<div><p><strong><span style="font-size: larger;">Your current score is @Model.Score</span></strong></p></div>
-<div><p>On this page, you can see your own score and compare it to the average score of your colleagues.</p></div>
+	<div class="mt-5">
+		<h4 class="Header3 my-3">Your Profile</h4>
+	</div>
+	<div>
+		<img src="@Model.Picture" alt="Profile Picture" id="profilePicture" />
+	</div>
 
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
+	<div style="margin-top: -100px;">
+		<span class="profileNameText">@Model.Name</span><br/>
+	</div>
+	<div class="mb-5" style="margin-top: -20px;">
+		<span class="profileScoreText">@Model.Score Points</span>
+	</div>
+
+<div class="mt-5"><p class="profileChartText">Your progress chart</p></div>
 }
 
 <div>
