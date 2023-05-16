@@ -28,21 +28,24 @@
 <script>
     var scoreData = @Html.Raw(Json.Serialize(Model.ScoreDataList));
     var averageScoreData = @Html.Raw(Json.Serialize(Model.AverageScoreDataList));
-    console.log("scoreData: ", scoreData);
 
     var labels = [];
     var scores = [];
+    var averageScores = [];
 
     for (var i = 0; i < scoreData.length; i++) {
         labels.push(scoreData[i].date);
         scores.push(scoreData[i].score);
     }
-    var averageScores = [];
 
     for (var i = 0; i < averageScoreData.length; i++) {
         labels.push(averageScoreData[i].date);
-        averageScores.push(averageScoreData[i].score);  // Push average scores into the averageScores array
+        averageScores.push(averageScoreData[i].score);
     }
+
+    var startDate = labels[0];
+    console.log(startDate);
+    var endDate = labels[labels.length - 1];
 
     var ctx = document.getElementById('scoreChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -74,6 +77,10 @@
                     title: {
                         display: true,
                         text: 'Date'
+                    },
+                    ticks: {
+                        min: startDate,
+                        max: endDate
                     }
                 },
                 y: {
@@ -86,4 +93,5 @@
             }
         }
     });
+
 </script>
