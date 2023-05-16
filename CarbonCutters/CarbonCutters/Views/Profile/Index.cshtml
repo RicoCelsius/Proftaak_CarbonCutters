@@ -1,17 +1,25 @@
 ﻿@model CarbonCuttersView.Models.ProfileModel
 <label>@Model.Id</label>
-@if (!string.IsNullOrEmpty(Model.Picture))
+@if (string.IsNullOrEmpty(Model.Picture))
 {
     <div>
-        <img src="@Model.Picture" alt="Profile Picture" style="width: 200px; height: auto;" />
+        <img src="https://ui-avatars.com/api/?rounded=true&name=@Model.Name" alt="Profile Picture" style="width: 200px; height: auto;"/>
     </div>
+}
+else
+    {
+        <div>
+            <img src="@Model.Picture" alt="Profile Picture" style="width: 200px; height: auto;" />
+        </div>
+    }
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <div><p><strong><span style="font-size: larger;">Welcome @Model.Name</span></strong></p></div>
 <div><p><strong><span style="font-size: larger;">Your current score is @Model.Score</span></strong></p></div>
 <div><p>On this page, you can see your own score and compare it to the average score of your colleagues.</p></div>
 
 
-}
+
 
 <div>
     <canvas id="scoreChart" style="width: 50%; height: 40%;"></canvas>

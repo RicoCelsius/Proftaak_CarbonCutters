@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarbonCuttersCore.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,15 @@ namespace CarbonCuttersCore
         public string Date { get; set; }
         public int Score { get; set; }
 
+
         public ScoreData(string date, int score)
         {
             Date = date;
             Score = score;
         }
-    
+
+
+
+
     }
 }

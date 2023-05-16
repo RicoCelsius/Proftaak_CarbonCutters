@@ -13,6 +13,10 @@ public class User
     public ITripCollection tripCollection { get; private set; }
     public IVehicleCollection vehicleCollection { get; private set; }
 
+    public User(Score score)
+    {
+        this.score = score;
+    }
     public User(string id, string name, string picture, string adress, Score score, ITripCollection tripCollection, IVehicleCollection vehicleCollection)
     {
         this.id = id;
