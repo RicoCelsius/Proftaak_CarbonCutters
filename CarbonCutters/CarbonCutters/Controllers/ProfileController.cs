@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Text.Json.Serialization;
-using CarbonCuttersCore;
-using CarbonCuttersView.Models;
 
 namespace CarbonCuttersView.Controllers
 {
@@ -22,26 +20,11 @@ namespace CarbonCuttersView.Controllers
             TripCollection tripcollection = new TripCollection(_tripCollectionDal);
             List<Trip> trips = _tripCollectionDal.GetTripsFromDB(userId);
             UserCollection usercollection = new UserCollection(_userCollectionDal);
-            List<ScoreData> scoreDataList = new List<ScoreData>();
-            Score score;
             User user = usercollection.get(userId);
             model.Name = user.name;
-            score = user.score;
-            model.Score = score.points;
             model.Picture = user.picture;
             model.AverageScoreDataList = tripcollection.CalculateAverageScoreOfAllUsers();
-
-
-
-            foreach (Trip trip in trips)
-            {
-                ScoreData data = new ScoreData(trip.dateTime.ToString(),trip.points);
-                scoreDataList.Add(data);
-            }
-           
-
-
-            model.ScoreDataList = scoreDataList;
+            model.ScoreDataList = tripcollection.CalculateAverageScoreOfUser(userId);
 
             return View(model);
         }

@@ -13,7 +13,6 @@ namespace CarbonCuttersView.Models
         public List <ScoreData> ScoreDataList { get; set; }
         public List<ScoreData> AverageScoreDataList { get; set; }
         public int Score { get; set; }
-        public int AverageScore { get; set; }
 
 
         public ProfileModel()

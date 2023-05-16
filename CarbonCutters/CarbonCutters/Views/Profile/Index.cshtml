@@ -27,6 +27,7 @@
 
 <script>
     var scoreData = @Html.Raw(Json.Serialize(Model.ScoreDataList));
+    var averageScoreData = @Html.Raw(Json.Serialize(Model.AverageScoreDataList));
     console.log("scoreData: ", scoreData);
 
     var labels = [];
@@ -36,18 +37,32 @@
         labels.push(scoreData[i].date);
         scores.push(scoreData[i].score);
     }
+    var averageScores = [];
+
+    for (var i = 0; i < averageScoreData.length; i++) {
+        labels.push(averageScoreData[i].date);
+        averageScores.push(averageScoreData[i].score);  // Push average scores into the averageScores array
+    }
 
     var ctx = document.getElementById('scoreChart').getContext('2d');
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
-            datasets: [{
-                label: 'Your Score',
-                data: scores,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            }]
+            datasets: [
+                {
+                    label: 'Your Score',
+                    data: scores,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },
+                {
+                    label: 'Average Score',
+                    data: averageScores,
+                    borderColor: 'rgb(30, 102, 192)',
+                    tension: 0.1
+                }
+            ]
         },
         options: {
             scales: {
