@@ -18,12 +18,13 @@ namespace CarbonCuttersView.Controllers
         {
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             TripCollection tripcollection = new TripCollection(_tripCollectionDal);
+           
             List<Trip> trips = _tripCollectionDal.GetTripsFromDB(userId);
             UserCollection usercollection = new UserCollection(_userCollectionDal);
             User user = usercollection.get(userId);
             model.Name = user.name;
             model.Picture = user.picture;
-            model.Score = user.score;
+            model.Score = user.score.points;
             model.AverageScoreDataList = tripcollection.CalculateAverageScoreOfAllUsers();
             model.ScoreDataList = tripcollection.CalculateAverageScoreOfUser(userId);
 
