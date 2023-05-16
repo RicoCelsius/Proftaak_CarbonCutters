@@ -20,9 +20,11 @@ namespace CarbonCuttersView.Controllers
         {
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             List<Trip> trips = _tripCollectionDal.GetTripsFromDB(userId);
+            UserCollection usercollection = new UserCollection(_userCollectionDal);
             List<ScoreData> scoreDataList = new List<ScoreData>();
-
-
+            User user = usercollection.get(userId);
+            model.Name = user.name;
+            model.Picture = user.picture;
 
             foreach (Trip trip in trips)
             {
