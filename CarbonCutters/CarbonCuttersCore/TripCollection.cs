@@ -32,6 +32,38 @@ public class TripCollection : ITripCollection
         TripList = tripList;
     }
 
+
+    public List<ScoreData> CalculateAverageScoreOfAllUsers()
+    {
+        List<Trip> allTrips = GetAllTripsFromDB();
+        List<ScoreData> scoreDataList = new();
+        int amountOfTrips = 0;
+
+        foreach (var trip in allTrips)
+        {
+            ScoreData existingData = scoreDataList.FirstOrDefault(x => x.Date == trip.dateTime.ToString());
+
+            if (existingData != null)
+            {
+                amountOfTrips += 1;
+                existingData.Score += trip.points / amountOfTrips;
+            }
+            else
+            {
+                ScoreData newScoreData = new ScoreData(trip.dateTime.ToString(),trip.points);
+                scoreDataList.Add(newScoreData);
+            }
+        }
+
+        return scoreDataList;
+    }
+
+
+    public List<Trip> GetAllTripsFromDB()
+    {
+        return _tripsDB.GetAllTripsFromDB();
+    }
+
     public void add(Trip trip)
     {
         TripList.Add(trip);

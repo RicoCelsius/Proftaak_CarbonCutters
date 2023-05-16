@@ -19,12 +19,19 @@ namespace CarbonCuttersView.Controllers
         public IActionResult Index(ProfileModel model)
         {
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            TripCollection tripcollection = new TripCollection(_tripCollectionDal);
             List<Trip> trips = _tripCollectionDal.GetTripsFromDB(userId);
             UserCollection usercollection = new UserCollection(_userCollectionDal);
             List<ScoreData> scoreDataList = new List<ScoreData>();
+            Score score;
             User user = usercollection.get(userId);
             model.Name = user.name;
+            score = user.score;
+            model.Score = score.points;
             model.Picture = user.picture;
+            model.AverageScoreDataList = tripcollection.CalculateAverageScoreOfAllUsers();
+
+
 
             foreach (Trip trip in trips)
             {

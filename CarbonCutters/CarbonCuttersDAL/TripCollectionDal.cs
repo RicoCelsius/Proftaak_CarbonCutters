@@ -28,6 +28,10 @@ public class TripCollectionDal : ITripCollection
 
     }
 
+
+
+
+
     private List<TripSegment> GetTripSegmentsFromDB(int tripID)
     {
         List<TripSegment> tripSegments = new List<TripSegment>();
@@ -64,7 +68,45 @@ public class TripCollectionDal : ITripCollection
 
         return tripSegments;
     }
-    
+
+    public List<Trip> GetAllTripsFromDB()
+    {
+        List<Trip> tripList = new List<Trip>();
+
+        List<int> tripids = new();
+        List<int> points = new();
+        List<bool> dones = new();
+        List<DateOnly> dates = new();
+
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var command = new SqlCommand(
+            "select [trip_id],[points],[done],[Date] from [trip]",
+            connection);
+        var reader = command.ExecuteReader();
+
+        if (reader != null)
+            while (reader.Read())
+            {
+                tripids.Add(reader.GetInt32(0));
+                points.Add(reader.GetInt32(1));
+                dones.Add(reader.GetBoolean(2));
+                dates.Add(DateOnly.FromDateTime(reader.GetDateTime(3)));
+            }
+
+        connection.Close();
+
+        for (int i = 0; i < tripids.Count; i++)
+        {
+            List<TripSegment> tripsegments = GetTripSegmentsFromDB(tripids[i]);
+            Trip trip = new Trip(tripsegments, points[i], dones[i], dates[i], tripids[i]);
+            tripList.Add(trip);
+        }
+
+        return tripList;
+    }
+
     public List<Trip> GetTripsFromDB(string userID)
     {
         List<Trip> tripList = new List<Trip>();
