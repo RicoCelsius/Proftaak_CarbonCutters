@@ -14,21 +14,14 @@ public enum fuel
     petrol,
     diesel,
     gas,
-    hybrid
+    hybrid,
+    none
 }
 
 public enum noEmission
 {
     walking,
     biking
-}
-
-public enum motorized
-{
-    motorcycle,
-    car,
-    bicycle,
-    plane
 }
 
 public enum publicTransport

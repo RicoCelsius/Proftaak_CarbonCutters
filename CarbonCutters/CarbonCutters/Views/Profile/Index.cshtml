@@ -1,8 +1,116 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
 
-    <label>@ViewBag.UserId</label>
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
 
+
+@{var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
 }
+
+@model CarbonCuttersView.Models.ProfileModel
+
+<label>@Model.Id</label>
+@if (!string.IsNullOrEmpty(Model.Picture))
+{
+	<div class="mt-5">
+		<h4 class="Header3 my-3">@Localizer["yourprofile"]</h4>
+	</div>
+	<div>
+		<img src="@Model.Picture" alt="Profile Picture" id="profilePicture" />
+	</div>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+	<div style="margin-top: -100px;">
+		<span class="profileNameText">@Model.Name</span><br/>
+	</div>
+	<div class="mb-5" style="margin-top: -20px;">
+		<span class="profileScoreText">@Model.Score @Localizer["points"]</span>
+	</div>
+
+<div class="mt-5"><p class="profileChartText">@Localizer["yourprogresschart"]</p></div>
+}
+
+<div>
+    <canvas id="scoreChart" style="width: 50%; height: 40%;"></canvas>
+</div>
+
+<script>
+    var scoreData = @Html.Raw(Json.Serialize(Model.ScoreDataList));
+    var averageScoreData = @Html.Raw(Json.Serialize(Model.AverageScoreDataList));
+
+    var labels = [];
+    var scores = [];
+    var averageScores = [];
+    
+
+
+    for (var i = 0; i < scoreData.length; i++) {
+        scores.push(scoreData[i].score);
+    }
+
+    for (var i = 0; i < averageScoreData.length; i++) {
+        labels.push(averageScoreData[i].date);
+        averageScores.push(averageScoreData[i].score);
+    }
+
+    var startDate = labels[0];
+    console.log(startDate);
+    var endDate = labels[labels.length - 1];
+
+    var ctx = document.getElementById('scoreChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: '@Localizer["yourscore"]',
+                    data: scores,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },
+                {
+                    label: '@Localizer["averagescore"]',
+                    data: averageScores,
+                    borderColor: 'rgb(30, 102, 192)',
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    },
+                    ticks: {
+                        min: startDate,
+                        max: endDate
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Score'
+                    }
+                }
+            }
+        }
+    });
+
+</script>

@@ -4,30 +4,44 @@ namespace CarbonCuttersCore;
 
 public class Trip
 {
+    public int? id { get; set; }
+    public DateOnly dateTime { get; private set; }
     public List<TripSegment> segments { get; private set; }
-    public int emission { get; private set; }
     public bool isDone { get; private set; }
+    public Score score { get; private set; }
 
-    public Trip(List<TripSegment> segments, int emission, bool isDone)
+    public Trip(List<TripSegment> segments, bool isDone, DateOnly dateTime)
     {
+        score = new Score();
+        score.updatePoints(segments);
         this.segments = segments;
-        this.emission = emission;
         this.isDone = isDone;
+        this.dateTime = dateTime;
     }
 
-    public Trip(DtoTrip Dto)
+    public Trip(List<TripSegment> segments,int points, bool isDone, DateOnly dateTime) : this(segments,isDone,dateTime)
     {
-        segments = new();
-        foreach (DtoTripSegment segment in Dto.segments)
-            segments.Add(new(segment));
-        emission = Dto.emission;
-        isDone = Dto.isDone;
+        score = new Score();
+        score.updatePoints(points);
     }
 
-    public void Edit(List<TripSegment> segments, int emission, bool isDone)
+    public Trip(List<TripSegment> segments, int points, bool isDone, DateOnly dateTime, int id) : this(segments,points,isDone,dateTime)
+    {
+        this.id = id;
+    }
+
+    public Trip(DtoTrip trip)
+    {
+        segments = new List<TripSegment>();
+        foreach (DtoTripSegment segment in trip.segments)
+            segments.Add(new TripSegment(segment));
+        isDone = trip.isDone;
+    }
+
+
+    public void Edit(List<TripSegment> segments, bool isDone)
     {
         this.segments = segments;
-        this.emission = emission;
         this.isDone = isDone;
     }
 

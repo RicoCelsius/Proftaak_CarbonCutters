@@ -1,7 +1,24 @@
-﻿@using CarbonCuttersCore.Interface
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+
+@{var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+@using CarbonCuttersCore.Interface
 @using CarbonCuttersView.Models
 @using CarbonCuttersCore
-@model TripModel
+@model TripsModel
 
 <link rel="stylesheet" href="~/css/tripCalander.css">
 <script type="text/javascript" src="/js/calander.js"></script>
@@ -9,12 +26,12 @@
 <script>
     function updateTrips(i) {
         updateWeek(i);
-        @{User user = Model.userCollection.users[0];}
-        @foreach (Trip trip in user.tripCollection.TripList)
+        @foreach (Trip t in Model.trips)
         {
-            foreach (TripSegment s in trip.segments)
+            @:MakeTrip((@t.dateTime.Year + "-" + @t.dateTime.Month + "-" + @t.dateTime.Day), @t.id, '@t.isDone')
+            @foreach (TripSegment s in t.segments)
             {
-                @:loadTrip((@s.dateTime.Year + "-" + @s.dateTime.Month + "-" + @s.dateTime.Day), @s.distance, (@s.dateTime.Hour + ":" + @s.dateTime.Minute));
+                @:MakeTripSections(@t.id, @s.distance, (@s.startTime.Hour + ':' + @s.startTime.Minute), (@s.endTime.Hour + ':' + @s.endTime.Minute))
             }
         }
     }
@@ -33,9 +50,11 @@
         <div class="arrows" onclick="updateTrips(1)">
             >
         </div>
-        <a asp-controller="Trip" asp-action="AddTrip">
-            +
+
+        <a asp-controller="Trip" asp-action="AddTrip" class="btn btn-primary addTripButton" style="background:#006A4F">
+            @Localizer["addtrip"]
         </a>
+
     </div>
     <div class="calander" id="calander"/>
 </div>

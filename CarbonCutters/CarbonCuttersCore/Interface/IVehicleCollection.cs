@@ -8,4 +8,6 @@ public interface IVehicleCollection
     void add(List<IVehicle> vehicles);
     void remove(IVehicle vehicle);
     void remove(List<IVehicle> vehicles);
+    IVehicle get(int id);
+    int GetVehicleId(Vehicle vehicle);
 }

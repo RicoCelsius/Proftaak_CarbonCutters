@@ -22,6 +22,11 @@ namespace CarbonCuttersMockData
             users.Add(user);
         }
 
+        public List<User> GetAllUserScores()
+        {
+            return new List<User>();
+        }
+
         public void add(List<User> users)
         {
             this.users.AddRange(users);
@@ -36,6 +41,11 @@ namespace CarbonCuttersMockData
         {
             while (users.Count > 0)
                 this.users.Remove(users[0]);
+        }
+
+        public User get(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

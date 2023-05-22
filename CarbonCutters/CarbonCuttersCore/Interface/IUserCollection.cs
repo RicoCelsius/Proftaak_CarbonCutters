@@ -8,4 +8,7 @@ public interface IUserCollection
     void add(List<User> users);
     void remove(User user);
     void remove(List<User> users);
+
+
+    User get(string id);
 }

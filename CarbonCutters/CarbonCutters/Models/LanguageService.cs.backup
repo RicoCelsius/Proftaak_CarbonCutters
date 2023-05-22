@@ -1,0 +1,23 @@
+﻿using Microsoft.Extensions.Localization;
+using System.Reflection;
+
+namespace CarbonCuttersView.Models
+{
+    public class LanguageService
+    {
+        private readonly IStringLocalizer _localizer;
+
+        public LanguageService(IStringLocalizerFactory factory)
+        {
+            var type = typeof(SharedResource);
+            var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
+            _localizer = factory.Create("SharedResource", assemblyName.Name);
+        }
+
+        public LocalizedString GetString(string key)
+        {
+            return _localizer[key];
+        }
+
+    }
+}

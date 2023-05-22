@@ -1,25 +1,16 @@
-﻿using CarbonCuttersCore;
-using CarbonCuttersCore.Interface;
-using CarbonCuttersMockData;
+﻿using CarbonCuttersCore.Interface;
 
 namespace CarbonCuttersView.Models
 {
     public class TripModel
     {
-        /* Unsure removed in revert
-        public int Id { get; set; }
-        public string? userId { get; set; }
-        public int distance { get; set; }
-        public bool isDone { get; set; }
-*/
         public IUserCollection userCollection;
 
-        public int distance;
-        public string vehicletype;
-        public int Emission;
-        public DateOnly date;
-        public TimeOnly startTime;
-        public TimeOnly endTime;
+        public List<int> distance { get; set; }
+        public List<string> vehicletype { get; set; }
+        public List<DateOnly> date { get; set; }
+        public List<TimeOnly> startTime { get; set; }
+        public List<TimeOnly> endTime { get; set; }
         public TripModel()
         {
             

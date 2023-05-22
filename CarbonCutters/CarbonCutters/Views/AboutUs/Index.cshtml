@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+
+@{var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+@{
+	ViewData["Title"] = "About Us";
+}
+
+
+<div class="mb-5">
+	<h1 class="Header1 mt-5 mb-4">@Localizer["aboutus"]</h1>
+	<p>@Localizer["description1"]</p>
+	<p>@Localizer["description2"]</p>
+	<p>@Localizer["description3"]</p>
+	<p>@Localizer["description4"]</p>
+
+</div>
+
+<div>
+	<img src="/images/Instagram_logo.png" id="socialIcon">
+	<img src="/images/Facebook_logo.png" id="socialIcon">
+	<img src="/images/LinkedIn_logo.png" id="socialIcon">
+</div>

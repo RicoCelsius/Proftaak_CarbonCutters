@@ -1,15 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+
+@{var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
 
 <img src="/images/Background.png" id="backgroundImg">
 
     <div class="text-center Hero">
         <h1 class="Header1">Carbon Cutters</h1>
-        <p class="Header2">your journey, your impact, your rewards.</p>
+        
+        <p class="Header2"> @Localizer["slogan"] </p>
     </div>
 
     <div class="text-center mt-5 mb-5">
-        <button class="mainButton">Add trip now</button>
-        <button class="secondButton">More about us</button>
+    <button class="mainButton" onclick="window.location.href='Trip/AddTrip';">@Localizer["addtrip"]</button>
+    <button class="secondButton" onclick="window.location.href='AboutUs';">@Localizer["aboutus"]</button>
     </div>
