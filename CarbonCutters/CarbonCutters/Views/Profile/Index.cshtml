@@ -18,14 +18,20 @@
 @model CarbonCuttersView.Models.ProfileModel
 
 <label>@Model.Id</label>
+
+<div class="mt-5">
+    <h4 class="Header3 my-3">@Localizer["yourprofile"]</h4>
+</div>
 @if (!string.IsNullOrEmpty(Model.Picture))
 {
-	<div class="mt-5">
-		<h4 class="Header3 my-3">@Localizer["yourprofile"]</h4>
-	</div>
-	<div>
-		<img src="@Model.Picture" alt="Profile Picture" id="profilePicture" />
-	</div>
+    <div>
+        <img src="@Model.Picture" alt="Profile Picture" id="profilePicture"/>
+    </div>
+}
+<div>
+    <img src="https://ui-avatars.com/api/?name=@Model.Name" alt="Profile Picture" id="profilePicture" />
+</div>
+
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
@@ -37,7 +43,7 @@
 	</div>
 
 <div class="mt-5"><p class="profileChartText">@Localizer["yourprogresschart"]</p></div>
-}
+
 
 <div>
     <canvas id="scoreChart" style="width: 50%; height: 40%;"></canvas>
