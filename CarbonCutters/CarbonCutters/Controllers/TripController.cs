@@ -3,6 +3,7 @@ using CarbonCuttersDAL;
 using CarbonCuttersView.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarbonCuttersView.Controllers
 {
@@ -11,6 +12,7 @@ namespace CarbonCuttersView.Controllers
         VehicleCollectionDal vehicles = new VehicleCollectionDal();
         VehicleCollection VehicleCollection = new VehicleCollection();
 
+        [Authorize]
         public IActionResult Index()
         {
             string user_id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
@@ -20,6 +22,7 @@ namespace CarbonCuttersView.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult AddTrip()
         {
@@ -33,6 +36,7 @@ namespace CarbonCuttersView.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult AddTrip(TripsModel model)
         {
             string user_id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
