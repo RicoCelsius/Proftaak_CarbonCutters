@@ -145,6 +145,7 @@ public class TripCollectionDal : ITripCollection
         return tripList;
     }
 
+
     public void add(Trip trip)
     {
         int tripID = 0;
@@ -190,6 +191,10 @@ public class TripCollectionDal : ITripCollection
         connection.Close();
     }
 
+    public int CalculateTotalScoreOfUser(string id)
+    {
+        return 0;
+    }
     public void add(List<Trip> trips)
     {
         throw new NotImplementedException();
