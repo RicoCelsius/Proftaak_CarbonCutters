@@ -108,6 +108,16 @@ public class TripCollection : ITripCollection
         return scoreDataList;
     }
 
+    public int CalculateTotalScoreOfUser(string id)
+    {
+        List<Trip> allTrips = _tripsDB.GetTripsFromDB(id);
+        int totalScore = 0;
+        foreach (var trip in allTrips)
+        {
+            totalScore += trip.score.points;
+        }
+        return totalScore;
+    }
 
 
     public List<Trip> GetAllTripsFromDB()

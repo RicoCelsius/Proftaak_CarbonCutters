@@ -14,7 +14,7 @@ public class UserCollection : IUserCollection
     }
 
 
-    
+
 
 
     public void add(User user)
@@ -47,6 +47,8 @@ public class UserCollection : IUserCollection
         List<User> sortedList = users.OrderBy(x => -x.score.points).ToList();
         return sortedList;
     }
+
+
 
     public User get(string id)
     {
