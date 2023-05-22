@@ -22,15 +22,19 @@
 <div class="mt-5">
     <h4 class="Header3 my-3">@Localizer["yourprofile"]</h4>
 </div>
-@if (!string.IsNullOrEmpty(Model.Picture))
+@if (string.IsNullOrEmpty(Model.Picture))
+{
+    <div>
+        <img src="https://ui-avatars.com/api/?name=@Model.Name" alt="Profile Picture" id="profilePicture" />
+    </div>
+}
+else
 {
     <div>
         <img src="@Model.Picture" alt="Profile Picture" id="profilePicture"/>
     </div>
 }
-<div>
-    <img src="https://ui-avatars.com/api/?name=@Model.Name" alt="Profile Picture" id="profilePicture" />
-</div>
+
 
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
