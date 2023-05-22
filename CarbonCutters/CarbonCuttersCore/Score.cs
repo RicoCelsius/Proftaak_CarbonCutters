@@ -30,6 +30,19 @@ public class Score
     {
         this.points = points;
     }
+
+    public void updatePoints(List<TripSegment> segments)
+    {
+        foreach (TripSegment segment in segments)
+        {
+            if (segment.vehicle is NoEmission)
+                points += CalculateScore(segment.distance, "zero emmision");
+            else if (segment.vehicle is Car)
+                points += CalculateScore(segment.distance, "car");
+            else if (segment.vehicle is PublicTransport)
+                points += CalculateScore(segment.distance, "public transit");
+        }
+    }
     public static int CalculateScore(int distance, string method)
     {
         int zeroEmmision = 0;

@@ -1,41 +1,36 @@
-﻿using CarbonCuttersCore.DTO;
-
-namespace CarbonCuttersCore;
+﻿namespace CarbonCuttersCore;
 
 public class Trip
 {
-    public int? id { get; private set; }
+    public int? id { get; set; }
     public DateOnly dateTime { get; private set; }
     public List<TripSegment> segments { get; private set; }
-    public int points { get; private set; }
     public bool isDone { get; private set; }
+    public Score score { get; private set; }
 
-    public Trip(List<TripSegment> segments, int points, bool isDone, DateOnly dateTime)
+    public Trip(List<TripSegment> segments, bool isDone, DateOnly dateTime)
     {
+        score = new Score();
+        score.updatePoints(segments);
         this.segments = segments;
-        this.points = points;
         this.isDone = isDone;
         this.dateTime = dateTime;
     }
 
-    public Trip(List<TripSegment> segments, int points, bool isDone, DateOnly dateTime, int id) : this(segments, points, isDone, dateTime)
+    public Trip(List<TripSegment> segments,int points, bool isDone, DateOnly dateTime) : this(segments,isDone,dateTime)
+    {
+        score = new Score();
+        score.updatePoints(points);
+    }
+
+    public Trip(List<TripSegment> segments, int points, bool isDone, DateOnly dateTime, int id) : this(segments,points,isDone,dateTime)
     {
         this.id = id;
     }
 
-    public Trip(DtoTrip Dto)
-    {
-        segments = new();
-        foreach (DtoTripSegment segment in Dto.segments)
-            segments.Add(new(segment));
-        points = Dto.emission;
-        isDone = Dto.isDone;
-    }
-
-    public void Edit(List<TripSegment> segments, int emission, bool isDone)
+    public void Edit(List<TripSegment> segments, bool isDone)
     {
         this.segments = segments;
-        this.points = emission;
         this.isDone = isDone;
     }
 
