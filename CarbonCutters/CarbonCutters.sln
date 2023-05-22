@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonCuttersDAL", "CarbonC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonCuttersUnitTests", "CarbonCuttersUnitTests\CarbonCuttersUnitTests.csproj", "{456513CA-E910-4B32-95B9-0CC598E26D7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonCuttersMockData", "CarbonCuttersMockData\CarbonCuttersMockData.csproj", "{0878110F-9AFF-4D68-B8E9-C8E700E7CCD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonCuttersMockData", "CarbonCuttersMockData\CarbonCuttersMockData.csproj", "{0878110F-9AFF-4D68-B8E9-C8E700E7CCD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
