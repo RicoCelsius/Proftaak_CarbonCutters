@@ -1,9 +1,27 @@
-﻿@model CarbonCuttersView.Models.ProfileModel
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+
+@{var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+@model CarbonCuttersView.Models.ProfileModel
+
 <label>@Model.Id</label>
 @if (!string.IsNullOrEmpty(Model.Picture))
 {
 	<div class="mt-5">
-		<h4 class="Header3 my-3">Your Profile</h4>
+		<h4 class="Header3 my-3">@Localizer["yourprofile"]</h4>
 	</div>
 	<div>
 		<img src="@Model.Picture" alt="Profile Picture" id="profilePicture" />
@@ -15,10 +33,10 @@
 		<span class="profileNameText">@Model.Name</span><br/>
 	</div>
 	<div class="mb-5" style="margin-top: -20px;">
-		<span class="profileScoreText">@Model.Score Points</span>
+		<span class="profileScoreText">@Model.Score @Localizer["points"]</span>
 	</div>
 
-<div class="mt-5"><p class="profileChartText">Your progress chart</p></div>
+<div class="mt-5"><p class="profileChartText">@Localizer["yourprogresschart"]</p></div>
 }
 
 <div>
@@ -54,13 +72,13 @@
             labels: labels,
             datasets: [
                 {
-                    label: 'Your Score',
+                    label: '@Localizer["yourscore"]',
                     data: scores,
                     borderColor: 'rgb(75, 192, 192)',
                     tension: 0.1
                 },
                 {
-                    label: 'Average Score',
+                    label: '@Localizer["averagescore"]',
                     data: averageScores,
                     borderColor: 'rgb(30, 102, 192)',
                     tension: 0.1
