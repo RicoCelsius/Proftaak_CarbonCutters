@@ -4,19 +4,29 @@ using CarbonCuttersView.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using System.Text.Json.Serialization;
 
 namespace CarbonCuttersView.Controllers
 {
     public class ProfileController : Controller
     {
         private UserCollectionDal _userCollectionDal = new();
+        private TripCollectionDal  _tripCollectionDal = new();
 
         [Authorize]
-        public IActionResult Index()
+        public IActionResult Index(ProfileModel model)
         {
-            ProfileModel model = new ProfileModel();
-            model.user_id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            model.user = new UserCollection(_userCollectionDal).get(model.user_id);
+            string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            TripCollection tripcollection = new TripCollection(_tripCollectionDal);
+           
+            List<Trip> trips = _tripCollectionDal.GetTripsFromDB(userId);
+            UserCollection usercollection = new UserCollection(_userCollectionDal);
+            User user = usercollection.get(userId);
+            model.Name = user.name;
+            model.Picture = user.picture;
+            model.Score = user.score.points;
+            model.AverageScoreDataList = tripcollection.CalculateAverageScoreOfAllUsers();
+            model.ScoreDataList = tripcollection.CalculateAverageScoreOfUser(userId);
 
             return View(model);
         }

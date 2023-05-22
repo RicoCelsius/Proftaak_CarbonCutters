@@ -79,6 +79,7 @@ public class UserCollectionDal : IUserCollection
         throw new NotImplementedException();
     }
 
+
     public User get(string id)
     {
         User? user = null;

@@ -1,34 +1,97 @@
-﻿@using CarbonCuttersCore
-@using CarbonCuttersView.Models
-
-@model ProfileModel
-
-<link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true" />
-
-<div class="background-container">
-	<div class="profileinfo">
-		<div class="container">
-			<div class="picture">
-				<img src="@Model.user.picture" />
-			</div>
-			<div class="text">
-				<div>
-					@Model.user.name
-				</div>
-				<div class="points">
-					@Model.user.score.getPointsAsString()
-				</div>
-			</div>
-		</div>
+﻿@model CarbonCuttersView.Models.ProfileModel
+<label>@Model.Id</label>
+@if (!string.IsNullOrEmpty(Model.Picture))
+{
+	<div class="mt-5">
+		<h4 class="Header3 my-3">Your Profile</h4>
 	</div>
+	<div>
+		<img src="@Model.Picture" alt="Profile Picture" id="profilePicture" />
+	</div>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+	<div style="margin-top: -100px;">
+		<span class="profileNameText">@Model.Name</span><br/>
+	</div>
+	<div class="mb-5" style="margin-top: -20px;">
+		<span class="profileScoreText">@Model.Score Points</span>
+	</div>
+
+<div class="mt-5"><p class="profileChartText">Your progress chart</p></div>
+}
+
+<div>
+    <canvas id="scoreChart" style="width: 50%; height: 40%;"></canvas>
 </div>
 
-@foreach (Trip trip in Model.user.tripCollection.TripList){
-    <div>
-        @foreach (TripSegment segment in trip.segments){
-            <div>
-                @segment.vehicle.ToString()
-            </div>
+<script>
+    var scoreData = @Html.Raw(Json.Serialize(Model.ScoreDataList));
+    var averageScoreData = @Html.Raw(Json.Serialize(Model.AverageScoreDataList));
+
+    var labels = [];
+    var scores = [];
+    var averageScores = [];
+
+    for (var i = 0; i < scoreData.length; i++) {
+        labels.push(scoreData[i].date);
+        scores.push(scoreData[i].score);
+    }
+
+    for (var i = 0; i < averageScoreData.length; i++) {
+        labels.push(averageScoreData[i].date);
+        averageScores.push(averageScoreData[i].score);
+    }
+
+    var startDate = labels[0];
+    console.log(startDate);
+    var endDate = labels[labels.length - 1];
+
+    var ctx = document.getElementById('scoreChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Your Score',
+                    data: scores,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },
+                {
+                    label: 'Average Score',
+                    data: averageScores,
+                    borderColor: 'rgb(30, 102, 192)',
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    },
+                    ticks: {
+                        min: startDate,
+                        max: endDate
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Score'
+                    }
+                }
+            }
         }
-    </div>
-}
+    });
+
+</script>

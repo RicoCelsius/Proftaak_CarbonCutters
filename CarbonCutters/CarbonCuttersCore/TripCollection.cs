@@ -19,6 +19,7 @@ public class TripCollection : ITripCollection
         TripList = _tripsDB.TripList;
     }
 
+
     public TripCollection(DtoTripCollection Dto)
     {
         TripList = new();
@@ -31,9 +32,98 @@ public class TripCollection : ITripCollection
         TripList = tripList;
     }
 
+
+    public List<ScoreData> CalculateAverageScoreOfAllUsers()
+    {
+        List<Trip> allTrips = GetAllTripsFromDB();
+        Dictionary<string, (int totalPoints, int tripCount)> scoreDataDict = new Dictionary<string, (int, int)>();
+
+        foreach (var trip in allTrips)
+        {
+            string tripDate = trip.dateTime.ToString("yyyy-MM-dd");
+
+            if (scoreDataDict.ContainsKey(tripDate))
+            {
+                var (totalPoints, tripCount) = scoreDataDict[tripDate];
+                totalPoints += trip.points;
+                tripCount += 1;
+                scoreDataDict[tripDate] = (totalPoints, tripCount);
+            }
+            else
+            {
+                scoreDataDict[tripDate] = (trip.points, 1);
+            }
+        }
+
+        List<ScoreData> scoreDataList = new List<ScoreData>();
+
+        foreach (var kvp in scoreDataDict)
+        {
+            string date = kvp.Key;
+            var (totalPoints, tripCount) = kvp.Value;
+            int averageScore = totalPoints / tripCount;
+
+            ScoreData scoreData = new ScoreData(date, averageScore);
+            scoreDataList.Add(scoreData);
+        }
+
+        return scoreDataList;
+    }
+
+
+
+    public List<ScoreData> CalculateAverageScoreOfUser(string id)
+    {
+        List<Trip> allTrips = _tripsDB.GetTripsFromDB(id);
+        List<ScoreData> scoreDataList = new List<ScoreData>();
+        Dictionary<string, (int totalPoints, int tripCount)> scoreDataDict = new Dictionary<string, (int, int)>();
+
+        foreach (var trip in allTrips)
+        {
+            string tripDate = trip.dateTime.ToString("yyyy-MM-dd");
+
+            if (scoreDataDict.ContainsKey(tripDate))
+            {
+                var (totalPoints, tripCount) = scoreDataDict[tripDate];
+                totalPoints += trip.points;
+                tripCount += 1;
+                scoreDataDict[tripDate] = (totalPoints, tripCount);
+            }
+            else
+            {
+                scoreDataDict[tripDate] = (trip.points, 1);
+            }
+        }
+
+        foreach (var kvp in scoreDataDict)
+        {
+            string date = kvp.Key;
+            var (totalPoints, tripCount) = kvp.Value;
+            int averageScore = totalPoints / tripCount;
+
+            ScoreData scoreData = new ScoreData(date, averageScore);
+            scoreDataList.Add(scoreData);
+        }
+
+        return scoreDataList;
+    }
+
+
+
+    public List<Trip> GetAllTripsFromDB()
+    {
+        return _tripsDB.GetAllTripsFromDB();
+    }
+
+    public List<Trip> GetTripsFromDB(string id)
+    {
+        return _tripsDB.GetTripsFromDB(id);
+    }
+
     public void add(Trip trip)
     {
         TripList.Add(trip);
+        _tripsDB.add(trip);
     }
 
     public void add(List<Trip> trips)

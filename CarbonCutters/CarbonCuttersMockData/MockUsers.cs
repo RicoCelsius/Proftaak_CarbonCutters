@@ -22,6 +22,11 @@ namespace CarbonCuttersMockData
             users.Add(user);
         }
 
+        public List<User> GetAllUserScores()
+        {
+            return new List<User>();
+        }
+
         public void add(List<User> users)
         {
             this.users.AddRange(users);

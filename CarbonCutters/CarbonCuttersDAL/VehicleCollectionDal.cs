@@ -1,6 +1,8 @@
 ﻿using CarbonCuttersCore;
 using CarbonCuttersCore.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
+using System.Reflection.Metadata.Ecma335;
 using System.Timers;
 
 namespace CarbonCuttersDAL;
@@ -91,11 +93,141 @@ public class VehicleCollectionDal : IVehicleCollection
         if (vehicle == null)
             throw new Exception("cant find vehicle");
         return vehicle;
-    } 
+    }
+
+    public int GetVehicleId(Vehicle vehicle)
+    {
+        int id = -1;
+
+        if (vehicle is Car)
+            id = GetVehicleId((Car)vehicle);
+        else if (vehicle is NoEmission)
+            id = GetVehicleId((NoEmission)vehicle);
+        else if (vehicle is PublicTransport)
+            id = GetVehicleId((PublicTransport)vehicle);
+
+        return id;
+    }
+
+    private int GetVehicleId(Car vehicle)
+    {
+        int id = -1;
+        string clas = "Car";
+        int emission = vehicle.emission;
+        string size = vehicle.size.ToString();
+        string fuel = vehicle.fuel.ToString();
+
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var command = new SqlCommand(
+            "SELECT [vehicle_id] FROM [vehicle] where [class] = '" + clas + "' " +
+            "and [emission] = " + emission + " " +
+            "and [size] = '" + size + "' " +
+            "and [fuel] = '" + fuel + "' ",
+            connection);
+        var reader = command.ExecuteReader();
+        if (reader != null)
+            while (reader.Read())
+                if (!reader.IsDBNull(0))
+                    id = reader.GetInt32(0);
+
+        if (id == -1)
+            id = add(null, clas, size, fuel, emission);
+
+        return id;
+    }
+
+    private int GetVehicleId(NoEmission vehicle)
+    {
+        int id = -1;
+        string clas = "NoEmission";
+        int emission = vehicle.emission;
+        string type = vehicle.type.ToString();
+
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var command = new SqlCommand(
+            "SELECT [vehicle_id] FROM [vehicle] where [class] = '" + clas + "' " +
+            "and [type] = '" + type + "' " +
+            "and [emission] = " + emission,
+            connection);
+        var reader = command.ExecuteReader();
+        if (reader != null)
+            while (reader.Read())
+                if (!reader.IsDBNull(0))
+                    id = reader.GetInt32(0);
+
+        if (id == -1)
+            id = add(type, clas, null, null, emission);
+        return id;
+    }
+
+    private int GetVehicleId(PublicTransport vehicle)
+    {
+        int id = -1;
+        string clas = "PublicTransport";
+        int emission = vehicle.emission;
+        string type = vehicle.type.ToString();
+
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var command = new SqlCommand(
+            "SELECT [vehicle_id] FROM [vehicle] where [class] = '" + clas + "' " +
+            "and [type] = '" + type + "' " +
+            "and [emission] = " + emission,
+            connection);
+        var reader = command.ExecuteReader();
+        if (reader != null)
+            while (reader.Read())
+                if (!reader.IsDBNull(0))
+                    id = reader.GetInt32(0);
+
+        connection.Close();
+
+        if (id == -1)
+            id = add(type, clas, null, null, emission);
+        return id;
+    }
+
+    private int add(string? type, string clas, string? size, string? fuel, int emission)
+    {
+        int id = -1;
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var command = new SqlCommand(
+            "insert into vehicle (type, class, size, fuel, emission)" +
+            "output (INSERTED.vehicle_id)" +
+            "values " +
+            "('" + type + "','" + clas + "','" + size + "','" + fuel + "'," + emission + ")",
+            connection);
+        var reader = command.ExecuteReader();
+        if (reader != null)
+            while (reader.Read())
+                if (!reader.IsDBNull(0))
+                    id = reader.GetInt32(0);
+
+        connection.Close();
+
+        return id;
+    }
 
     public void add(IVehicle vehicle)
     {
-        throw new NotImplementedException();
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var command = new SqlCommand(
+            "insert into vehicle (type, class, size, fuel, emission)" +
+            "values " +
+            "(",
+            connection);
+        var reader = command.ExecuteReader();
+
+        connection.Close();
     }
 
     public void add(List<IVehicle> vehicles)

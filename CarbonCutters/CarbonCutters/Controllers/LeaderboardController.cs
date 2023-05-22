@@ -4,13 +4,14 @@ using CarbonCuttersView.Models;
 using Microsoft.AspNetCore.Mvc;
 using CarbonCuttersMockData;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarbonCuttersView.Controllers;
 
 public class LeaderboardController : Controller
 {
     private UserCollection UserCollection = new(new MockUsers(30, 50));
-
+    [Authorize]
     public IActionResult Index()
     {
         LeaderBoardModel model = new();

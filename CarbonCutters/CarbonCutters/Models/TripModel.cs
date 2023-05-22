@@ -1,6 +1,4 @@
-﻿using CarbonCuttersCore;
-using CarbonCuttersCore.Interface;
-using CarbonCuttersMockData;
+﻿using CarbonCuttersCore.Interface;
 
 namespace CarbonCuttersView.Models
 {
@@ -8,12 +6,11 @@ namespace CarbonCuttersView.Models
     {
         public IUserCollection userCollection;
 
-        public int distance;
-        public string vehicletype;
-        public int Emission;
-        public DateOnly date;
-        public TimeOnly startTime;
-        public TimeOnly endTime;
+        public List<int> distance { get; set; }
+        public List<string> vehicletype { get; set; }
+        public List<DateOnly> date { get; set; }
+        public List<TimeOnly> startTime { get; set; }
+        public List<TimeOnly> endTime { get; set; }
         public TripModel()
         {
             

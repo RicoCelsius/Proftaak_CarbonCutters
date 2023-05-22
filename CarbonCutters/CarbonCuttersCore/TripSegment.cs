@@ -5,6 +5,7 @@ namespace CarbonCuttersCore;
 public class TripSegment
 {
     public int distance { get; private set; }
+    public int emission { get; private set; }
     public Vehicle vehicle { get; private set; }
     public TimeOnly startTime { get; private set; }
     public TimeOnly endTime { get; private set; }
@@ -15,6 +16,7 @@ public class TripSegment
         this.vehicle = vehicle;
         startTime = start;
         endTime = end;
+        emission = 0;
     }
 
     public TripSegment(DtoTripSegment Dto)
