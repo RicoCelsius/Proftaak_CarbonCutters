@@ -117,19 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aboutus" xml:space="preserve">
-    <value>Over Ons</value>
+  <data name="addtrip" xml:space="preserve">
+    <value>Rit toevoegen</value>
   </data>
-  <data name="home" xml:space="preserve">
-    <value>Start Pagina</value>
+  <data name="addtripsegment" xml:space="preserve">
+    <value>Rit segment toevoegen</value>
   </data>
-  <data name="language" xml:space="preserve">
-    <value>Taal:</value>
+  <data name="back" xml:space="preserve">
+    <value>Terug</value>
   </data>
-  <data name="leaderboard" xml:space="preserve">
-    <value>Scorebord</value>
+  <data name="biking" xml:space="preserve">
+    <value>Fietsen</value>
   </data>
-  <data name="trips" xml:space="preserve">
-    <value>Ritten</value>
+  <data name="bus" xml:space="preserve">
+    <value>Bus</value>
+  </data>
+  <data name="car" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="diesel" xml:space="preserve">
+    <value>Diesel</value>
+  </data>
+  <data name="distance" xml:space="preserve">
+    <value>Afstand</value>
+  </data>
+  <data name="electric" xml:space="preserve">
+    <value>Elektrisch</value>
+  </data>
+  <data name="endtime" xml:space="preserve">
+    <value>Eind tijd</value>
+  </data>
+  <data name="fuel" xml:space="preserve">
+    <value>Brandstof</value>
+  </data>
+  <data name="gas" xml:space="preserve">
+    <value>Gas</value>
+  </data>
+  <data name="hybrid" xml:space="preserve">
+    <value>Hybride</value>
+  </data>
+  <data name="large" xml:space="preserve">
+    <value>Groot</value>
+  </data>
+  <data name="medium" xml:space="preserve">
+    <value>Middengroot</value>
+  </data>
+  <data name="noemission" xml:space="preserve">
+    <value>Geen uitstoot</value>
+  </data>
+  <data name="petrol" xml:space="preserve">
+    <value>Benzine</value>
+  </data>
+  <data name="publictransport" xml:space="preserve">
+    <value>Openbaar vervoer</value>
+  </data>
+  <data name="removetripsegment" xml:space="preserve">
+    <value>Rit segment verwijderen</value>
+  </data>
+  <data name="size" xml:space="preserve">
+    <value>Grootte</value>
+  </data>
+  <data name="small" xml:space="preserve">
+    <value>Klein</value>
+  </data>
+  <data name="starttime" xml:space="preserve">
+    <value>Begin tijd</value>
+  </data>
+  <data name="subway" xml:space="preserve">
+    <value>Metro</value>
+  </data>
+  <data name="taxi" xml:space="preserve">
+    <value>Taxi</value>
+  </data>
+  <data name="train" xml:space="preserve">
+    <value>Trein</value>
+  </data>
+  <data name="tram" xml:space="preserve">
+    <value>Tram</value>
+  </data>
+  <data name="transport" xml:space="preserve">
+    <value>Vervoer</value>
+  </data>
+  <data name="trip" xml:space="preserve">
+    <value>Rit</value>
+  </data>
+  <data name="tripsegment" xml:space="preserve">
+    <value>Rit segment</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Soort</value>
+  </data>
+  <data name="walking" xml:space="preserve">
+    <value>Wandelen</value>
   </data>
 </root>
