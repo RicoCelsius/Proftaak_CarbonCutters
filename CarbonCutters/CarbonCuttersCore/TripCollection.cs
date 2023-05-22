@@ -45,13 +45,13 @@ public class TripCollection : ITripCollection
             if (scoreDataDict.ContainsKey(tripDate))
             {
                 var (totalPoints, tripCount) = scoreDataDict[tripDate];
-                totalPoints += trip.points;
+                totalPoints += trip.score.points;
                 tripCount += 1;
                 scoreDataDict[tripDate] = (totalPoints, tripCount);
             }
             else
             {
-                scoreDataDict[tripDate] = (trip.points, 1);
+                scoreDataDict[tripDate] = (trip.score.points, 1);
             }
         }
 
@@ -85,13 +85,13 @@ public class TripCollection : ITripCollection
             if (scoreDataDict.ContainsKey(tripDate))
             {
                 var (totalPoints, tripCount) = scoreDataDict[tripDate];
-                totalPoints += trip.points;
+                totalPoints += trip.score.points;
                 tripCount += 1;
                 scoreDataDict[tripDate] = (totalPoints, tripCount);
             }
             else
             {
-                scoreDataDict[tripDate] = (trip.points, 1);
+                scoreDataDict[tripDate] = (trip.score.points, 1);
             }
         }
 

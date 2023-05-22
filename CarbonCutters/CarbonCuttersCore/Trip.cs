@@ -1,4 +1,6 @@
-﻿namespace CarbonCuttersCore;
+﻿using CarbonCuttersCore.DTO;
+
+namespace CarbonCuttersCore;
 
 public class Trip
 {
@@ -27,6 +29,15 @@ public class Trip
     {
         this.id = id;
     }
+
+    public Trip(DtoTrip trip)
+    {
+        segments = new List<TripSegment>();
+        foreach (DtoTripSegment segment in trip.segments)
+            segments.Add(new TripSegment(segment));
+        isDone = trip.isDone;
+    }
+
 
     public void Edit(List<TripSegment> segments, bool isDone)
     {
