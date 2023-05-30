@@ -142,7 +142,7 @@
     <value>Diesel</value>
   </data>
   <data name="distance" xml:space="preserve">
-    <value>Afstand</value>
+    <value>Afstand km</value>
   </data>
   <data name="electric" xml:space="preserve">
     <value>Elektrisch</value>
