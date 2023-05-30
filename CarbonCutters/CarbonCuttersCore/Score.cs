@@ -51,6 +51,7 @@ public class Score
         int carPoints = 0;
         int publicTransitPoints = 0;
         int airplane = 150;
+        int longDriveReduction = 1;
 
         switch (distance)
         {
@@ -63,7 +64,7 @@ public class Score
         
             case int n when n < 50:
                 zeroEmmision = 220;
-                carPoints = 20;
+                carPoints = 0;
                 perKmPoints = 1;
                 publicTransitPoints = 180;
                 break;
@@ -72,6 +73,7 @@ public class Score
                 carPoints = 30;
                 perKmPoints = 1;
                 publicTransitPoints = 200;
+                longDriveReduction = 2;
                 break;
                 throw new ArgumentException("Invalid group");
         }
@@ -87,7 +89,7 @@ public class Score
                 points = zeroEmmision;
                 break;
             case "car":
-                points = carPoints + perKmPointsCar * distance;
+                points = (carPoints + perKmPointsCar * distance) / longDriveReduction;
                 break;
             case "public transit":
                 points = publicTransitPoints;
