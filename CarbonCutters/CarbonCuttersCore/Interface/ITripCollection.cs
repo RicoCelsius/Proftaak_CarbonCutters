@@ -9,6 +9,6 @@ public interface ITripCollection
     List<Trip> GetAllTripsFromDB();
     List<Trip> GetTripsFromDB(string id);
     int CalculateTotalScoreOfUser(string ud);
-    void remove(Trip trip);
+    void remove(int id);
     void remove(List<Trip> trips);
 }

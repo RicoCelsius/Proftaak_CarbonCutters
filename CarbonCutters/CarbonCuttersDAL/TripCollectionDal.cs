@@ -200,9 +200,19 @@ public class TripCollectionDal : ITripCollection
         throw new NotImplementedException();
     }
 
-    public void remove(Trip trip)
+    public void remove(int id)
     {
-        throw new NotImplementedException();
+        using (var connection = new SqlConnection(ConnectionString))
+        {
+            connection.Open();
+
+            using (var command = new SqlCommand("DELETE FROM trip WHERE trip_id = @id", connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 
     public void remove(List<Trip> trips)
