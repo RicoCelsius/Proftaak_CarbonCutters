@@ -44,10 +44,15 @@ public class UserCollection : IUserCollection
 
     public List<User> GetSortedUsersByScore()
     {
+        List<User> users = getAllUsers();
         List<User> sortedList = users.OrderBy(x => -x.score.points).ToList();
         return sortedList;
     }
 
+    public List<User> getAllUsers()
+    {
+        return DBusers.getAllUsers();
+    }
 
 
     public User get(string id)

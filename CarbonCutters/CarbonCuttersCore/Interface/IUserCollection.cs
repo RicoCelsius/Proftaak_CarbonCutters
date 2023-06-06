@@ -9,6 +9,8 @@ public interface IUserCollection
     void remove(User user);
     void remove(List<User> users);
 
+    List<User> getAllUsers();
+
 
     User get(string id);
 }
