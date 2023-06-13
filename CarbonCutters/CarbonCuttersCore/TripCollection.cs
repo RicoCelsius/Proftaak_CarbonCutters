@@ -125,6 +125,17 @@ public class TripCollection : ITripCollection
         return _tripsDB.GetAllTripsFromDB();
     }
 
+    public Trip getTrip(int id)
+    {
+        List<Trip> trips = GetAllTripsFromDB();
+        foreach (Trip trip in trips)
+        {
+            if (trip.id == id)
+                return trip;
+        }
+        return null;
+    }
+
     public List<Trip> GetTripsFromDB(string id)
     {
         return _tripsDB.GetTripsFromDB(id);
@@ -141,9 +152,9 @@ public class TripCollection : ITripCollection
         TripList.AddRange(trips);
     }
 
-    public void remove(Trip trip)
+    public void remove(int id)
     {
-        TripList.Remove(trip);
+        _tripsDB.remove(id);
     }
 
     public void remove(List<Trip> trips)

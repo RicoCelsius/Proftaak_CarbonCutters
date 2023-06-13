@@ -4,157 +4,269 @@
 @model LeaderBoardModel
 
 <link rel="stylesheet" href="~/css/podium.css" asp-append-version="true" />
-<div>
-	<div class="podiumSection">
-		<div class="podiumContainer1">
-			<div class="place-1">
-				<div class="place-number">
-					#1
-				</div>
-				<div class="place-container">
-					<div class="place-picture">
-						<img src="~/Images/profileIcon.png" />
-					</div>
-					<div class="place-text">
-						<div>
-							@Model._users[0].name
-						</div>
-						<div class="points-1">
-							@Model._users[0].score.getPointsAsString() points
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="outerContainer">
+    <div class="podiumSection">
+        <div class="podiumContainer1">
+            <div class="place-1">
+                <div class="place-number">
+                    #1
+                </div>
+                <div class="place-container">
+                    <div class="place-picture">
+                        @if (string.IsNullOrEmpty(Model._users[0].adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@Model._users[0].name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@Model._users[0].adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                    </div>
+                    <div class="place-text">
+                        <div>
+                            @Model._users[0].name
+                        </div>
+                        <div class="points-1">
+                            @Model._users[0].score.getPointsAsString() points
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="podiumContainer2">
-			<div class="place-2">
-				<div class="place-number">
-					#2
-				</div>
-				<div class="place-container">
-					<div class="place-picture">
-						<img src="~/Images/profileIcon.png"/>
-					</div>
-					<div class="place-text">
-						<div>
-							@Model._users[1].name
-						</div>
-						<div class="points-2">
-							@Model._users[1].score.getPointsAsString() points
-						</div>
-					</div>
-				</div>
-			</div>
-			<img class="picture" src="/Images/Trophy2.svg"/>
-			<img class="picture" src="/Images/Trophy1.svg" />
-			<img class="picture" src="/Images/Trophy3.svg" />
-			<div class="place-3">
-				<div class="place-number">
-					#3
-				</div>
-				<div class="place-container">
-					<div class="place-picture">
-						<img src="~/Images/profileIcon.png" />
-					</div>
-					<div class="place-text">
-						<div>
-							@Model._users[2].name
-						</div>
-						<div class="points-3">
-							@Model._users[2].score.getPointsAsString() points
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="honorarySection">
-		<div class="place-e">
-			<div class="place-number">
-				#4
-			</div>
-			<div class="place-container">
-				<div class="place-picture">
-					<img src="~/Images/profileIcon.png" />
-				</div>
-				<div class="place-text">
-					<div>
-						@Model._users[3].name
-					</div>
-					<div class="points-2">
-						@Model._users[3].score.getPointsAsString() points
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="place-e">
-			<div class="place-number">
-				#5
-			</div>
-			<div class="place-container">
-				<div class="place-picture">
-					<img src="~/Images/profileIcon.png" />
-				</div>
-				<div class="place-text">
-					<div>
-						@Model._users[4].name
-					</div>
-					<div class="points-2">
-						@Model._users[4].score.getPointsAsString() points
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="podiumContainer2">
+            <div class="place-2">
+                <div class="place-number">
+                    #2
+                </div>
+                <div class="place-container">
+                    <div class="place-picture">
+                        @if (string.IsNullOrEmpty(Model._users[1].adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@Model._users[1].name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@Model._users[1].adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                    </div>
+                    <div class="place-text">
+                        <div>
+                            @Model._users[1].name
+                        </div>
+                        <div class="points-2">
+                            @Model._users[1].score.getPointsAsString() points
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="picture" src="/Images/Trophy2.svg" />
+            <img class="picture" src="/Images/Trophy1.svg" />
+            <img class="picture" src="/Images/Trophy3.svg" />
+            <div class="place-3">
+                <div class="place-number">
+                    #3
+                </div>
+                <div class="place-container">
+                    <div class="place-picture">
+                        @if (string.IsNullOrEmpty(Model._users[2].adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@Model._users[2].name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@Model._users[2].adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                    </div>
+                    <div class="place-text">
+                        <div>
+                            @Model._users[2].name
+                        </div>
+                        <div class="points-3">
+                            @Model._users[2].score.getPointsAsString() points
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-	<div class="rest">
-		@for (int i = 0; i < 7; i++)
-		{
-			int j = i + Model.start_i;
-			string points = Model._users[j].score.getPointsAsString();
-			@if(i == 3){
-				<div class="place-user">
-					<div class="place-number">#@j</div>
-					<div class="place-container">
-						<div class="place-picture">
-							<img src="~/Images/profileIcon.png" />
-						</div>
-						<div class="place-text">
-							<div>@Model._users[j].name</div>
-							<div class="points">@points points</div>
-						</div>
-					</div>
-				</div>
-			}
-			else if(i%2 != 0){
-				<div class="place-e">
-					<div class="place-number">#@j</div>
-					<div class="place-container">
-						<div class="place-picture">
-							<img src="~/Images/profileIcon.png" />
-						</div>
-						<div class="place-text">
-							<div>@Model._users[j].name</div>
-							<div class="points">@points points</div>
-						</div>
-					</div>
-				</div>
-			} 
-			else {
-				<div class="place-o">
-					<div class="place-number">#@j</div>
-					<div class="place-container">
-						<div class="place-picture">
-							<img src="~/Images/profileIcon.png" />
-						</div>
-						<div class="place-text">
-							<div>@Model._users[j].name</div>
-							<div class="points">@points points</div>
-						</div>
-					</div>
-				</div>
-			}
-		}
-	</div>
+<div class="rest">
+    @{
+        int currentUserIndex = Model.user_place - 1; // Adjust index for zero-based list
+        int startAbove = currentUserIndex - 1;
+        int endAbove = Math.Max(startAbove - 2, 0);
+        int startBelow = currentUserIndex + 1;
+        int endBelow = Math.Min(startBelow + 2, Model._users.Count - 1);
+    }
+    @if (Model.user_place > 4) //plek boven jou
+    {
+        @for (int i = endAbove; i <= startAbove; i++)
+        {
+            if (i >= 0 && i != currentUserIndex) // Exclude user's own position
+            {
+                var user = Model._users[i];
+                string points = user.score.getPointsAsString();
+
+                <div class="place-o">
+                    <div class="place-number">#@(i + 1)</div>
+                    <div class="place-container">
+                        <div class="place-picture">
+                            @if (string.IsNullOrEmpty(user.adress))
+                            {
+                                <div>
+                                    <img src="https://ui-avatars.com/api/?name=@user.name" alt="Profile Picture" id="profilePicture" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <img src="@user.adress" alt="Profile Picture" id="profilePicture" />
+                                </div>
+                            }
+                        </div>
+                        <div class="place-text">
+                            <div>@user.name</div>
+                            <div class="points">@points points</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+
+    @if (Model.user_place >= 4) //jezelf
+    {
+        <div class="place-user">
+            <div class="place-number">#@Model.user_place</div>
+            <div class="place-container">
+                <div class="place-picture">
+                    @if (string.IsNullOrEmpty(Model._users[Model.user_place - 1].adress))
+                    {
+                        <div>
+                            <img src="https://ui-avatars.com/api/?name=@Model._users[Model.user_place - 1].name" alt="Profile Picture" id="profilePicture" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <img src="@Model._users[Model.user_place - 1].adress" alt="Profile Picture" id="profilePicture" />
+                        </div>
+                    }
+                </div>
+                <div class="place-text">
+                    <div>@Model._users[Model.user_place - 1].name</div>
+                    <div class="points">@Model._users[Model.user_place - 1].score.getPointsAsString() points</div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @for (int i = startBelow; i <= endBelow; i++)
+    {
+        @if (Model.user_place >= 3)
+        {
+            if (i < Model._users.Count && i != currentUserIndex) // Exclude user's own position
+            {
+                var user = Model._users[i];
+                string points = user.score.getPointsAsString();
+
+                <div class="place-e">
+                    <div class="place-number">#@(i + 1)</div>
+                    <div class="place-container">
+                        <div class="place-picture">
+                            @if (string.IsNullOrEmpty(user.adress))
+                            {
+                                <div>
+                                    <img src="https://ui-avatars.com/api/?name=@user.name" alt="Profile Picture" id="profilePicture" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <img src="@user.adress" alt="Profile Picture" id="profilePicture" />
+                                </div>
+                            }
+                        </div>
+                        <div class="place-text">
+                            <div>@user.name</div>
+                            <div class="points">@points points</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        @if (Model.user_place == 1 && i < Model._users.Count && i != currentUserIndex) // Exclude user's own position
+        {
+            var user = Model._users[i + 3];
+            string points = user.score.getPointsAsString();
+
+            <div class="place-e">
+                <div class="place-number">#@(i + 3)</div>
+                <div class="place-container">
+                    <div class="place-picture">
+                        @if (string.IsNullOrEmpty(user.adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@user.name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@user.adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                    </div>
+                    <div class="place-text">
+                        <div>@user.name</div>
+                        <div class="points">@points points</div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (Model.user_place == 2 && i < Model._users.Count && i != currentUserIndex) // Exclude user's own position
+        {
+            var user = Model._users[i + 2];
+            string points = user.score.getPointsAsString();
+
+            <div class="place-e">
+                <div class="place-number">#@(i + 2)</div>
+                <div class="place-container">
+                    <div class="place-picture">
+                        @if (string.IsNullOrEmpty(user.adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@user.name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@user.adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                    </div>
+                    <div class="place-text">
+                        <div>@user.name</div>
+                        <div class="points">@points points</div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
 </div>
