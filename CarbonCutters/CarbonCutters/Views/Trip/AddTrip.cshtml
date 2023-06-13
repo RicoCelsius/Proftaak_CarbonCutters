@@ -101,7 +101,7 @@
                     </select>
                 </div>
             </div>
-           @* <div class="optionHidden" name="PublicTransportOptions">
+            <div class="optionHidden" name="AirplaneOptions">
                 <div>
                     <label asp-for="type3">@Localizer["airplane"]</label>
                     <select asp-for="type3" size="5">
@@ -110,7 +110,7 @@
                         <option value="none" selected hidden></option>
                     </select>
                 </div>
-            </div>*@
+            </div>
             <div class="inputContainer">
                 <label asp-for="distance">@Localizer["distance"]</label>
                 <input asp-for="distance" type="number" value="0" min="0"/>

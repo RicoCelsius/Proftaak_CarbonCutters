@@ -25,7 +25,7 @@ public class VehicleCollection : IVehicleCollection
         _vehicles = vehicleDal;
     }
 
-    public Vehicle GetObject(string clas, string? Size, string? Fuel, string? Type1, string? Type2)
+    public Vehicle GetObject(string clas, string? Size, string? Fuel, string? Type1, string? Type2, string? Type3)
     {
         Vehicle? vehicle = null;
 
@@ -78,15 +78,15 @@ public class VehicleCollection : IVehicleCollection
 
             vehicle = new NoEmission(0, t);
         }
-        //else if (clas == "Airplane")
-        //{
-        //    airplane t = airplane.airplane;
+        else if (clas == "Airplane")
+        {
+            airplane t = airplane.airplane;
 
-        //    if (Type3 == "airplane")
-        //        t = airplane.airplane;
+            if (Type3 == "airplane")
+                t = airplane.airplane;
 
-        //    vehicle = new Airplane(0, t);
-        //}
+            vehicle = new Airplane(0, t);
+        }
 
         if (vehicle == null)
             throw new Exception("Not a valid vehicle");
