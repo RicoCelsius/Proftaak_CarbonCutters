@@ -39,6 +39,20 @@ namespace CarbonCuttersUnitTests
             // Assert
             Assert.Equal(expectedPoints, actualPoints);
         }
+        [Fact]
+        public void tostation()
+        {
+            // Arrange
+            int distance = 3;
+            string method = "to from station";
+            int expectedPoints = 15;
+
+            // Act
+            int actualPoints = Score.CalculateScore(distance, method);
+
+            // Assert
+            Assert.Equal(expectedPoints, actualPoints);
+        }
 
         [Fact]
         public void CalculateScore_airplane()

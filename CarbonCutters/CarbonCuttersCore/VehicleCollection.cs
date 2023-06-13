@@ -78,6 +78,15 @@ public class VehicleCollection : IVehicleCollection
 
             vehicle = new NoEmission(0, t);
         }
+        //else if (clas == "Airplane")
+        //{
+        //    airplane t = airplane.airplane;
+
+        //    if (Type3 == "airplane")
+        //        t = airplane.airplane;
+
+        //    vehicle = new Airplane(0, t);
+        //}
 
         if (vehicle == null)
             throw new Exception("Not a valid vehicle");
