@@ -3,6 +3,7 @@ using CarbonCuttersCore.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration.UserSecrets;
+using System.Data;
 using System.Diagnostics;
 
 namespace CarbonCuttersDAL;
@@ -156,12 +157,13 @@ public class TripCollectionDal : ITripCollection
         using var connection = new SqlConnection(ConnectionString);
         connection.Open();
 
-        var command = new SqlCommand(
-            "insert into trip (authzero_user_id, done, Date, points)" +
-            "OUTPUT (INSERTED.trip_id) " +
-            "values " +
-            "('" + UserID + "'," + done + ",'" + trip.dateTime.ToString(@"yyyy-MM-dd") + "'," + trip.score.points + ")",
-            connection);
+        var command = new SqlCommand("dbo.AddTrip", connection);
+        command.CommandType = CommandType.StoredProcedure;
+        command.Parameters.AddWithValue("@authzero_user_id", UserID);
+        command.Parameters.AddWithValue("@done", done);
+        command.Parameters.AddWithValue("@Date", trip.dateTime);
+        command.Parameters.AddWithValue("@points", trip.score.points);
+
         var reader = command.ExecuteReader();
         if (reader != null)
         {

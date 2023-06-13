@@ -42,6 +42,13 @@
     flex-grow: 0.3;
 }
 
+#profilePicture {
+   width: 55px;
+    height: 55px;
+    margin: auto;
+    border-radius: 100px;
+}
+
 .place-3 {
     background-color: #e0a469;
     flex-grow: 0.3;
@@ -138,3 +145,4 @@
 .place-o {
     background-color: #608F73;
 }
+

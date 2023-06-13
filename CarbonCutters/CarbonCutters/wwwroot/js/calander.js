@@ -177,35 +177,40 @@ function MakeTripSections(id, distance, starttime, endtime) {
 
         };
 
-
-
         // create delete button
         var deleteButton = document.createElement('button');
         deleteButton.innerHTML = 'X';
         deleteButton.setAttribute('class', 'deleteButton');
         deleteButton.onclick = function () {
-            // remove the entire trip on button click
-            trip.remove();
-            var tripId = trip.id.split('-')[1];
-            console.log(tripId);
+            // confirmation before deletion
+            var confirmation = confirm("Are you sure you want to delete this trip?");
+            if (confirmation) {
+                // remove the entire trip on button click
+                trip.remove();
+                var tripId = trip.id.split('-')[1];
+                console.log(tripId);
 
 
-            // send delete request to controller
-            fetch('/DeleteTrip', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id: tripId }), // Ensure 'id' is correct here
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
+                // send delete request to controller
+                fetch('/DeleteTrip', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id: tripId }), // Ensure 'id' is correct here
                 })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
         };
+
+
+       
 
         tripSegment.appendChild(tim);
         tripSegment.appendChild(dis);

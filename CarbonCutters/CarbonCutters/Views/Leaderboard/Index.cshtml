@@ -13,7 +13,18 @@
                 </div>
                 <div class="place-container">
                     <div class="place-picture">
-                        <img src="~/Images/profileIcon.png" />
+                        @if (string.IsNullOrEmpty(Model._users[0].adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@Model._users[0].name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@Model._users[0].adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
                     </div>
                     <div class="place-text">
                         <div>
@@ -34,7 +45,18 @@
                 </div>
                 <div class="place-container">
                     <div class="place-picture">
-                        <img src="~/Images/profileIcon.png"/>
+                        @if (string.IsNullOrEmpty(Model._users[1].adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@Model._users[1].name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@Model._users[1].adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
                     </div>
                     <div class="place-text">
                         <div>
@@ -46,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            <img class="picture" src="/Images/Trophy2.svg"/>
+            <img class="picture" src="/Images/Trophy2.svg" />
             <img class="picture" src="/Images/Trophy1.svg" />
             <img class="picture" src="/Images/Trophy3.svg" />
             <div class="place-3">
@@ -55,7 +77,18 @@
                 </div>
                 <div class="place-container">
                     <div class="place-picture">
-                        <img src="~/Images/profileIcon.png" />
+                        @if (string.IsNullOrEmpty(Model._users[2].adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@Model._users[2].name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@Model._users[2].adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
                     </div>
                     <div class="place-text">
                         <div>
@@ -72,7 +105,6 @@
 </div>
 
 <div class="rest">
-    @if(Model.user_place > 3){}
     @{
         int currentUserIndex = Model.user_place - 1; // Adjust index for zero-based list
         int startAbove = currentUserIndex - 1;
@@ -80,11 +112,11 @@
         int startBelow = currentUserIndex + 1;
         int endBelow = Math.Min(startBelow + 2, Model._users.Count - 1);
     }
-    @if (Model.user_place > 4)
+    @if (Model.user_place > 4) //plek boven jou
     {
         @for (int i = endAbove; i <= startAbove; i++)
         {
-            if (i >= 0)
+            if (i >= 0 && i != currentUserIndex) // Exclude user's own position
             {
                 var user = Model._users[i];
                 string points = user.score.getPointsAsString();
@@ -93,7 +125,18 @@
                     <div class="place-number">#@(i + 1)</div>
                     <div class="place-container">
                         <div class="place-picture">
-                            <img src="~/Images/profileIcon.png"/>
+                            @if (string.IsNullOrEmpty(user.adress))
+                            {
+                                <div>
+                                    <img src="https://ui-avatars.com/api/?name=@user.name" alt="Profile Picture" id="profilePicture" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <img src="@user.adress" alt="Profile Picture" id="profilePicture" />
+                                </div>
+                            }
                         </div>
                         <div class="place-text">
                             <div>@user.name</div>
@@ -104,14 +147,25 @@
             }
         }
     }
-    
-    @if (Model.user_place > 3)
+
+    @if (Model.user_place >= 4) //jezelf
     {
         <div class="place-user">
             <div class="place-number">#@Model.user_place</div>
             <div class="place-container">
                 <div class="place-picture">
-                    <img src="~/Images/profileIcon.png"/>
+                    @if (string.IsNullOrEmpty(Model._users[Model.user_place - 1].adress))
+                    {
+                        <div>
+                            <img src="https://ui-avatars.com/api/?name=@Model._users[Model.user_place - 1].name" alt="Profile Picture" id="profilePicture" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <img src="@Model._users[Model.user_place - 1].adress" alt="Profile Picture" id="profilePicture" />
+                        </div>
+                    }
                 </div>
                 <div class="place-text">
                     <div>@Model._users[Model.user_place - 1].name</div>
@@ -123,9 +177,9 @@
 
     @for (int i = startBelow; i <= endBelow; i++)
     {
-        @if (Model.user_place > 3)
+        @if (Model.user_place >= 3)
         {
-            if (i < Model._users.Count)
+            if (i < Model._users.Count && i != currentUserIndex) // Exclude user's own position
             {
                 var user = Model._users[i];
                 string points = user.score.getPointsAsString();
@@ -134,7 +188,18 @@
                     <div class="place-number">#@(i + 1)</div>
                     <div class="place-container">
                         <div class="place-picture">
-                            <img src="~/Images/profileIcon.png"/>
+                            @if (string.IsNullOrEmpty(user.adress))
+                            {
+                                <div>
+                                    <img src="https://ui-avatars.com/api/?name=@user.name" alt="Profile Picture" id="profilePicture" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <img src="@user.adress" alt="Profile Picture" id="profilePicture" />
+                                </div>
+                            }
                         </div>
                         <div class="place-text">
                             <div>@user.name</div>
@@ -144,8 +209,64 @@
                 </div>
             }
         }
+        @if (Model.user_place == 1 && i < Model._users.Count && i != currentUserIndex) // Exclude user's own position
+        {
+            var user = Model._users[i + 3];
+            string points = user.score.getPointsAsString();
 
+            <div class="place-e">
+                <div class="place-number">#@(i + 3)</div>
+                <div class="place-container">
+                    <div class="place-picture">
+                        @if (string.IsNullOrEmpty(user.adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@user.name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@user.adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                    </div>
+                    <div class="place-text">
+                        <div>@user.name</div>
+                        <div class="points">@points points</div>
+                    </div>
+                </div>
+            </div>
+        }
 
+        @if (Model.user_place == 2 && i < Model._users.Count && i != currentUserIndex) // Exclude user's own position
+        {
+            var user = Model._users[i + 2];
+            string points = user.score.getPointsAsString();
+
+            <div class="place-e">
+                <div class="place-number">#@(i + 2)</div>
+                <div class="place-container">
+                    <div class="place-picture">
+                        @if (string.IsNullOrEmpty(user.adress))
+                        {
+                            <div>
+                                <img src="https://ui-avatars.com/api/?name=@user.name" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="@user.adress" alt="Profile Picture" id="profilePicture" />
+                            </div>
+                        }
+                    </div>
+                    <div class="place-text">
+                        <div>@user.name</div>
+                        <div class="points">@points points</div>
+                    </div>
+                </div>
+            </div>
+        }
     }
-
 </div>
