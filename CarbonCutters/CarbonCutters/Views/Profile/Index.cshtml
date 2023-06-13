@@ -60,35 +60,24 @@ else
     var labels = [];
     var scores = [];
     var averageScores = [];
-    
-    averageScoreData.sort(function(a, b) {
-    return new Date(a.date) - new Date(b.date);
-	});
+
+    var today = new Date();
+    today.setHours(0, 0, 0, 0); // Set current time to 00:00:00
 
     for (var i = 0; i < scoreData.length; i++) {
-        scores.push(scoreData[i].score);
+        var date = new Date(scoreData[i].date);
+        if (date >= today.setDate(today.getDate() - 7) && date <= new Date()) { // Filter data for the past 7 days and exclude future dates
+            scores.push(scoreData[i].score);
+            labels.push(scoreData[i].date);
+        }
     }
 
     for (var i = 0; i < averageScoreData.length; i++) {
-        labels.push(averageScoreData[i].date);
-        averageScores.push(averageScoreData[i].score);
+        var date = new Date(averageScoreData[i].date);
+        if (date >= today.setDate(today.getDate() - 7) && date <= new Date()) { // Filter data for the past 7 days and exclude future dates
+            averageScores.push(averageScoreData[i].score);
+        }
     }
-    
-	var currentDate = new Date();
-
-	var startDate = new Date(currentDate);
-	startDate.setDate(startDate.getDate() - 7);
-    
-
-	labels = labels.filter(function(label) {
-    var date = new Date(label);
-    return date >= startDate && date <= currentDate;
-	});
-	averageScores = averageScores.slice(-labels.length);
-
-    var startDate = labels[0];
-    console.log(startDate);
-    var endDate = labels[labels.length - 1];
 
     var ctx = document.getElementById('scoreChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -122,8 +111,8 @@ else
                         text: 'Date'
                     },
                     ticks: {
-                        min: startDate,
-                        max: endDate
+                        min: labels[0],
+                        max: labels[-1]
                     }
                 },
                 y: {
@@ -138,3 +127,5 @@ else
     });
 
 </script>
+
+

@@ -148,34 +148,6 @@ function MakeTripSections(id, distance, starttime, endtime) {
         var tim = document.createElement('div');
         tim.innerHTML = starttime + ' - ' + endtime;
 
-        // create edit button
-        var editButton = document.createElement('button');
-        editButton.innerHTML = 'Edit';
-        editButton.setAttribute('class', 'editButton');
-        editButton.onclick = function () {
-
-            // edit the entire trip on button click
-            var tripId = trip.id.split('-')[1];
-            console.log(tripId);
-
-
-            // send edit request to controller
-            fetch('/EditTrip', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id: tripId }), // Ensure 'id' is correct here
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-
-        };
 
         // create delete button
         var deleteButton = document.createElement('button');
@@ -214,7 +186,6 @@ function MakeTripSections(id, distance, starttime, endtime) {
 
         tripSegment.appendChild(tim);
         tripSegment.appendChild(dis);
-        tripSegment.appendChild(editButton); 
         tripSegment.appendChild(deleteButton); // append delete button to the trip segment
 
         trip.appendChild(tripSegment);
