@@ -112,11 +112,12 @@ else
                     },
                     ticks: {
                         min: labels[0],
-                        max: labels[-1]
+                        max: labels[labels.length - 1] // Use labels[labels.length - 1] to set the maximum value
                     }
                 },
                 y: {
-                    beginAtZero: true,
+                    scaleBeginAtZero: true,
+                    beginAtZero: true, // Set the y-axis to start at zero
                     title: {
                         display: true,
                         text: 'Score'
@@ -127,5 +128,7 @@ else
     });
 
 </script>
+
+
 
 
