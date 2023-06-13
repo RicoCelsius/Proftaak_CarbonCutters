@@ -1,10 +1,12 @@
 ﻿.podiumSection {
     display: flex;
     flex-direction: column;
+
     padding: 10px;
     background-color: #608F73;
     border-radius: 10px;
 }
+
 
 .podiumContainer2 {
     display: flex;
@@ -14,6 +16,7 @@
 }
 
 .podiumContainer1{
+
     display: flex;
     flex-direction: row;
     flex-grow: 1;
@@ -37,6 +40,13 @@
 .place-2 {
     background-color: #f0f0f0;
     flex-grow: 0.3;
+}
+
+#profilePicture {
+   width: 55px;
+    height: 55px;
+    margin: auto;
+    border-radius: 100px;
 }
 
 .place-3 {
@@ -103,6 +113,13 @@
     color: #975f28;
 }
 
+.outerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .honorarySection{
     display: flex;
     justify-content: space-between;
@@ -128,3 +145,4 @@
 .place-o {
     background-color: #608F73;
 }
+

@@ -55,6 +55,40 @@ namespace CarbonCuttersView.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+        [HttpDelete("DeleteTrip")]
+        public ActionResult DeleteTrip([FromBody] TripModel model)
+        {
+            // Extract id from model
+            int id = model.id;
+
+            // Delete trip with id
+            TripCollection trips = new TripCollection(new TripCollectionDal());
+            trips.remove(id);
+
+
+            // Return result
+            return Ok();
+        }
+
+
+        [HttpPut("EditTrip")]
+        [Authorize]
+        public IActionResult EditTrip([FromBody] TripModel model)
+        {
+            string user_id = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            TripCollection trips = new TripCollection(new TripCollectionDal(user_id, vehicles));
+            Trip trip = trips.getTrip(model.id);
+         
+
+          
+
+          return View(model);
+        }
+
+
+
     }
 
 }

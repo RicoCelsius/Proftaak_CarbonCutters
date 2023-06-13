@@ -22,7 +22,7 @@ namespace CarbonCuttersMockData
             users.Add(user);
         }
 
-        public List<User> GetAllUserScores()
+        public List<User> getAllUsers()
         {
             return new List<User>();
         }

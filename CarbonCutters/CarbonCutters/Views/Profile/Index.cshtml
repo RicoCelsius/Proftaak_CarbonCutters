@@ -61,7 +61,9 @@ else
     var scores = [];
     var averageScores = [];
     
-
+    averageScoreData.sort(function(a, b) {
+    return new Date(a.date) - new Date(b.date);
+	});
 
     for (var i = 0; i < scoreData.length; i++) {
         scores.push(scoreData[i].score);
@@ -71,6 +73,18 @@ else
         labels.push(averageScoreData[i].date);
         averageScores.push(averageScoreData[i].score);
     }
+    
+	var currentDate = new Date();
+
+	var startDate = new Date(currentDate);
+	startDate.setDate(startDate.getDate() - 7);
+    
+
+	labels = labels.filter(function(label) {
+    var date = new Date(label);
+    return date >= startDate && date <= currentDate;
+	});
+	averageScores = averageScores.slice(-labels.length);
 
     var startDate = labels[0];
     console.log(startDate);
