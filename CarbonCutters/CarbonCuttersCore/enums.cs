@@ -32,3 +32,8 @@ public enum publicTransport
     taxi,
     train
 }
+
+public enum airplane
+{
+    airplane
+}

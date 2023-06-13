@@ -15,7 +15,8 @@ namespace CarbonCuttersView.Models
 		public List<int> distance { get; set; }
 		public List<string> type1 { get; set; }
         public List<string> type2 { get; set; }
-        public TripsModel()
+		public List<string> type3{ get; set; }
+		public TripsModel()
 		{
 
 		}

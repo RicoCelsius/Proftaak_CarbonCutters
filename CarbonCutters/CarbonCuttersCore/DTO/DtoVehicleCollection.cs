@@ -20,5 +20,7 @@ public class DtoVehicleCollection
 			vehicles.Add(new DtoNoEmission(vehicle));
 		foreach (PublicTransport vehicle in vehicleCollection.vehicles.OfType<PublicTransport>())
 			vehicles.Add(new DtoPublicTransport(vehicle));
+		foreach (Airplane vehicle in vehicleCollection.vehicles.OfType<Airplane>())
+			vehicles.Add(new DtoAirplane(vehicle));
 	}
 }

@@ -123,6 +123,9 @@
   <data name="addtripsegment" xml:space="preserve">
     <value>Add trip segment</value>
   </data>
+  <data name="airplane" xml:space="preserve">
+    <value>Airplane</value>
+  </data>
   <data name="back" xml:space="preserve">
     <value>Back</value>
   </data>

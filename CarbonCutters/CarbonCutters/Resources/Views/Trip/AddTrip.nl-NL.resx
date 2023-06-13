@@ -123,6 +123,9 @@
   <data name="addtripsegment" xml:space="preserve">
     <value>Rit segment toevoegen</value>
   </data>
+  <data name="airplane" xml:space="preserve">
+    <value>Vliegtuig</value>
+  </data>
   <data name="back" xml:space="preserve">
     <value>Terug</value>
   </data>
