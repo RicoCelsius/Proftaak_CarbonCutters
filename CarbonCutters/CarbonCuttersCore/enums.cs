@@ -37,3 +37,13 @@ public enum airplane
 {
     airplane
 }
+
+public enum longDistanceTrain
+{
+    longdistancetrain
+}
+
+public enum toFromStation
+{
+    tofromstation
+}

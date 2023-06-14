@@ -165,6 +165,9 @@
   <data name="large" xml:space="preserve">
     <value>Large</value>
   </data>
+  <data name="longdistancetrain" xml:space="preserve">
+    <value>Long distance train</value>
+  </data>
   <data name="medium" xml:space="preserve">
     <value>Medium</value>
   </data>
@@ -194,6 +197,9 @@
   </data>
   <data name="taxi" xml:space="preserve">
     <value>Taxi</value>
+  </data>
+  <data name="tofromstation" xml:space="preserve">
+    <value>To and from station</value>
   </data>
   <data name="train" xml:space="preserve">
     <value>Train</value>

@@ -44,7 +44,7 @@ namespace CarbonCuttersView.Controllers
             List<TripSegment> segments = new();
             for (int i = 1; i < model.distance.Count(); i++)
             {
-                Vehicle vehicle = VehicleCollection.GetObject(model.vehicletype[i], model.size[i], model.fuel[i], model.type1[i], model.type2[i], model.type3[i]);
+                Vehicle vehicle = VehicleCollection.GetObject(model.vehicletype[i], model.size[i], model.fuel[i], model.type1[i], model.type2[i], model.type3[i], model.type4[i], model.type5[i]);
                 TimeOnly start = TimeOnly.Parse(model.startTime[i]);
                 TimeOnly end = TimeOnly.Parse(model.endTime[i]);
                 segments.Add(new TripSegment(model.distance[i], vehicle, start, end));

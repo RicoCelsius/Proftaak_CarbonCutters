@@ -43,10 +43,10 @@ public class Score
                 points += CalculateScore(segment.distance, "public transit");
             else if (segment.vehicle is Airplane)
                 points += CalculateScore(segment.distance, "airplane");
-            //else if (segment.vehicle is ToFromStation)
-            //    points += CalculateScore(segment.distance, "to from station");
-            //else if (segment.vehicle is LongDistanceTrain)
-            //    points += CalculateScore(segment.distance, "long distance train");
+            else if (segment.vehicle is ToFromStation)
+                points += CalculateScore(segment.distance, "to from station");
+            else if (segment.vehicle is LongDistanceTrain)
+                points += CalculateScore(segment.distance, "long distance train");
         }
     }
     public static int CalculateScore(int distance, string method)

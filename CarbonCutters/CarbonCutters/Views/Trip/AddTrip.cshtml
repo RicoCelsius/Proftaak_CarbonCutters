@@ -54,6 +54,8 @@
                     <option value="NoEmission">@Localizer["noemission"]</option>
                     <option value="PublicTransport">@Localizer["publictransport"]</option>
                     <option value="Airplane">@Localizer["airplane"]</option>
+                    <option value="LongDistanceTrain">@Localizer["longdistancetrain"]</option>
+                    <option value="ToFromStation">@Localizer["tofromstation"]</option>
                 </select>
             </div>
             <div class="optionHidden" name="CarOptions">
@@ -106,6 +108,26 @@
                     <label asp-for="type3">@Localizer["airplane"]</label>
                     <select asp-for="type3" size="1">
                         <option value="airplane">@Localizer["airplane"]</option>
+                        
+                        <option value="none" selected hidden></option>
+                    </select>
+                </div>
+            </div>
+            <div class="optionHidden" name="LongDistanceTrainOptions">
+                <div>
+                    <label asp-for="type4">@Localizer["longdistancetrain"]</label>
+                    <select asp-for="type4" size="1">
+                        <option value="longdistancetrain">@Localizer["longdistancetrain"]</option>
+                        
+                        <option value="none" selected hidden></option>
+                    </select>
+                </div>
+            </div>
+            <div class="optionHidden" name="ToFromStationOptions">
+                <div>
+                    <label asp-for="type5">@Localizer["tofromstation"]</label>
+                    <select asp-for="type5" size="1">
+                        <option value="tofromstation">@Localizer["tofromstation"]</option>
                         
                         <option value="none" selected hidden></option>
                     </select>

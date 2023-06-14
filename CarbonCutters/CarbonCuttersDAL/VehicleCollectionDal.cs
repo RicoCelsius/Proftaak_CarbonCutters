@@ -107,6 +107,10 @@ public class VehicleCollectionDal : IVehicleCollection
             id = GetVehicleId((PublicTransport)vehicle);
         else if (vehicle is Airplane)
             id = GetVehicleId((Airplane)vehicle);
+        else if (vehicle is LongDistanceTrain)
+            id = GetVehicleId((LongDistanceTrain)vehicle);
+        else if (vehicle is ToFromStation)
+            id = GetVehicleId((ToFromStation)vehicle);
 
         return id;
     }
@@ -198,6 +202,61 @@ public class VehicleCollectionDal : IVehicleCollection
     {
         int id = -1;
         string clas = "Airplane";
+        int emission = vehicle.emission;
+        string type = vehicle.type.ToString();
+
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var command = new SqlCommand(
+            "SELECT [vehicle_id] FROM [vehicle] where [class] = '" + clas + "' " +
+            "and [type] = '" + type + "' " +
+            "and [emission] = " + emission,
+            connection);
+        var reader = command.ExecuteReader();
+        if (reader != null)
+            while (reader.Read())
+                if (!reader.IsDBNull(0))
+                    id = reader.GetInt32(0);
+
+        connection.Close();
+
+        if (id == -1)
+            id = add(type, clas, null, null, emission);
+        return id;
+    }
+
+    private int GetVehicleId(LongDistanceTrain vehicle)
+    {
+        int id = -1;
+        string clas = "LongDistanceTrain";
+        int emission = vehicle.emission;
+        string type = vehicle.type.ToString();
+
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var command = new SqlCommand(
+            "SELECT [vehicle_id] FROM [vehicle] where [class] = '" + clas + "' " +
+            "and [type] = '" + type + "' " +
+            "and [emission] = " + emission,
+            connection);
+        var reader = command.ExecuteReader();
+        if (reader != null)
+            while (reader.Read())
+                if (!reader.IsDBNull(0))
+                    id = reader.GetInt32(0);
+
+        connection.Close();
+
+        if (id == -1)
+            id = add(type, clas, null, null, emission);
+        return id;
+    }
+    private int GetVehicleId(ToFromStation vehicle)
+    {
+        int id = -1;
+        string clas = "ToFromStation";
         int emission = vehicle.emission;
         string type = vehicle.type.ToString();
 

@@ -16,6 +16,9 @@ namespace CarbonCuttersView.Models
 		public List<string> type1 { get; set; }
         public List<string> type2 { get; set; }
 		public List<string> type3{ get; set; }
+		public List<string> type4 { get; set; }
+		public List<string> type5 { get; set; }
+
 		public TripsModel()
 		{
 
