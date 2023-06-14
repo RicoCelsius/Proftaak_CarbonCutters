@@ -35,27 +35,28 @@ function loaddays() {
         }
 
         switch (daynumber) {
+            case -1:
+                name = "Sun"
+                break;
             case 0:
-                name = "Mo"
+                name = "Mon"
                 break;
             case 1:
-                name = "Tu"
+                name = "Tue"
                 break;
             case 2:
-                name = "We"
+                name = "Wed"
                 break;
             case 3:
-                name = "Th"
+                name = "Thu"
                 break;
             case 4:
-                name = "Fr"
+                name = "Fri"
                 break;
             case 5:
-                name = "Sa"
+                name = "Sat"
                 break;
-            case 6:
-                name = "Su"
-                break;
+            
         }
 
         var day = document.createElement('div');
