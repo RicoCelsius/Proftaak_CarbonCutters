@@ -48,7 +48,7 @@
             </div>
             <div class="inputContainer">
                 <label asp-for="vehicletype">@Localizer["transport"]</label>
-                <select asp-for="vehicletype" onchange="ChangeInput(this.value, this)" size="4">
+                <select asp-for="vehicletype" onchange="ChangeInput(this.value, this)" size="6">
                     <option value="none" selected hidden></option>
                     <option value="Car">@Localizer["car"]</option>
                     <option value="NoEmission">@Localizer["noemission"]</option>

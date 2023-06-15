@@ -166,13 +166,13 @@
     <value>Large</value>
   </data>
   <data name="longdistancetrain" xml:space="preserve">
-    <value>Long distance train</value>
+    <value>Long-distance train</value>
   </data>
   <data name="medium" xml:space="preserve">
     <value>Medium</value>
   </data>
   <data name="noemission" xml:space="preserve">
-    <value>No emission</value>
+    <value>No emissions</value>
   </data>
   <data name="petrol" xml:space="preserve">
     <value>Petrol</value>
