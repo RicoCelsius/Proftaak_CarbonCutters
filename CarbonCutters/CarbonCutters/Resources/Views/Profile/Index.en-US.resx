@@ -130,6 +130,6 @@
     <value>Your progress chart</value>
   </data>
   <data name="yourscore" xml:space="preserve">
-    <value>Your Score</value>
+    <value>Your average score</value>
   </data>
 </root>
