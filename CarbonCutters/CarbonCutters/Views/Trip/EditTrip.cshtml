@@ -1,7 +1,7 @@
 ﻿@using CarbonCuttersCore.Interface
 @using CarbonCuttersView.Models
 @using CarbonCuttersCore
-@model TripsModel
+@model TripModel
 
 @using Microsoft.AspNetCore.Builder
 @using Microsoft.AspNetCore.Http.Features
@@ -13,7 +13,8 @@
 @inject IOptions<RequestLocalizationOptions> LocOptions
 
 
-@{var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
     var cultureItems = LocOptions.Value.SupportedUICultures
         .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
         .ToList();
@@ -31,7 +32,7 @@
             </div>
             <div class="inputContainer">
                 <label asp-for="date">@Localizer["date"]</label>
-                <input asp-for="date" type="date"/>
+                <input asp-for="date" value=@Model.date type="date" />
             </div>
         </div>
 
@@ -41,21 +42,18 @@
             </div>
             <div class="inputContainer">
                 <label asp-for="startTime">@Localizer["starttime"]</label>
-                <input asp-for="startTime" type="time"/>
+                <input asp-for="startTime" type="time" />
                 -
-                <input asp-for="endTime" type="time"/>
+                <input asp-for="endTime" type="time" />
                 <label asp-for="endTime">@Localizer["endtime"]</label>
             </div>
             <div class="inputContainer">
                 <label asp-for="vehicletype">@Localizer["transport"]</label>
-                <select asp-for="vehicletype" onchange="ChangeInput(this.value, this)" size="6">
+                <select asp-for="vehicletype" onchange="ChangeInput(this.value, this)" size="3">
                     <option value="none" selected hidden></option>
                     <option value="Car">@Localizer["car"]</option>
                     <option value="NoEmission">@Localizer["noemission"]</option>
                     <option value="PublicTransport">@Localizer["publictransport"]</option>
-                    <option value="Airplane">@Localizer["airplane"]</option>
-                    <option value="LongDistanceTrain">@Localizer["longdistancetrain"]</option>
-                    <option value="ToFromStation">@Localizer["tofromstation"]</option>
                 </select>
             </div>
             <div class="optionHidden" name="CarOptions">
@@ -103,44 +101,13 @@
                     </select>
                 </div>
             </div>
-            <div class="optionHidden" name="AirplaneOptions">
-                <div>
-                    <label asp-for="type3">@Localizer["airplane"]</label>
-                    <select asp-for="type3" size="1">
-                        <option value="airplane">@Localizer["airplane"]</option>
-                        
-                        <option value="none" selected hidden></option>
-                    </select>
-                </div>
-            </div>
-            <div class="optionHidden" name="LongDistanceTrainOptions">
-                <div>
-                    <label asp-for="type4">@Localizer["longdistancetrain"]</label>
-                    <select asp-for="type4" size="1">
-                        <option value="longdistancetrain">@Localizer["longdistancetrain"]</option>
-                        
-                        <option value="none" selected hidden></option>
-                    </select>
-                </div>
-            </div>
-            <div class="optionHidden" name="ToFromStationOptions">
-                <div>
-                    <label asp-for="type5">@Localizer["tofromstation"]</label>
-                    <select asp-for="type5" size="1">
-                        <option value="tofromstation">@Localizer["tofromstation"]</option>
-                        
-                        <option value="none" selected hidden></option>
-                    </select>
-                </div>
-            </div>
             <div class="inputContainer">
                 <label asp-for="distance">@Localizer["distance"]</label>
-                <input asp-for="distance" type="number" value="0" min="0"/>
+                <input asp-for="distance" type="number" value="0" min="0" />
             </div>
         </div>
 
         <div id="dumpContainer">
-
         </div>
 
         <div class="backNext">
@@ -152,7 +119,7 @@
             <a class="link" asp-controller="Trip" asp-action="Index">
                 @Localizer["back"]
             </a>
-            <input type="submit" value="@Localizer["addtrip"]"/>
+            <input type="submit" value="@Localizer["addtrip"]" />
         </div>
     </div>
 </form>

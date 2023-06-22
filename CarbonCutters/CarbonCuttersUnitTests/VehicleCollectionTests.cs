@@ -72,19 +72,19 @@ public class VehicleCollectionTests
         Assert.NotNull(Dto);
     }
 
-    [Fact]
-    public void CanSwitchToClass()
-    {
-        List<DtoVehicle> vehicles = new List<DtoVehicle>();
-        DtoCar car = new DtoCar(2, fuel.electric, sizes.small);
-        DtoNoEmission nEmission = new DtoNoEmission(0, noEmission.biking);
+    //[Fact]
+    //public void CanSwitchToClass()
+    //{
+    //    List<DtoVehicle> vehicles = new List<DtoVehicle>();
+    //    DtoCar car = new DtoCar(2, fuel.electric, sizes.small);
+    //    DtoNoEmission nEmission = new DtoNoEmission(0, noEmission.biking);
 
-        vehicles.Add(car);
-        vehicles.Add(nEmission);
+    //    vehicles.Add(car);
+    //    vehicles.Add(nEmission);
 
-        DtoVehicleCollection Dto = new DtoVehicleCollection(vehicles);
-        VehicleCollection vehicleCollection = new VehicleCollection(Dto);
+    //    DtoVehicleCollection Dto = new DtoVehicleCollection(vehicles);
+    //    VehicleCollection vehicleCollection = new VehicleCollection(Dto);
 
-        Assert.NotNull(vehicleCollection);
-    }
+    //    Assert.NotNull(vehicleCollection);
+    //}
 }

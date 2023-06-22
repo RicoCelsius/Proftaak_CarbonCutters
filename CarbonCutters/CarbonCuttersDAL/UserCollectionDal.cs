@@ -79,6 +79,33 @@ public class UserCollectionDal : IUserCollection
         throw new NotImplementedException();
     }
 
+    public List<User> getAllUsers()
+    {
+        List<User> users = new List<User>();
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+        var command = new SqlCommand(
+            "SELECT * FROM [dbo].[application_user]",
+            connection);
+        var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            Score score = DBNull.Value.Equals(reader.GetValue(4)) ? null : new Score(reader.GetInt32(4));
+            User user = new User(
+                DBNull.Value.Equals(reader.GetValue(0)) ? null : reader.GetString(0),
+                DBNull.Value.Equals(reader.GetValue(1)) ? null : reader.GetString(1),
+                DBNull.Value.Equals(reader.GetValue(2)) ? null : reader.GetString(2),
+                DBNull.Value.Equals(reader.GetValue(3)) ? null : reader.GetString(3),
+                score
+            );
+            users.Add(user);
+        }
+
+        return users;
+    }
+
+
+
 
     public User get(string id)
     {

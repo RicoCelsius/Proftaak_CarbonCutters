@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="~/css/tripCalander.css">
 <script type="text/javascript" src="/js/calander.js"></script>
 
+
+
+
 <script>
     function updateTrips(i) {
         updateWeek(i);
@@ -31,7 +34,10 @@
             @:MakeTrip((@t.dateTime.Year + "-" + @t.dateTime.Month + "-" + @t.dateTime.Day), @t.id, '@t.isDone')
             @foreach (TripSegment s in t.segments)
             {
-                @:MakeTripSections(@t.id, @s.distance, (@s.startTime.Hour + ':' + @s.startTime.Minute), (@s.endTime.Hour + ':' + @s.endTime.Minute))
+                var startTime = s.startTime.ToString("HH:mm");
+                var endTime = s.endTime.ToString("HH:mm");
+                @:MakeTripSections(@t.id, @s.distance, '@startTime', '@endTime')
+
             }
         }
     }

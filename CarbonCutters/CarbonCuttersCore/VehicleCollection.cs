@@ -25,7 +25,7 @@ public class VehicleCollection : IVehicleCollection
         _vehicles = vehicleDal;
     }
 
-    public Vehicle GetObject(string clas, string? Size, string? Fuel, string? Type1, string? Type2)
+    public Vehicle GetObject(string clas, string? Size, string? Fuel, string? Type1, string? Type2, string? Type3, string? Type4, string? Type5)
     {
         Vehicle? vehicle = null;
 
@@ -77,6 +77,33 @@ public class VehicleCollection : IVehicleCollection
                 t = noEmission.biking;
 
             vehicle = new NoEmission(0, t);
+        }
+        else if (clas == "Airplane")
+        {
+            airplane t = airplane.airplane;
+
+            if (Type3 == "airplane")
+                t = airplane.airplane;
+
+            vehicle = new Airplane(0, t);
+        }
+        else if (clas == "LongDistanceTrain")
+        {
+            longDistanceTrain t = longDistanceTrain.longdistancetrain;
+
+            if (Type4 == "longdistancetrain")
+                t = longDistanceTrain.longdistancetrain;
+
+            vehicle = new LongDistanceTrain(0, t);
+        }
+        else if (clas == "ToFromStation")
+        {
+            toFromStation t = toFromStation.tofromstation;
+
+            if (Type5 == "tofromstation")
+                t = toFromStation.tofromstation;
+
+            vehicle = new ToFromStation(0, t);
         }
 
         if (vehicle == null)

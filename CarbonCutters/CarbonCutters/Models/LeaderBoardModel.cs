@@ -8,6 +8,7 @@ public class LeaderBoardModel
 	public string user_id;
 	public int user_place;
 	public int start_i;
+	public string profile_picture;
 
 	public LeaderBoardModel()
 	{

@@ -123,6 +123,9 @@
   <data name="addtripsegment" xml:space="preserve">
     <value>Rit segment toevoegen</value>
   </data>
+  <data name="airplane" xml:space="preserve">
+    <value>Vliegtuig</value>
+  </data>
   <data name="back" xml:space="preserve">
     <value>Terug</value>
   </data>
@@ -142,7 +145,7 @@
     <value>Diesel</value>
   </data>
   <data name="distance" xml:space="preserve">
-    <value>Afstand</value>
+    <value>Afstand km</value>
   </data>
   <data name="electric" xml:space="preserve">
     <value>Elektrisch</value>
@@ -161,6 +164,9 @@
   </data>
   <data name="large" xml:space="preserve">
     <value>Groot</value>
+  </data>
+  <data name="longdistancetrain" xml:space="preserve">
+    <value>Langeafstandstrein</value>
   </data>
   <data name="medium" xml:space="preserve">
     <value>Middengroot</value>
@@ -191,6 +197,9 @@
   </data>
   <data name="taxi" xml:space="preserve">
     <value>Taxi</value>
+  </data>
+  <data name="tofromstation" xml:space="preserve">
+    <value>Van en naar station</value>
   </data>
   <data name="train" xml:space="preserve">
     <value>Trein</value>

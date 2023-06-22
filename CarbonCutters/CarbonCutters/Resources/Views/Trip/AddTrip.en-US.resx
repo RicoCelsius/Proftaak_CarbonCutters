@@ -123,6 +123,9 @@
   <data name="addtripsegment" xml:space="preserve">
     <value>Add trip segment</value>
   </data>
+  <data name="airplane" xml:space="preserve">
+    <value>Airplane</value>
+  </data>
   <data name="back" xml:space="preserve">
     <value>Back</value>
   </data>
@@ -142,7 +145,7 @@
     <value>Diesel</value>
   </data>
   <data name="distance" xml:space="preserve">
-    <value>Distance</value>
+    <value>Distance km</value>
   </data>
   <data name="electric" xml:space="preserve">
     <value>Electric</value>
@@ -162,11 +165,14 @@
   <data name="large" xml:space="preserve">
     <value>Large</value>
   </data>
+  <data name="longdistancetrain" xml:space="preserve">
+    <value>Long-distance train</value>
+  </data>
   <data name="medium" xml:space="preserve">
     <value>Medium</value>
   </data>
   <data name="noemission" xml:space="preserve">
-    <value>No emission</value>
+    <value>No emissions</value>
   </data>
   <data name="petrol" xml:space="preserve">
     <value>Petrol</value>
@@ -191,6 +197,9 @@
   </data>
   <data name="taxi" xml:space="preserve">
     <value>Taxi</value>
+  </data>
+  <data name="tofromstation" xml:space="preserve">
+    <value>To and from station</value>
   </data>
   <data name="train" xml:space="preserve">
     <value>Train</value>
